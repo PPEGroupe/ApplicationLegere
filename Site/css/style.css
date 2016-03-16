@@ -29,6 +29,10 @@ section {
     margin-top: 50px;
 }
 
-section table th {
+table {
+    border: 1px #DDD solid;
+}
+
+#offers .warning {
     text-align: center;
 }
