@@ -83,6 +83,7 @@ class ClientManager {
         {
             $client = new Client();
             $client->Initialize($data);
+            $client->setObjects($this->_db);
             return $client;
         }
         else
@@ -102,6 +103,7 @@ class ClientManager {
         {
             $client = new Client();
             $client->Initialize($data);
+            $client->setObjects($this->_db);
             $clientList[] = $client;
         }
 

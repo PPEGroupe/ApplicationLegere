@@ -10,9 +10,10 @@ class Client {
     private $_City;
     private $_ZipCode;
     private $_Company;
+    private $_IdOffer;
     private $_Offer;
     
-    // Méthode
+    // Méthodes
     public function Initialize(array $data)
     {
         foreach ($data as $key => $value) 
@@ -24,6 +25,13 @@ class Client {
                 $this->$method($value);
             }
         }
+    }
+    
+    public function setObjects($db)
+    {
+        $offerManager = new OfferManager($db);
+        
+        $this->setOffer($offerManager->Get($this->IdOffer()));
     }
     
     // Propriétés
@@ -67,6 +75,10 @@ class Client {
         return $this->_Offer;
     }
 
+    function IdOffer() {
+        return $this->_IdOffer;
+    }
+
     function setIdentifier($_Identifier) {
         $this->_Identifier = $_Identifier;
     }
@@ -101,6 +113,10 @@ class Client {
 
     function setCompany($_Company) {
         $this->_Company = $_Company;
+    }
+
+    function setIdOffer($_IdOffer) {
+        $this->_IdOffer = $_IdOffer;
     }
 
     function setOffer($_Offer) {

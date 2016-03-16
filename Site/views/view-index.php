@@ -11,24 +11,27 @@
             <table class="table table-striped" id="offers">
                 <thead>
                     <tr>
-                        <th>N°</th>
+                        <th>Ref.</th>
                         <th>Offre</th>
-                        <th>Référence</th>
                         <th>Ville</th>
+                        <th>Contrat</th>
+                        <th>Nb. places</th>
+                        <th>Société</th>
                     </tr>
                 </thead>
                 
                 <tbody>
 <?php               if(isset($offerList))
                     {
-                        $i = 1;
                         foreach($offerList as $key => $offer)
                         { ?>
                             <tr>
-                                <td><?php echo $i++; ?></td>
-                                <td><?php echo $offer->Title(); ?></td>
                                 <td><?php echo $offer->Reference(); ?></td>
+                                <td><?php echo $offer->Title(); ?></td>
                                 <td><?php echo $offer->City(); ?></td>
+                                <td><?php echo $offer->TypeOfContract()->Label(); ?></td>
+                                <td><?php echo $offer->JobQuantity(); ?></td>
+                                <td><?php echo $offer->Client()->Company(); ?></td>
                             </tr>
 <?php                   }
                     }

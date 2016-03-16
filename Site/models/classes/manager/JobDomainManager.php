@@ -1,5 +1,5 @@
 <?php
-class JobDomainDomainManager {
+class JobDomainManager {
     // Attributs
     private $_db;
 

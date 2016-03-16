@@ -22,18 +22,29 @@ class Offer {
     private $_TypeOfContract;
     private $_Client;
     
-    // Méthode
+    // Méthodes
     public function Initialize(array $data)
     {
         foreach ($data as $key => $value) 
         {
             $method = 'set'.ucfirst($key);
 
-            if(method_exists($this, $method))
+            if (method_exists($this, $method))
             {
                 $this->$method($value);
             }
         }
+    }
+    
+    public function setObjects($db)
+    {
+        $typeOfContractManager = new TypeOfContractManager($db);
+        $jobManager = new JobManager($db);
+        $clientManager = new ClientManager($db);
+        
+        $this->setTypeOfContract($typeOfContractManager->Get($this->IdTypeOfContract()));
+        $this->setJob($jobManager->Get($this->IdJob()));
+        $this->setClient($clientManager->Get($this->IdClient()));
     }
     
     // Propriétés
@@ -118,7 +129,7 @@ class Offer {
     }
     
     function setIdentifier($_Identifier) {
-        $this->_Identifier = $_Identifier;
+        $this->_Identifier = (int)$_Identifier;
     }
 
     function setTitle($_Title) {
@@ -142,7 +153,7 @@ class Offer {
     }
 
     function setJobQuantity($_JobQuantity) {
-        $this->_JobQuantity = $_JobQuantity;
+        $this->_JobQuantity = (int)$_JobQuantity;
     }
 
     function setLatitude($_Latitude) {
@@ -174,15 +185,15 @@ class Offer {
     }
 
     function setIdTypeOfContract($_IdTypeOfContract) {
-        $this->_IdTypeOfContract = $_IdTypeOfContract;
+        $this->_IdTypeOfContract = (int)$_IdTypeOfContract;
     }
 
     function setIdJob($_IdJob) {
-        $this->_IdJob = $_IdJob;
+        $this->_IdJob = (int)$_IdJob;
     }
 
     function setIdClient($_IdClient) {
-        $this->_IdClient = $_IdClient;
+        $this->_IdClient = (int)$_IdClient;
     }
 
     function setJob($_Job) {

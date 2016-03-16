@@ -6,7 +6,7 @@ class Job {
     private $_IdJobDomain;
     private $_JobDomain;
     
-    // Méthode
+    // Méthodes
     public function Initialize(array $data)
     {
         foreach ($data as $key => $value) 
@@ -18,6 +18,13 @@ class Job {
                 $this->$method($value);
             }
         }
+    }
+    
+    public function setObjects($db)
+    {
+        $jobDomainManager = new JobDomainManager($db);
+        
+        $this->setJobDomain($jobDomainManager->Get($this->IdJobDomain()));
     }
     
     // Propriétés
