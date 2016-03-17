@@ -36,3 +36,11 @@ table {
 #offers .warning {
     text-align: center;
 }
+
+.form-horizontal {
+    padding: 15px;
+}
+/*
+input {
+    width: 100px;
+}*/

@@ -109,4 +109,22 @@ class ClientManager {
 
         return (isset($clientList)) ? $clientList : null;
     }
+    
+    public function GetAcount()
+    {
+        $queryString = 'SELECT Identifier, Email, Password '
+                     . 'FROM Client';
+        $query = $this->_db->query($queryString);
+        
+        if ($data != null) 
+        {
+            $client = new Client();
+            $client->Initialize($data);
+            return $client;
+        }
+        else
+        {
+            return null;
+        }
+    }
 }
