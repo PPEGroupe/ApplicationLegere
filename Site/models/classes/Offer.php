@@ -21,6 +21,8 @@ class Offer {
     private $_Job;
     private $_TypeOfContract;
     private $_Client;
+    private $_PostList;
+    
     
     // Méthodes
     public function Initialize(array $data)
@@ -39,12 +41,14 @@ class Offer {
     public function setObjects($db)
     {
         $typeOfContractManager = new TypeOfContractManager($db);
-        $jobManager = new JobManager($db);
-        $clientManager = new ClientManager($db);
+        $jobManager            = new JobManager($db);
+        $clientManager         = new ClientManager($db);
+        $postManager           = new PostManager($db);
         
         $this->setTypeOfContract($typeOfContractManager->Get($this->IdTypeOfContract()));
         $this->setJob($jobManager->Get($this->IdJob()));
         $this->setClient($clientManager->Get($this->IdClient()));
+        $this->setPostList($postManager->GetAllByOffer($this->Identifier()));
     }
     
     // Propriétés
@@ -127,6 +131,10 @@ class Offer {
     function Client() {
         return $this->_Client;
     }
+
+    function PostList() {
+        return $this->_PostList;
+    }
     
     function setIdentifier($_Identifier) {
         $this->_Identifier = (int)$_Identifier;
@@ -206,5 +214,9 @@ class Offer {
 
     function setClient($_Client) {
         $this->_Client = $_Client;
+    }
+
+    function setPostList($_PostList) {
+        $this->_PostList= $_PostList;
     }
 }

@@ -132,4 +132,27 @@ class OfferManager {
 
         return (isset($offerList)) ? $offerList : null;
     }
+
+    public function GetAllByClient($idClient)
+    {
+        $queryString = 'SELECT Identifier, Title, Reference, DateStartPublication, PublicationDuration, JobQuantity, Latitude, Longitude, JobDescription, ProfileDescription, Address, City, ZipCode, IdTypeOfContract, IdJob, IdClient '
+                     . 'FROM Offer '
+                     . 'WHERE IdClient = :IdClient';
+        
+        $query = $this->_db->prepare($queryString);
+        $query->bindValue(':IdClient', $idClient);
+        $query->execute();
+
+        $data = $query->fetch(PDO::FETCH_ASSOC);
+
+        while ($data = $query->fetch(PDO::FETCH_ASSOC))
+        {
+            $offer = new Offer();
+            $offer->Initialize($data);
+            $offer->setObjects($this->_db);
+            $offerList[] = $offer;
+        }
+
+        return (isset($offerList)) ? $offerList : null;
+    }
 }

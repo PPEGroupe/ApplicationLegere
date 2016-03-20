@@ -10,8 +10,7 @@ class Client {
     private $_City;
     private $_ZipCode;
     private $_Company;
-    private $_IdOffer;
-    private $_Offer;
+    private $_OfferList;
     
     // Méthodes
     public function Initialize(array $data)
@@ -31,7 +30,7 @@ class Client {
     {
         $offerManager = new OfferManager($db);
         
-        $this->setOffer($offerManager->Get($this->IdOffer()));
+        $this->setOfferList($offerManager->GetAllByClient($this->Identifier()));
     }
     
     // Propriétés
@@ -71,12 +70,8 @@ class Client {
         return $this->_Company;
     }
 
-    function Offer() {
-        return $this->_Offer;
-    }
-
-    function IdOffer() {
-        return $this->_IdOffer;
+    function OfferList() {
+        return $this->_OfferList;
     }
 
     function setIdentifier($_Identifier) {
@@ -115,11 +110,7 @@ class Client {
         $this->_Company = $_Company;
     }
 
-    function setIdOffer($_IdOffer) {
-        $this->_IdOffer = $_IdOffer;
-    }
-
-    function setOffer($_Offer) {
-        $this->_Offer = $_Offer;
+    function setOfferList($_OfferList) {
+        $this->_OfferList = $_OfferList;
     }
 }

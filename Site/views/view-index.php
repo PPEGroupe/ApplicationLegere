@@ -37,7 +37,7 @@
                     }
                     else
                     { ?>
-                        <tr class="warning"><td colspan="4">Aucune offre n'est disponible</td></tr>
+                        <tr class="warning"><td colspan="6">Aucune offre n'est disponible</td></tr>
 <?php               }?>
                 </tbody>
             </table>
@@ -51,46 +51,47 @@
                     </div>
                     <form action="" method="post" class="form-horizontal">
                         <div class="modal-body">
+                            <input type="hidden" name="idOffer" id="idOffer"/>
                             <div class="form-group">
                                 <label for="firstname" class="col-sm-3 control-label">Prénom</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Prénom">
+                                    <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Prénom"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="lastname" class="col-sm-3 control-label">Nom</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="lastname" name="lasname" placeholder="Nom">
+                                    <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Nom"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="email" class="col-sm-3 control-label">E-mail</label>
                                 <div class="col-sm-9">
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="E-mail">
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="E-mail"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="phoneNumber" class="col-sm-3 control-label">N° Téléphone</label>
                                 <div class="col-sm-9">
-                                    <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="N° Téléphone">
+                                    <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="N° Téléphone"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="address" class="col-sm-3 control-label">Adresse</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="address" name="address" placeholder="Adresse postale">
+                                    <input type="text" class="form-control" id="address" name="address" placeholder="Adresse postale"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="city" class="col-sm-3 control-label">Ville</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="city" name="city" placeholder="Ville">
+                                    <input type="text" class="form-control" id="city" name="city" placeholder="Ville"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="zipCode" class="col-sm-3 control-label">Code postal</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="zipCode" name="zipCode" placeholder="Code postal">
+                                    <input type="text" class="form-control" id="zipCode" name="zipCode" placeholder="Code postal"/>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -110,7 +111,7 @@
                                 <div class="form-group">
                                     <div class="col-sm-offset-3 col-sm-9">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-                                        <button type="submit" name="send" class="btn btn-warning">Postuler</button>
+                                        <button type="submit" name="sendPost" class="btn btn-warning">Postuler</button>
                                     </div>
                                 </div>
                             </div>
