@@ -53,7 +53,8 @@ class ClientManager {
                      . 'Address = :Address, '
                      . 'City = :City, '
                      . 'ZipCode = :ZipCode, '
-                     . 'Company = :Company '
+                     . 'Company = :Company, '
+                     . 'Password = :Password '
                      . 'WHERE Identifier = :Identifier';
         
         $query = $this->_db->prepare($queryString);
@@ -72,7 +73,7 @@ class ClientManager {
 
     public function Get($id)
     {
-        $queryString = 'SELECT Identifier, URL, Email, PhoneNumber, Fax, Address, ZipCode, Company '
+        $queryString = 'SELECT Identifier, URL, Email, PhoneNumber, Fax, Address, City, ZipCode, Company, Password '
                      . 'FROM Client '
                      . 'WHERE Identifier = :Identifier';
         
@@ -98,7 +99,7 @@ class ClientManager {
 
     public function GetAll()
     {
-        $queryString = 'SELECT Identifier, URL, Email, PhoneNumber, Fax, Address, ZipCode, Company '
+        $queryString = 'SELECT Identifier, URL, Email, PhoneNumber, Fax, Address, City, ZipCode, Company, Password '
                      . 'FROM Client';
         
         $query = $this->_db->query($queryString);
@@ -115,11 +116,19 @@ class ClientManager {
         return (isset($clientList)) ? $clientList : null;
     }
     
-    public function GetAccount()
+    public function GetAccount($email, $password)
     {
-        $queryString = 'SELECT Identifier, Email, Password '
-                     . 'FROM Client';
-        $query = $this->_db->query($queryString);
+        $queryString = 'SELECT Identifier, URL, Email, PhoneNumber, Fax, Address, City, ZipCode, Company, Password '
+                     . 'FROM Client '
+                     . 'WHERE Email = :Email '
+                     . 'AND Password = :Password ';
+        
+        $query = $this->_db->prepare($queryString);
+        
+        $query->bindValue(':Email',     $email);
+        $query->bindValue(':Password',  $password);
+        
+        $query->execute();
         $data = $query->fetch(PDO::FETCH_ASSOC);
         
         if ($data != null) 
@@ -132,5 +141,26 @@ class ClientManager {
         {
             return null;
         }
+    }
+    
+    public function Exist($email)
+    {
+        $queryString = 'SELECT Identifier '
+                     . 'FROM Client '
+                     . 'WHERE Email = :Email';
+        
+        $query = $this->_db->prepare($queryString);
+        
+        $query->bindValue(':Email', $email);
+        
+        $query->execute();
+        
+        $data = $query->fetch(PDO::FETCH_ASSOC);
+        
+        if ($data != null) 
+        {
+            return true;
+        }
+        return false;
     }
 }
