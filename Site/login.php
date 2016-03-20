@@ -1,58 +1,99 @@
 <?php 
+require 'models/ClassesLoader.php';
+
+
+$regexPassword        = '#^(?=.*[a-z])(?=.*[0-9]).{6,}$#';
+$regexEmail           = '#^[\w.-]+@[\w.-]+\.[a-z]{2,6}$#i';
 
 //----------------------------------- Tests Connexion -----------------------------------
 if (isset ($_POST['sendConnection']))
 {
-    $identifier         = trim($_POST['identifierConnection']);
-    $password           = trim($_POST['passwordConnection']);
-    $regex              = '#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).{6,}$#';
-    
-    if ( $identifier == '' || $password == '')
+    $clientManager = new ClientManager($db);
+    $email         = trim($_POST['emailConnection']);
+    $password      = trim($_POST['passwordConnection']);
+  
+    if ( $email == '' || $password == '')
     {
         $errorConnection = 'Veuillez remplir tous les champs';
     } 
-    else if (strlen($identifier) < 3 || strlen($password) < 6) 
+    else if (strlen($email) < 3 ) 
     {
-        echo 'rerer';
-        $errorConnection = 'Ce champs est composé de plus de 3 caractères!';
+        $errorConnection = 'L\'email est composé de plus de 3 caractères!';
     }
-    else if (preg_match($regex, $password) == 0)
+    else if (strlen($password) < 4)
+    {
+        $errorConnection = 'Le mot de passe est composé de plus de 4 caractères!';
+    }
+    else if (preg_match($regexPassword, $password) == 0)
     {
         $errorConnection = 'Le mot de passe n\'est pas conforme aux exigenences!';
     }
+    else if (preg_match($regexEmail, $email) == 0)
+    {
+        $errorRegister = 'Veuillez remplir un e-mail valide';
+    }
     else
     {
-        $clientManager = new clientManager($db);
-        $account = $clientManager->GetAccount($identifiant, $password);
-        $_SESSION['account'] = $account;
+        $client = $clientManager->GetAccount($email, $password);
+        
+        if ($client != null)
+        {
+            $_SESSION['account'] = $client;
+        }
+        else
+        {
+            $errorConnection = 'Vous n\' êtes pas connu du site, inscrivez-vous :)';
+        }
     }
 }
 
 //----------------------------------- Tests Inscription -----------------------------------
+
 if (isset ($_POST['sendRegister']))
 {
-    $identifier           = trim($_POST['identifierConnection']);
-    $password             = trim($_POST['passwordConnection']);
+    $clientManager        = new ClientManager($db);
+    $company              = trim($_POST['companyRegister']);
+    $email                = trim($_POST['emailRegister']);
+    $password             = trim($_POST['passwordRegister']);
     $passwordConfirmation = trim($_POST['passwordConfirmationRegister']);
-    $regex                = '#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).{10,}$#';
     
-    if ($identifier == '' || $password == '' || $passwordConfirmation == '' )
+    if ($email == '' || $password == '' || $passwordConfirmation == '' || $company == '' )
     {
         $errorRegister = 'Veuillez remplir tous les champs';
     } 
+   else if (strlen($email) < 3 ) 
+    {
+        $errorRegister = 'L\'email est composé de plus de 3 caractères!';
+    }
+    else if (strlen($password) < 4)
+    {
+        $errorRegister = 'Le mot de passe est composé de plus de 4 caractères!';
+    }
+    else if (preg_match($regexPassword, $password) == 0)
+    {
+        $errorRegister = 'Le mot de passe n\'est pas conforme aux exigenences!'
+        . '</br><ul>Il doit avoir au moin 6 caractères</ul>'
+        . '<ul>Il doit comporter au moin une majuscule</ul>'
+        . '<ul>Il doit comporter au moin un chiffe.';
+    }
+    else if (preg_match($regexEmail, $email) == 0)
+    {
+        $errorRegister = 'Veuillez remplir un e-mail valide';
+    }
+    else if ($clientManager->Exist($email))
+    {
+         $errorRegister = 'Cet Identifiant existe déjà!';
+    }
     else
     {
-        $clientManager = new clientManager($db);
-        $account = $clientManager->Add($url, $identifier, $phoneNumber, $fax, $address, $company)
+        $client = new Client(); 
+        $client->setCompany($company);
+        $client->setEmail($email);
+        $client->setPassword($password);
+        
+        $clientManager->Add($client);
     }
-}
-:URL',         
-:Email',       
-:PhoneNumber', 
-:Fax',         
-:Address',     
-:Address',     
-:Company',     
+} 
 
 
 //------ Inclut la vue html ------

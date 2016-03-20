@@ -16,8 +16,8 @@
                                 <legend>[Connexion]</legend>
                         </div>
                         <div class="form-group">
-                            <label for="identifierConnection">Identifiant</label>
-                            <input type="email" class="form-control" id="identifierConnection" name="identifierConnection" placeholder="Insérer votre e-mail">
+                            <label for="emailConnection">Identifiant</label>
+                            <input type="email" class="form-control" id="emailConnection" name="emailConnection" placeholder="Insérer votre e-mail">
                         </div>
                         <div class="form-group">
                             <label for="passwordConnection">Mot de passe</label>
@@ -37,8 +37,12 @@
                                 <legend>[Inscription]</legend>
                         </div>
                         <div class="form-group">
-                            <label for="identifierRegister">Identifiant</label>
-                            <input type="email" class="form-control" id="identifierRegister" name="identifierRegister" placeholder="Insérer votre e-mail">
+                            <label for="companyRegister">Société</label>
+                            <input type="text" class="form-control" id="companyRegister" name="companyRegister" placeholder="Renseignez votre société">
+                        </div>
+                        <div class="form-group">
+                            <label for="emailRegister">Identifiant</label>
+                            <input type="email" class="form-control" id="emailRegister" name="emailRegister" placeholder="Insérer votre e-mail">
                         </div>
                         <div class="form-group">
                             <label for="passwordRegister">Mot de passe</label>

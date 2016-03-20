@@ -11,6 +11,7 @@ class Client {
     private $_ZipCode;
     private $_Company;
     private $_OfferList;
+    private $_Password;
     
     // Méthodes
     public function Initialize(array $data)
@@ -73,6 +74,10 @@ class Client {
     function OfferList() {
         return $this->_OfferList;
     }
+    
+    function Password() {
+        return $this->_Password;
+    }
 
     function setIdentifier($_Identifier) {
         $this->_Identifier = $_Identifier;
@@ -113,4 +118,8 @@ class Client {
     function setOfferList($_OfferList) {
         $this->_OfferList = $_OfferList;
     }
+    }
+    
+    function setPassword($_Password) {
+        $this->_Password = $_Password;
 }
