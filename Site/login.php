@@ -1,58 +1,68 @@
 <?php 
+require 'models/ClassesLoader.php';
 
 //----------------------------------- Tests Connexion -----------------------------------
 if (isset ($_POST['sendConnection']))
 {
-    $identifier         = trim($_POST['identifierConnection']);
-    $password           = trim($_POST['passwordConnection']);
-    $regex              = '#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).{6,}$#';
+    $email     = trim($_POST['emailConnection']);
+    $password  = trim($_POST['passwordConnection']);
+    $regex     = '#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).{6,}$#';
     
-    if ( $identifier == '' || $password == '')
+    if ( $email == '' || $password == '')
     {
         $errorConnection = 'Veuillez remplir tous les champs';
     } 
-    else if (strlen($identifier) < 3 || strlen($password) < 6) 
+    else if (strlen($email) < 3 ) 
     {
-        echo 'rerer';
         $errorConnection = 'Ce champs est composé de plus de 3 caractères!';
     }
-    else if (preg_match($regex, $password) == 0)
+    else if (strlen($password) < 4)
+    {
+        $errorConnection = 'Ce champs est composé de plus de 4 caractères!';
+    }
+    /*else if (preg_match($regex, $password) == 0)
     {
         $errorConnection = 'Le mot de passe n\'est pas conforme aux exigenences!';
-    }
+    }*/
     else
     {
-        $clientManager = new clientManager($db);
-        $account = $clientManager->GetAccount($identifiant, $password);
-        $_SESSION['account'] = $account;
+        $clientManager = new ClientManager($db);
+        $client = $clientManager->GetAccount($email, $password);
+        if ($client != null)
+        {
+            $_SESSION['account'] = $client;
+        }
+        else
+        {
+            $errorConnection = 'Vous n\' êtes pas connu du site, inscrivez-vous :)';
+        }
     }
 }
 
 //----------------------------------- Tests Inscription -----------------------------------
 if (isset ($_POST['sendRegister']))
 {
-    $identifier           = trim($_POST['identifierConnection']);
-    $password             = trim($_POST['passwordConnection']);
+    $email                = trim($_POST['emailRegister']);
+    $password             = trim($_POST['passwordRegister']);
     $passwordConfirmation = trim($_POST['passwordConfirmationRegister']);
+    
     $regex                = '#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).{10,}$#';
     
-    if ($identifier == '' || $password == '' || $passwordConfirmation == '' )
+    if ($email == '' || $password == '' || $passwordConfirmation == '' )
+    {
+        $errorRegister = 'Veuillez remplir tous les champs';
+    } 
+    if ($email == '' || $password == '' || $passwordConfirmation == '' )
     {
         $errorRegister = 'Veuillez remplir tous les champs';
     } 
     else
     {
-        $clientManager = new clientManager($db);
-        $account = $clientManager->Add($url, $identifier, $phoneNumber, $fax, $address, $company)
+        $client = new Client($db); 
+        $clientManager = new ClientManager($db);
+        $clientManager->Add($client);
     }
-}
-:URL',         
-:Email',       
-:PhoneNumber', 
-:Fax',         
-:Address',     
-:Address',     
-:Company',     
+} 
 
 
 //------ Inclut la vue html ------

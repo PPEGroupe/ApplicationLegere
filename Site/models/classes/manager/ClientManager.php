@@ -18,8 +18,8 @@ class ClientManager {
     // Méthodes	
     public function Add(Client $client)
     {
-        $queryString = 'INSERT INTO Client (URL, Email, PhoneNumber, Fax, Address, ZipCode, Company) VALUES '
-                     . '(:URL, :Email, :PhoneNumber, :Fax, :Address, :ZipCode, :Company)';
+        $queryString = 'INSERT INTO Client (URL, Email, PhoneNumber, Fax, Address, City ,ZipCode, Company, Password) VALUES '
+                     . '(:URL, :Email, :PhoneNumber, :Fax, :Address, :City, :ZipCode, :Company, :Password)';
         
         $query = $this->_db->prepare($queryString);
         $query->bindValue(':URL',           $client->URL());
@@ -30,6 +30,7 @@ class ClientManager {
         $query->bindValue(':City',          $client->City());
         $query->bindValue(':ZipCode',       $client->ZipCode());
         $query->bindValue(':Company',       $client->Company());
+        $query->bindValue(':Password',      $client->password());
 
         $query->execute();
     }
@@ -101,6 +102,7 @@ class ClientManager {
                      . 'FROM Client';
         
         $query = $this->_db->query($queryString);
+        $data = $query->fetch(PDO::FETCH_ASSOC);
 
         while ($data = $query->fetch(PDO::FETCH_ASSOC))
         {
@@ -118,6 +120,7 @@ class ClientManager {
         $queryString = 'SELECT Identifier, Email, Password '
                      . 'FROM Client';
         $query = $this->_db->query($queryString);
+        $data = $query->fetch(PDO::FETCH_ASSOC);
         
         if ($data != null) 
         {

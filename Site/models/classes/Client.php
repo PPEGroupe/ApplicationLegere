@@ -12,6 +12,7 @@ class Client {
     private $_Company;
     private $_IdOffer;
     private $_Offer;
+    private $_Password;
     
     // Méthodes
     public function Initialize(array $data)
@@ -74,6 +75,10 @@ class Client {
     function Offer() {
         return $this->_Offer;
     }
+    
+    function Password() {
+        return $this->_Password;
+    }
 
     function IdOffer() {
         return $this->_IdOffer;
@@ -121,5 +126,9 @@ class Client {
 
     function setOffer($_Offer) {
         $this->_Offer = $_Offer;
+    }
+    
+    function setPassword($_Password) {
+        $this->_Password = $_Password;
     }
 }

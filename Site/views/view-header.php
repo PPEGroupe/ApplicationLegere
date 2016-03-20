@@ -6,7 +6,7 @@
             </div>
             
             <div id="icon" class="col-sm-2">
-                <img src="/pictures/icon.png" alt="MegaCasting"/>
+                <img src="/pictures/icon.png" class="img-responsive" alt="MegaCasting"/>
             </div>
         </div>
     </div>
