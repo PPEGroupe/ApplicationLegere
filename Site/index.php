@@ -5,3 +5,6 @@ $offerList = $offerManager->GetAll();
 
 
 require '/views/view-index.php';
+
+
+

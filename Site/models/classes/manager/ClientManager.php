@@ -27,7 +27,8 @@ class ClientManager {
         $query->bindValue(':PhoneNumber',   $client->PhoneNumber());
         $query->bindValue(':Fax',           $client->Fax());
         $query->bindValue(':Address',       $client->Address());
-        $query->bindValue(':Address',       $client->Address());
+        $query->bindValue(':City',          $client->City());
+        $query->bindValue(':ZipCode',       $client->ZipCode());
         $query->bindValue(':Company',       $client->Company());
 
         $query->execute();
@@ -49,6 +50,7 @@ class ClientManager {
                      . 'PhoneNumber = :PhoneNumber, '
                      . 'Fax = :Fax, '
                      . 'Address = :Address, '
+                     . 'City = :City, '
                      . 'ZipCode = :ZipCode, '
                      . 'Company = :Company '
                      . 'WHERE Identifier = :Identifier';
@@ -59,7 +61,8 @@ class ClientManager {
         $query->bindValue(':PhoneNumber',   $client->PhoneNumber());
         $query->bindValue(':Fax',           $client->Fax());
         $query->bindValue(':Address',       $client->Address());
-        $query->bindValue(':Address',       $client->Address());
+        $query->bindValue(':City',          $client->City());
+        $query->bindValue(':ZipCode',       $client->ZipCode());
         $query->bindValue(':Company',       $client->Company());
         $query->bindValue(':Identifier',    $client->Identifier());
 
@@ -110,7 +113,7 @@ class ClientManager {
         return (isset($clientList)) ? $clientList : null;
     }
     
-    public function GetAcount()
+    public function GetAccount()
     {
         $queryString = 'SELECT Identifier, Email, Password '
                      . 'FROM Client';
