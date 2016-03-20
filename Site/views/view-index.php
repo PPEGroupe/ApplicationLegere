@@ -52,15 +52,15 @@
                     <form action="" method="post" class="form-horizontal">
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="title" class="col-sm-3 control-label">Titre</label>
+                                <label for="firstname" class="col-sm-3 control-label">Prénom</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="title" name="title" placeholder="Titre">
+                                    <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Prénom">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="website" class="col-sm-3 control-label">Site Internet</label>
+                                <label for="lastname" class="col-sm-3 control-label">Nom</label>
                                 <div class="col-sm-9">
-                                    <input type="url" class="form-control" id="website" name="website" placeholder="Site internet">
+                                    <input type="text" class="form-control" id="lastname" name="lasname" placeholder="Nom">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -76,21 +76,33 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="fax" class="col-sm-3 control-label">Titre</label>
+                                <label for="address" class="col-sm-3 control-label">Adresse</label>
                                 <div class="col-sm-9">
-                                    <input type="tel" class="form-control" id="fax" name="fax" placeholder="Titre">
+                                    <input type="text" class="form-control" id="address" name="address" placeholder="Adresse postale">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="address" class="col-sm-3 control-label">Adresse</label>
+                                <label for="city" class="col-sm-3 control-label">Ville</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="address" name="adress" placeholder="Adresse postale">
+                                    <input type="text" class="form-control" id="city" name="city" placeholder="Ville">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="zipCode" class="col-sm-3 control-label">Code postal</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="zipCode" name="zipCode" placeholder="Code postal">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="letter" class="col-sm-3 control-label">Lettre de motivation</label>
+                                <div class="col-sm-9">
+                                    <input type="file" class="form-control" id="letter" name="letter"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="cv" class="col-sm-3 control-label">CV</label>
                                 <div class="col-sm-9">
-                                    <input type="file" class="form-control" id="file" name="file"/>
+                                    <input type="file" class="form-control" id="cv" name="cv"/>
                                 </div>
                             </div>
                             

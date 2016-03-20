@@ -50,3 +50,11 @@ table {
 #postulateModal .modal-footer {
     padding-bottom: 0
 }
+
+#postulateModal .modal-body .form-group:last-child {
+    margin-bottom: 0;
+}
+
+.form-horizontal {
+    padding: 15px;
+}
