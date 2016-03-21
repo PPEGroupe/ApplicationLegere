@@ -2,7 +2,13 @@
 require '/models/ClassesLoader.php';
 require '/models/page.php';
 
-$offerManager = new OfferManager($db);
-$offerList = $offerManager->GetAllByClient(1);
+if (isset($_SESSION['account']))
+{
+    $client = $_SESSION['account'];
 
-require '/views/view-offers.php';
+    $offerManager = new OfferManager($db);
+    $offerList = $offerManager->GetAllByClient($client->Identifier());
+
+    require '/views/view-offers.php';
+
+}

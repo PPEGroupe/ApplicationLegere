@@ -1,4 +1,5 @@
 <?php require 'ClassesLoader.php';
+
 if (!empty($_POST))
 {
 	if (empty($_POST['firstname']) || empty($_POST['lastname']) || empty($_POST['email']) || empty($_POST['phoneNumber']) || empty($_POST['address']) || empty($_POST['city']) || empty($_POST['zipCode']))
