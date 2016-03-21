@@ -118,8 +118,8 @@ class Client {
     function setOfferList($_OfferList) {
         $this->_OfferList = $_OfferList;
     }
-    }
     
     function setPassword($_Password) {
         $this->_Password = $_Password;
+    }
 }

@@ -30,7 +30,7 @@ class ClientManager {
         $query->bindValue(':City',          $client->City());
         $query->bindValue(':ZipCode',       $client->ZipCode());
         $query->bindValue(':Company',       $client->Company());
-        $query->bindValue(':Password',      $client->password());
+        $query->bindValue(':Password',      $client->Password());
 
         $query->execute();
     }
@@ -54,7 +54,7 @@ class ClientManager {
                      . 'City = :City, '
                      . 'ZipCode = :ZipCode, '
                      . 'Company = :Company, '
-                     . 'Password = :Password '
+                     . 'Password = :Password, '
                      . 'WHERE Identifier = :Identifier';
         
         $query = $this->_db->prepare($queryString);
@@ -66,6 +66,7 @@ class ClientManager {
         $query->bindValue(':City',          $client->City());
         $query->bindValue(':ZipCode',       $client->ZipCode());
         $query->bindValue(':Company',       $client->Company());
+        $query->bindValue(':Password',      $client->Password());
         $query->bindValue(':Identifier',    $client->Identifier());
 
         $query->execute();
