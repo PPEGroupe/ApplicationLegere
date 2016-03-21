@@ -143,8 +143,6 @@ class OfferManager {
         $query->bindValue(':IdClient', $idClient);
         $query->execute();
 
-        $data = $query->fetch(PDO::FETCH_ASSOC);
-
         while ($data = $query->fetch(PDO::FETCH_ASSOC))
         {
             $offer = new Offer();

@@ -43,7 +43,12 @@ header .nav nav li a {
 	text-decoration: none;
 }
 
-header .nav nav li a:hover,
+header .nav nav li a:hover {
+    background: #F0AD4E;
+	color: #222;
+	text-decoration: none;
+}
+
 header .nav nav li a.selected {
     background: #ec971f;
 	color: #222;
@@ -57,7 +62,8 @@ header .nav nav li a .label {
 	margin-left: 5px;
 }
 
-header .nav nav li a:hover .label {
+header .nav nav li a:hover .label,
+header .nav nav li a.selected .label {
     background: #FFF;
 	color: #222;
 }

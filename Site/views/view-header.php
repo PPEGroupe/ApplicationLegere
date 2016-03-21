@@ -23,8 +23,9 @@
 						<li><a <?php Selected('index'); ?> href="/">Accueil</a></li>
 <?php					if (isset($_SESSION['account']))
 						{ ?>
+							<li><a <?php Selected('account'); ?> href="account.php">Mon compte</a></li>
+							<li><a <?php Selected('offers'); ?> href="offers.php">Mes offres <span class="label label-warning"><?php echo count($_SESSION['account']->OfferList()); ?></span></a></li>
 							<li style="padding: 0 10px"><b><?php echo $_SESSION['account']->Company(); ?></b></li>
-							<li><a <?php Selected('account'); ?> href="account.php">Mon compte</a></li><li><a href="offers.php">Mes offres <span class="label label-warning"><?php echo count($_SESSION['account']->OfferList()); ?></span></a></li>
 <?php					}
 						else
 						{ ?>
