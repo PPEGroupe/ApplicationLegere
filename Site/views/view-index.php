@@ -44,52 +44,52 @@
         </section>
         
         <div class="modal fade" id="postulateModal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title">Postuler</h4>
                     </div>
-                    <form action="" method="post" class="form-horizontal">
+                    <form action="" method="post" class="form-horizontal" enctype="multipart/form-data">
                         <div class="modal-body">
                             <input type="hidden" name="idOffer" id="idOffer"/>
                             <div class="form-group">
-                                <label for="firstname" class="col-sm-3 control-label">Prénom</label>
+                                <label for="firstname" class="col-sm-3 control-label">Prénom <span class="require">*</span></label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Prénom"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="lastname" class="col-sm-3 control-label">Nom</label>
+                                <label for="lastname" class="col-sm-3 control-label">Nom <span class="require">*</span></label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Nom"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="email" class="col-sm-3 control-label">E-mail</label>
+                                <label for="email" class="col-sm-3 control-label">E-mail <span class="require">*</span></label>
                                 <div class="col-sm-9">
                                     <input type="email" class="form-control" id="email" name="email" placeholder="E-mail"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="phoneNumber" class="col-sm-3 control-label">N° Téléphone</label>
+                                <label for="phoneNumber" class="col-sm-3 control-label">N° Téléphone <span class="require">*</span></label>
                                 <div class="col-sm-9">
                                     <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="N° Téléphone"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="address" class="col-sm-3 control-label">Adresse</label>
+                                <label for="address" class="col-sm-3 control-label">Adresse <span class="require">*</span></label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" id="address" name="address" placeholder="Adresse postale"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="city" class="col-sm-3 control-label">Ville</label>
+                                <label for="city" class="col-sm-3 control-label">Ville <span class="require">*</span></label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" id="city" name="city" placeholder="Ville"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="zipCode" class="col-sm-3 control-label">Code postal</label>
+                                <label for="zipCode" class="col-sm-3 control-label">Code postal <span class="require">*</span></label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" id="zipCode" name="zipCode" placeholder="Code postal"/>
                                 </div>
@@ -101,7 +101,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="cv" class="col-sm-3 control-label">CV</label>
+                                <label for="cv" class="col-sm-3 control-label">CV <span class="require">*</span></label>
                                 <div class="col-sm-9">
                                     <input type="file" class="form-control" id="cv" name="cv"/>
                                 </div>
@@ -109,7 +109,10 @@
                             
                             <div class="modal-footer">
                                 <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-9">
+                                    <div class="col-sm-6">
+										<p class="require">* Champ obligatoire</p>
+                                    </div>
+                                    <div class="col-sm-6">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
                                         <button type="submit" name="sendPost" class="btn btn-warning">Postuler</button>
                                     </div>

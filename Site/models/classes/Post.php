@@ -9,6 +9,7 @@ class Post {
     private $_Address;
     private $_City;
     private $_ZipCode;
+    private $_DatePost;
     private $_Letter;
     private $_CV;
     private $_IdOffer;
@@ -60,6 +61,10 @@ class Post {
         return $this->_ZipCode;
     }
 
+    function DatePost() {
+        return $this->_DatePost;
+    }
+
     function Letter() {
         return $this->_Letter;
     }
@@ -102,6 +107,10 @@ class Post {
 
     function setZipCode($ZipCode) {
         $this->_ZipCode = $ZipCode;
+    }
+
+    function setDatePost($DatePost) {
+        $this->_DatePost = $DatePost;
     }
 
     function setLetter($Letter) {

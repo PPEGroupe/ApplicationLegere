@@ -18,8 +18,8 @@ class PostManager {
     // Méthodes	
     public function Add(Post $post)
     {
-        $queryString = 'INSERT INTO Post (Firstname, Lastname, Email, PhoneNumber, Address, City, ZipCode, Letter, CV, IdOffer) VALUES '
-                     . '(:Firstname, :Lastname, :Email, :PhoneNumber, :Address, :City, :ZipCode, :Letter, :CV, :IdOffer)';
+        $queryString = 'INSERT INTO Post (Firstname, Lastname, Email, PhoneNumber, Address, City, ZipCode, DatePost, Letter, CV, IdOffer) VALUES '
+                     . '(:Firstname, :Lastname, :Email, :PhoneNumber, :Address, :City, :ZipCode, :DatePost, :Letter, :CV, :IdOffer)';
         
         $query = $this->_db->prepare($queryString);
         $query->bindValue(':Firstname',     $post->Firstname());
@@ -29,6 +29,7 @@ class PostManager {
         $query->bindValue(':Address',       $post->Address());
         $query->bindValue(':City',          $post->City());
         $query->bindValue(':ZipCode',       $post->ZipCode());
+        $query->bindValue(':DatePost',      $post->DatePost());
         $query->bindValue(':Letter',        $post->Letter());
         $query->bindValue(':CV',            $post->CV());
         $query->bindValue(':IdOffer',       $post->IdOffer());
@@ -54,6 +55,7 @@ class PostManager {
                      . 'Address = :Address, '
                      . 'City = :City, '
                      . 'ZipCode = :ZipCode, '
+                     . 'DatePost = :DatePost '
                      . 'Letter = :Letter '
                      . 'CV = :CV '
                      . 'IdOffer = :IdOffer '
@@ -67,6 +69,7 @@ class PostManager {
         $query->bindValue(':Address',       $post->Address());
         $query->bindValue(':City',          $post->City());
         $query->bindValue(':ZipCode',       $post->ZipCode());
+        $query->bindValue(':DatePost',      $post->DatePost());
         $query->bindValue(':Letter',        $post->Letter());
         $query->bindValue(':CV',            $post->CV());
         $query->bindValue(':IdOffer',       $post->IdOffer());
@@ -76,7 +79,7 @@ class PostManager {
 
     public function Get($id)
     {
-        $queryString = 'SELECT Identifier, Firstname, Lastname, Email, PhoneNumber, Address, City, ZipCode, Letter, CV, IdOffer '
+        $queryString = 'SELECT Identifier, Firstname, Lastname, Email, PhoneNumber, Address, City, ZipCode, DatePost, Letter, CV, IdOffer '
                      . 'FROM Post '
                      . 'WHERE Identifier = :Identifier';
         
@@ -102,7 +105,7 @@ class PostManager {
 
     public function GetAllByOffer($idOffer)
     {
-        $queryString = 'SELECT Identifier, Firstname, Lastname, Email, PhoneNumber, Address, City, ZipCode, Letter, CV '
+        $queryString = 'SELECT Identifier, Firstname, Lastname, Email, PhoneNumber, Address, City, ZipCode, DatePost, Letter, CV, IdOffer '
                      . 'FROM Post '
                      . 'WHERE IdOffer = :IdOffer';
         
@@ -122,7 +125,7 @@ class PostManager {
 
     public function GetAll()
     {
-        $queryString = 'SELECT Identifier, Firstname, Lastname, Email, PhoneNumber, Address, City, ZipCode, Letter, CV '
+        $queryString = 'SELECT Identifier, Firstname, Lastname, Email, PhoneNumber, Address, City, ZipCode, DatePost Letter, CV, IdOffer '
                      . 'FROM Post';
         
         $query = $this->_db->query($queryString);
