@@ -153,4 +153,22 @@ class OfferManager {
 
         return (isset($offerList)) ? $offerList : null;
     }
+
+    public function CountByClient($idClient)
+    {
+        $queryString = 'SELECT COUNT(Identifier) AS Number '
+                     . 'FROM Offer '
+                     . 'WHERE IdClient = :IdClient';
+        
+        $query = $this->_db->prepare($queryString);
+        $query->bindValue(':IdClient', $idClient);
+        $query->execute();
+
+        if ($data = $query->fetch(PDO::FETCH_ASSOC))
+        {
+			return $data['Number'];
+        }
+
+        return null;
+    }
 }

@@ -11,6 +11,7 @@ class Client {
     private $_ZipCode;
     private $_Company;
     private $_Password;
+    private $_OfferList;
     
     // Méthodes
     public function Initialize(array $data)
@@ -24,6 +25,13 @@ class Client {
                 $this->$method($value);
             }
         }
+    }
+    
+    public function setObjects($db)
+    {
+        $offerManager = new OfferManager($db);
+        
+        $this->_OfferList = $offerManager->GetAllByClient($this->Identifier());
     }
     
     // Propriétés

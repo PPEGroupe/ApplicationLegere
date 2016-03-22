@@ -17,23 +17,34 @@
 	
 	<div class="container nav">
 		<div class="row">
+<?php		if (isset($_SESSION['account']))
+			{ ?>
+				<div class="col-sm-1">
+					<p id="account"><b><?php echo $_SESSION['account']->Company(); ?></b></li>
+				</div>
+				
+				<div class="col-sm-8">
+					<nav>
+						<ul>
+							<li><a <?php Selected('index'); ?> href="/">Accueil</a></li>
+							<li><a <?php Selected('account'); ?> href="account.php">Mon compte</a></li>
+							<li><a <?php Selected('offers'); ?> href="offers.php">Mes offres <span class="label label-warning"><?php echo $numberOfferClient; ?></span></a></li>
+							<li><a <?php Selected('logout'); ?> href="logout.php">Déconnexion</a></li>
+						</ul>
+					</nav>
+				</div>
+<?php		}
+			else
+			{ ?>
 			<div class="col-sm-9">
 				<nav>
 					<ul>
 						<li><a <?php Selected('index'); ?> href="/">Accueil</a></li>
-<?php					if (isset($_SESSION['account']))
-						{ ?>
-							<li><a <?php Selected('account'); ?> href="account.php">Mon compte</a></li>
-							<li><a <?php Selected('offers'); ?> href="offers.php">Mes offres <span class="label label-warning"></span></a></li>
-							<li style="padding: 0 10px"><b><?php echo $_SESSION['account']->Company(); ?></b></li>
-<?php					}
-						else
-						{ ?>
-							<li><a <?php Selected('login'); ?> href="login.php">Se connecter ou s'inscrire</a></li>
-<?php					} ?>
+						<li><a <?php Selected('login'); ?> href="login.php">Se connecter ou s'inscrire</a></li>
 					</ul>
 				</nav>
 			</div>
+<?php		} ?>
 		</div>
 	</div>
 </header>

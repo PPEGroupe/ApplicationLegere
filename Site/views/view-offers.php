@@ -30,6 +30,7 @@
                                 <td><?php echo $offer->City(); ?></td>
                                 <td><?php echo $offer->TypeOfContract()->Label(); ?></td>
                                 <td><?php echo $offer->JobQuantity(); ?></td>
+                                <td class="hidden"><?php echo $postManager->CountByOffer($offer->Identifier()); ?></td>
                             </tr>
 <?php                   }
                     }

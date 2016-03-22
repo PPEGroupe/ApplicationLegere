@@ -95,6 +95,12 @@ if (isset ($_POST['sendRegister']))
     }
 } 
 
+if (isset($_SESSION['account']))
+{
+    $offerManager = new OfferManager($db);
+    $client = $_SESSION['account'];
+	$numberOfferClient = $offerManager->CountByClient($client->Identifier());
+}
 
 //------ Inclut la vue html ------
 require '/views/view-login.php';

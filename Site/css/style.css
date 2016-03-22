@@ -68,6 +68,12 @@ header .nav nav li a.selected .label {
 	color: #222;
 }
 
+header #account {
+	padding: 10px 25px;
+	color: #222;
+	text-decoration: none;
+}
+
 header h1 {
 	font-size: 60px;
     text-align: center;
@@ -106,7 +112,8 @@ table {
     border: 1px #DDD solid;
 }
 
-#offers .warning {
+#offers .warning,
+#posts .warning {
     text-align: center;
 }
 
