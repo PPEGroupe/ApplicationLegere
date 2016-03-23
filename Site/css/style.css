@@ -43,7 +43,12 @@ header .nav nav li a {
 	text-decoration: none;
 }
 
-header .nav nav li a:hover,
+header .nav nav li a:hover {
+    background: #F0AD4E;
+	color: #222;
+	text-decoration: none;
+}
+
 header .nav nav li a.selected {
     background: #ec971f;
 	color: #222;
@@ -57,9 +62,16 @@ header .nav nav li a .label {
 	margin-left: 5px;
 }
 
-header .nav nav li a:hover .label {
+header .nav nav li a:hover .label,
+header .nav nav li a.selected .label {
     background: #FFF;
 	color: #222;
+}
+
+header #account {
+	padding: 10px 25px;
+	color: #222;
+	text-decoration: none;
 }
 
 header h1 {
@@ -100,7 +112,8 @@ table {
     border: 1px #DDD solid;
 }
 
-#offers .warning {
+#offers .warning,
+#posts .warning {
     text-align: center;
 }
 
@@ -108,12 +121,14 @@ table {
     text-align: center;
 }
 
-#postulate {
+#postulate,
+#displayPosts {
     background: #f5f5f5;
     text-align: right;
 }
 
-#postulate button {
+#postulate button,
+#displayPosts button {
 	padding: 7px 20px;
 	font-size: 15px;
 }
@@ -125,6 +140,12 @@ table {
 
 #postulateModal .modal-body .form-group:last-child {
     margin-bottom: 0;
+}
+
+#displayPosts button .label {
+    background: #FFF;
+    margin-left: 5px;
+	color: #222;
 }
 
 .form-horizontal {
@@ -139,4 +160,9 @@ table {
 
 .require {
 	color: #ec971f;
+}
+
+#div_modification{
+    background: #d1d1d1;
+    border-radius: 5px;
 }
