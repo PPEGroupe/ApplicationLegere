@@ -10,8 +10,8 @@ class Client {
     private $_City;
     private $_ZipCode;
     private $_Company;
-    private $_OfferList;
     private $_Password;
+    private $_OfferList;
     
     // Méthodes
     public function Initialize(array $data)
@@ -31,7 +31,7 @@ class Client {
     {
         $offerManager = new OfferManager($db);
         
-        $this->setOfferList($offerManager->GetAllByClient($this->Identifier()));
+        $this->_OfferList = $offerManager->GetAllByClient($this->Identifier());
     }
     
     // Propriétés
@@ -69,10 +69,6 @@ class Client {
 
     function Company() {
         return $this->_Company;
-    }
-
-    function OfferList() {
-        return $this->_OfferList;
     }
     
     function Password() {
@@ -114,12 +110,8 @@ class Client {
     function setCompany($_Company) {
         $this->_Company = $_Company;
     }
-
-    function setOfferList($_OfferList) {
-        $this->_OfferList = $_OfferList;
-    }
-    }
     
     function setPassword($_Password) {
         $this->_Password = $_Password;
+    }
 }

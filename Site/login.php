@@ -24,10 +24,10 @@ if (isset ($_POST['sendConnection']))
     {
         $errorConnection = 'Le mot de passe est composé de plus de 4 caractères!';
     }
-    else if (preg_match($regexPassword, $password) == 0)
-    {
-        $errorConnection = 'Le mot de passe n\'est pas conforme aux exigenences!';
-    }
+//    else if (preg_match($regexPassword, $password) == 0)
+//    {
+//        $errorConnection = 'Le mot de passe n\'est pas correct';
+//    }
     else if (preg_match($regexEmail, $email) == 0)
     {
         $errorRegister = 'Veuillez remplir un e-mail valide';
@@ -69,13 +69,13 @@ if (isset ($_POST['sendRegister']))
     {
         $errorRegister = 'Le mot de passe est composé de plus de 4 caractères!';
     }
-    else if (preg_match($regexPassword, $password) == 0)
-    {
-        $errorRegister = 'Le mot de passe n\'est pas conforme aux exigenences!'
-        . '</br><ul>Il doit avoir au moin 6 caractères</ul>'
-        . '<ul>Il doit comporter au moin une majuscule</ul>'
-        . '<ul>Il doit comporter au moin un chiffe.';
-    }
+//    else if (preg_match($regexPassword, $password) == 0)
+//    {
+//        $errorRegister = 'Le mot de passe n\'est pas conforme aux exigenences!'
+//        . '</br>Il doit avoir au moin 6 caractères'
+//        . '</br>Il doit comporter au moin une majuscule'
+//        . '</br>Il doit comporter au moin un chiffe.';
+//    }
     else if (preg_match($regexEmail, $email) == 0)
     {
         $errorRegister = 'Veuillez remplir un e-mail valide';
@@ -95,6 +95,12 @@ if (isset ($_POST['sendRegister']))
     }
 } 
 
+if (isset($_SESSION['account']))
+{
+    $offerManager = new OfferManager($db);
+    $client = $_SESSION['account'];
+	$numberOfferClient = $offerManager->CountByClient($client->Identifier());
+}
 
 //------ Inclut la vue html ------
 require '/views/view-login.php';

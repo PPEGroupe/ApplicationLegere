@@ -30,15 +30,15 @@ class ClientManager {
         $query->bindValue(':City',          $client->City());
         $query->bindValue(':ZipCode',       $client->ZipCode());
         $query->bindValue(':Company',       $client->Company());
-        $query->bindValue(':Password',      $client->password());
+        $query->bindValue(':Password',      $client->Password());
 
         $query->execute();
     }
 
-    public function Remove($id)
+    public function Remove($identifier)
     {
         $query = $this->_db->prepare('DELETE FROM Client WHERE Identifer = :Identifer');
-        $query->bindValue(':Identifer', $id);
+        $query->bindValue(':Identifer', $identifier);
 
         $query->execute();
     }
@@ -54,7 +54,7 @@ class ClientManager {
                      . 'City = :City, '
                      . 'ZipCode = :ZipCode, '
                      . 'Company = :Company, '
-                     . 'Password = :Password '
+                     . 'Password = :Password, '
                      . 'WHERE Identifier = :Identifier';
         
         $query = $this->_db->prepare($queryString);
@@ -66,12 +66,13 @@ class ClientManager {
         $query->bindValue(':City',          $client->City());
         $query->bindValue(':ZipCode',       $client->ZipCode());
         $query->bindValue(':Company',       $client->Company());
+        $query->bindValue(':Password',      $client->Password());
         $query->bindValue(':Identifier',    $client->Identifier());
 
         $query->execute();
     }
 
-    public function Get($id)
+    public function Get($identifier)
     {
         $queryString = 'SELECT Identifier, URL, Email, PhoneNumber, Fax, Address, City, ZipCode, Company, Password '
                      . 'FROM Client '
@@ -79,7 +80,7 @@ class ClientManager {
         
         
         $query = $this->_db->prepare($queryString);
-        $query->bindValue(':Identifier', $id);
+        $query->bindValue(':Identifier', $identifier);
         $query->execute();
 
         $data = $query->fetch(PDO::FETCH_ASSOC);
@@ -88,7 +89,6 @@ class ClientManager {
         {
             $client = new Client();
             $client->Initialize($data);
-            $client->setObjects($this->_db);
             return $client;
         }
         else
@@ -109,7 +109,6 @@ class ClientManager {
         {
             $client = new Client();
             $client->Initialize($data);
-            $client->setObjects($this->_db);
             $clientList[] = $client;
         }
 
@@ -121,7 +120,7 @@ class ClientManager {
         $queryString = 'SELECT Identifier, URL, Email, PhoneNumber, Fax, Address, City, ZipCode, Company, Password '
                      . 'FROM Client '
                      . 'WHERE Email = :Email '
-                     . 'AND Password = :Password ';
+                     . 'AND Password = :Password';
         
         $query = $this->_db->prepare($queryString);
         

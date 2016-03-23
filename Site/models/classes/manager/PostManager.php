@@ -140,4 +140,22 @@ class PostManager {
 
         return (isset($postList)) ? $postList : null;
     }
+	
+	public function CountByOffer($idOffer)
+    {
+        $queryString = 'SELECT COUNT(Identifier) AS Number '
+                     . 'FROM Post '
+                     . 'WHERE IdOffer = :IdOffer';
+        
+        $query = $this->_db->prepare($queryString);
+        $query->bindValue(':IdOffer', $idOffer);
+        $query->execute();
+
+        if ($data = $query->fetch(PDO::FETCH_ASSOC))
+        {
+			return $data['Number'];
+        }
+
+        return null;
+    }
 }
