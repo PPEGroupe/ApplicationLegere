@@ -140,3 +140,8 @@ table {
 .require {
 	color: #ec971f;
 }
+
+#div_modification{
+    background: #d1d1d1;
+    border-radius: 5px;
+}
