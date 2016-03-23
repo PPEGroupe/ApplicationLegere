@@ -4,22 +4,22 @@ $regexPassword        = '#^(?=.*[a-z])(?=.*[0-9]).{6,}$#';
 $regexEmail           = '#^[\w.-]+@[\w.-]+\.[a-z]{2,6}$#i';
 
 
-
 //----------------------------------- Tests Inscription -----------------------------------
 if (!empty($_POST)) 
 {
-    if (empty($_POST['email'])|| ($_POST['password']) || ($_POST['passwordConfirmation']) || ($_POST['company']))
-    {
-        $error[] = 'Veuillez remplir tous les champs';
-    } 
+     
     $clientManager        = new ClientManager($db);
     $company              = trim($_POST['company']);
     $email                = trim($_POST['email']);
     $password             = trim($_POST['password']);
     $passwordConfirmation = trim($_POST['passwordConfirmation']);
-
-
-    if (strlen($email) < 3 ) 
+    
+    
+    if (empty($_POST['email']) || empty($_POST['password']) || empty($_POST['passwordConfirmation']) || empty($_POST['company']))
+    {
+        $error[] = 'Veuillez remplir tous les champs';
+    }
+    else if (strlen($email) < 3 ) 
     {
         $error[] = 'L\'email est composé de plus de 3 caractères!';
     }
@@ -51,13 +51,14 @@ if (!empty($_POST))
 
         $clientManager->Add($client);
     }
+    
+    if (isset($error))
+    {
+        echo json_encode($error);
+    }
+    else
+    {
+        echo json_encode('success');
+    }
 } 
-if (isset($error))
-{
-    echo json_encode($error);
-}
-else
-{
-    echo json_encode('success');
-}
 

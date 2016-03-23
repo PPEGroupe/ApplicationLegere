@@ -11,10 +11,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <form action="login.php" method="POST" class="form-horizontal" id="connection" role="form">
-                        <div class="form-group">
-                            <!--Teste si le tableau d'erreurs existe-->
-                                <legend>[Connexion]</legend>
-                        </div>
+                        <h2>[Connexion]</h2>
                         <div class="form-group">
                             <label for="emailConnection">Identifiant</label>
                             <input type="email" class="form-control" id="emailConnection" name="email" placeholder="Insérer votre e-mail">
@@ -32,9 +29,7 @@
                 </div>
                 <div class="col-sm-6">
                     <form action="login.php" method="POST" class="form-horizontal" id="register" role="form">
-                        <div class="form-group">
-                                <legend>[Inscription]</legend>
-                        </div>
+                        <h2>[Inscription]</h2>
                         <div class="form-group">
                             <label for="companyRegister">Société</label>
                             <input type="text" class="form-control" id="companyRegister" name="company" placeholder="Renseignez votre société">
