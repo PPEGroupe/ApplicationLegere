@@ -10,56 +10,56 @@
         <section class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    <form action="login.php" method="POST" class="form-horizontal" role="form">
-                        <div class="form-group">
-                            <?php if(isset($errorConnection)){echo $errorConnection ;} ?>
-                                <legend>[Connexion]</legend>
-                        </div>
+                    <form action="login.php" method="POST" class="form-horizontal" id="connection" role="form">
+                        <h2>[Connexion]</h2>
                         <div class="form-group">
                             <label for="emailConnection">Identifiant</label>
-                            <input type="email" class="form-control" id="emailConnection" name="emailConnection" placeholder="Insérer votre e-mail">
+                            <input type="email" class="form-control" id="emailConnection" name="email" placeholder="Insérer votre e-mail">
                         </div>
                         <div class="form-group">
                             <label for="passwordConnection">Mot de passe</label>
-                            <input type="password" class="form-control" id="passwordConnection" name="passwordConnection" placeholder="Insérer votre mot de passe">
+                            <input type="password" class="form-control" id="passwordConnection" name="password" placeholder="Insérer votre mot de passe">
                         </div>
                         <div class="form-group">
                             <div class="col-sm-10 col-sm-offset-2">
-                                <input type="submit" class="btn btn-warning" style="width: 100px" name="sendConnection" value="Connexion" />
+                                <input type="submit" class="btn btn-warning" style="width: 100px" id="sendConnection" value="Connexion" />
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="col-sm-6">
-                    <form action="login.php" method="POST" class="form-horizontal" role="form">
-                        <div class="form-group">
-                            <?php if(isset($errorRegister)){echo $errorRegister;} ?>
-                                <legend>[Inscription]</legend>
-                        </div>
+                    <form action="login.php" method="POST" class="form-horizontal" id="register" role="form">
+                        <h2>[Inscription]</h2>
                         <div class="form-group">
                             <label for="companyRegister">Société</label>
-                            <input type="text" class="form-control" id="companyRegister" name="companyRegister" placeholder="Renseignez votre société">
+                            <input type="text" class="form-control" id="companyRegister" name="company" placeholder="Renseignez votre société">
                         </div>
                         <div class="form-group">
                             <label for="emailRegister">Identifiant</label>
-                            <input type="email" class="form-control" id="emailRegister" name="emailRegister" placeholder="Insérer votre e-mail">
+                            <input type="email" class="form-control" id="emailRegister" name="email" placeholder="Insérer votre e-mail">
                         </div>
                         <div class="form-group">
                             <label for="passwordRegister">Mot de passe</label>
-                            <input type="password" class="form-control" id="passwordRegister" name="passwordRegister" placeholder="Insérer votre mot de passe">
+                            <input type="password" class="form-control" id="passwordRegister" name="password" placeholder="Insérer votre mot de passe">
                         </div>
                         <div class="form-group">
                             <label for="passwordConfirmationRegister">Confirmation de mot de passe</label>
-                            <input type="password" class="form-control" id="passwordConfirmationRegister" name="passwordConfirmationRegister" placeholder="Confirmer votre mot de passe">
+                            <input type="password" class="form-control" id="passwordConfirmationRegister" name="passwordConfirmation" placeholder="Confirmer votre mot de passe">
                         </div>
                         <div class="form-group">
                             <div class="col-sm-10 col-sm-offset-2">
-                                <input type="submit" class="btn btn-warning" style="width: 100px" name="sendRegister" value="S'inscrire" />
+                                <input type="submit" class="btn btn-warning" style="width: 100px" id="sendRegister" value="S'inscrire" />
                             </div>
                         </div>
                     </form>
+                    <section></section>
                 </div>
             </div>
+            <script src="/js/jquery.js"></script>
+            <script src="/js/notify.js"></script>
+            <script src="/js/bootstrap.js"></script>
+            <script src="/js/main.js"></script>
+            <script src="/js/login.js"></script>
         </section>
 </body>
 
