@@ -8,6 +8,13 @@ function KeepNumber(str) {
     return str;
 }
 
+function EmptyIfUndefined(str) {
+    if (typeof str == 'undefined') {
+        return '';
+    }
+    return str;
+}
+
 $.fn.extend({
     findPos : function() {
         obj = jQuery(this).get(0);

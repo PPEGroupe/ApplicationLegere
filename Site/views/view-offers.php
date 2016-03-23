@@ -52,12 +52,13 @@
                         <table class="table" id="posts">
                             <thead>
                                 <tr>
-                                    <th>Ref.</th>
-                                    <th>Offre</th>
+                                    <th>Prénom</th>
+                                    <th>Nom</th>
+                                    <th>Adresse</th>
                                     <th>Ville</th>
-                                    <th>Contrat</th>
-                                    <th>Nb. places</th>
-                                    <th>Société</th>
+                                    <th>N° Téléphone</th>
+                                    <th>Email</th>
+                                    <th>Date</th>
                                 </tr>
                             </thead>
                             
