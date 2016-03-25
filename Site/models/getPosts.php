@@ -1,8 +1,6 @@
 <?php
 require 'ClassesLoader.php';
 
-$_POST['idOffer'] = 2;
-
 if (isset($_POST))
 {
 	$postManager = new PostManager($db);
@@ -10,9 +8,9 @@ if (isset($_POST))
 	
     $count = count($postList);
     
-	echo '{"count":', $count, ', "posts":[';
     if ($count > 0)
     {
+		echo '[';
         foreach ($postList as $key => $post)
         {
             echo $post->ToJson();
@@ -21,6 +19,10 @@ if (isset($_POST))
                 echo ',';
             }
         }
+		echo ']';
     }
-    echo ']}';
+	else
+	{
+		echo '{}';
+	}
 }

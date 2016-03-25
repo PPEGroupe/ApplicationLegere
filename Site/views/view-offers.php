@@ -46,7 +46,7 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Candidatures</h4>
+                        <h3 class="modal-title">Candidatures</h3>
                     </div>
                     <div class="modal-body">
                         <table class="table" id="posts">
@@ -65,6 +65,21 @@
                             <tbody></tbody>
                         </table>
                     </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+		<div class="modal fade" id="postDetailsModal" tabindex="1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Candidature</h3>
+                    </div>
+                    <div class="modal-body">
+					</div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
                     </div>
