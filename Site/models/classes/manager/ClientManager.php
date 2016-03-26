@@ -53,8 +53,7 @@ class ClientManager {
                      . 'Address = :Address, '
                      . 'City = :City, '
                      . 'ZipCode = :ZipCode, '
-                     . 'Company = :Company, '
-                     . 'Password = :Password, '
+                     . 'Company = :Company '
                      . 'WHERE Identifier = :Identifier';
         
         $query = $this->_db->prepare($queryString);
@@ -66,9 +65,20 @@ class ClientManager {
         $query->bindValue(':City',          $client->City());
         $query->bindValue(':ZipCode',       $client->ZipCode());
         $query->bindValue(':Company',       $client->Company());
-        $query->bindValue(':Password',      $client->Password());
         $query->bindValue(':Identifier',    $client->Identifier());
 
+        $query->execute();
+    }
+    
+    public function UpdatePassword(Client $client)
+    {
+        $queryString = 'UPDATE CLient SET '
+                     . 'Password = :Password '
+                     . 'WHERE Identifier = :Identifier';
+        
+        $query = $this->_db->prepare($queryString);
+        $query->bindValue(':Identifier',    $client->Identifier());
+        $query->bindValue(':Password',    $client->Password());
         $query->execute();
     }
 

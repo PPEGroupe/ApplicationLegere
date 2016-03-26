@@ -61,7 +61,7 @@ if (isset ($_POST['sendRegister']))
     {
         $errorRegister = 'Veuillez remplir tous les champs';
     } 
-   else if (strlen($email) < 3 ) 
+    else if (strlen($email) < 3 ) 
     {
         $errorRegister = 'L\'email est composé de plus de 3 caractères!';
     }
