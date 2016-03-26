@@ -46,24 +46,40 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Candidatures</h4>
+                        <h3 class="modal-title">Candidatures</h3>
                     </div>
                     <div class="modal-body">
                         <table class="table" id="posts">
                             <thead>
                                 <tr>
-                                    <th>Ref.</th>
-                                    <th>Offre</th>
+                                    <th>Prénom</th>
+                                    <th>Nom</th>
+                                    <th>Adresse</th>
                                     <th>Ville</th>
-                                    <th>Contrat</th>
-                                    <th>Nb. places</th>
-                                    <th>Société</th>
+                                    <th>N° Téléphone</th>
+                                    <th>Email</th>
+                                    <th>Date</th>
                                 </tr>
                             </thead>
                             
                             <tbody></tbody>
                         </table>
                     </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+		<div class="modal fade" id="postDetailsModal" tabindex="1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Candidature</h3>
+                    </div>
+                    <div class="modal-body">
+					</div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
                     </div>

@@ -77,7 +77,7 @@ class PostManager {
         $query->execute();
     }
 
-    public function Get($id)
+    public function Get($identifier)
     {
         $queryString = 'SELECT Identifier, Firstname, Lastname, Email, PhoneNumber, Address, City, ZipCode, DatePost, Letter, CV, IdOffer '
                      . 'FROM Post '
@@ -85,7 +85,7 @@ class PostManager {
         
         
         $query = $this->_db->prepare($queryString);
-        $query->bindValue(':Identifier', $id);
+        $query->bindValue(':Identifier', $identifier);
         $query->execute();
 
         $data = $query->fetch(PDO::FETCH_ASSOC);
@@ -94,7 +94,6 @@ class PostManager {
         {
             $post = new Post();
             $post->Initialize($data);
-            $post->setObjects($this->_db);
             return $post;
         }
         else
@@ -134,7 +133,6 @@ class PostManager {
         {
             $post = new Post();
             $post->Initialize($data);
-            $post->setObjects($this->_db);
             $postList[] = $post;
         }
 

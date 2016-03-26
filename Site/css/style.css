@@ -69,9 +69,15 @@ header .nav nav li a.selected .label {
 }
 
 header #account {
-	padding: 10px 25px;
+	display: table;
+	height: 40px;
 	color: #222;
 	text-decoration: none;
+}
+
+header #account b {
+	display: table-cell;
+	vertical-align: middle;
 }
 
 header h1 {
@@ -92,6 +98,7 @@ header #icon {
     background: #FFF;
 	width: 190px;
 	height: 190px;
+	margin-left: 58px;
     padding: 10px;
     border: 5px #ec971f solid;
     border-radius: 50%;
@@ -112,8 +119,7 @@ table {
     border: 1px #DDD solid;
 }
 
-#offers .warning,
-#posts .warning {
+#offers .warning {
     text-align: center;
 }
 
@@ -121,14 +127,12 @@ table {
     text-align: center;
 }
 
-#postulate,
-#displayPosts {
+.toSelect {
     background: #f5f5f5;
     text-align: right;
 }
 
-#postulate button,
-#displayPosts button {
+.toSelect button {
 	padding: 7px 20px;
 	font-size: 15px;
 }
@@ -166,4 +170,23 @@ table {
     background: #d1d1d1;
     border-radius: 5px;
     padding : 20px;  
+}
+
+#postDetailsModal .modal-body h4 {
+	text-align: center;
+}
+
+#postDetailsModal .modal-body p {
+	margin: 10px 0;
+	padding: 20px;
+}
+
+#postDetailsModal .modal-body b {
+	display: inline-block;
+	width: 150px;
+	line-height: 25px;
+}
+
+table {
+	overflow: auto;
 }

@@ -39,6 +39,10 @@ if (!empty($_POST))
 			{
 				$extensions = array('.pdf', '.PDF');
 				$folder = '../documents/';
+				if (!file_exists($folder))
+				{
+					mkdir($folder);
+				}
 				
 				$cvExtension = strrchr($_FILES['cv']['name'], '.');
 				$letterExtension = strrchr($_FILES['letter']['name'], '.');

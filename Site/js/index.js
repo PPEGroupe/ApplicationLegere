@@ -6,7 +6,7 @@ $(function(){
         $('#offers #postulate').remove();
         
         var html;
-        html  = '<tr id="postulate">';
+        html  = '<tr id="postulate" class="toSelect">';
         html +=     '<td colspan="6">';
         html +=         '<button class="btn btn-warning btn-lg" data-toggle="modal" data-target="#postulateModal">Postuler</button>';
         html +=     '</td>';

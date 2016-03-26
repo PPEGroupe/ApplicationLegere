@@ -8,7 +8,7 @@ $offerList = $offerManager->GetAll();
 if (isset($_SESSION['account']))
 {
     $client = $_SESSION['account'];
-	$numberOfferClient = $offerManager->CountByClient($client->Identifier());
+    $numberOfferClient = $offerManager->CountByClient($client->Identifier());
 }
 
 require '/views/view-index.php';

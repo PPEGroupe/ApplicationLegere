@@ -14,7 +14,7 @@ class Post {
     private $_CV;
     private $_IdOffer;
     
-    // Méthode
+    // Méthodes
     public function Initialize(array $data)
     {
         foreach ($data as $key => $value) 
@@ -27,6 +27,11 @@ class Post {
             }
         }
     }
+    
+	public function ToJson()
+	{
+		return '{"Identifier":'. $this->Identifier(). ', "Firstname":"'. $this->Firstname(). '", "Lastname":"'. $this->Lastname(). '", "Email":"'. $this->Email(). '", "PhoneNumber":"'. $this->PhoneNumber(). '", "Address":"'. $this->Address(). '", "City":"'. $this->City(). '", "ZipCode":"'. $this->ZipCode(). '", "DatePost":"'. $this->DatePost(). '", "Letter":"'. $this->Letter(). '", "CV":"'. $this->CV(). '", "IdOffer":'. $this->IdOffer(). '}';
+	}
     
     // Propriétés
     function Identifier() {
