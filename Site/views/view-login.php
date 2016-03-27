@@ -10,7 +10,7 @@
         <section class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    <form action="login.php" method="POST" class="form-horizontal" id="connection" role="form">
+                    <form action="" method="POST" class="form-horizontal" id="connection" role="form">
                         <h2>[Connexion]</h2>
                         <div class="form-group">
                             <label for="emailConnection">Identifiant</label>
@@ -21,14 +21,15 @@
                             <input type="password" class="form-control" id="passwordConnection" name="password" placeholder="Insérer votre mot de passe">
                         </div>
                         <div class="form-group">
-                            <div class="col-sm-10 col-sm-offset-2">
-                                <input type="submit" class="btn btn-warning" style="width: 100px" id="sendConnection" value="Connexion" />
+                            <div class="col-sm-10 col-sm-offset-2 btn-group" role="group">
+                                <input type="submit" class="btn btn-warning" id="sendConnectionClient" value="Connexion client" />
+                                <input type="button" class="btn btn-warning" id="sendConnectionPartner" value="Connexion partenaire" />
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="col-sm-6">
-                    <form action="login.php" method="POST" class="form-horizontal" id="register" role="form">
+                    <form action="" method="POST" class="form-horizontal" id="register" role="form">
                         <h2>[Inscription]</h2>
                         <div class="form-group">
                             <label for="companyRegister">Société</label>
@@ -48,7 +49,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-10 col-sm-offset-2">
-                                <input type="submit" class="btn btn-warning" style="width: 100px" id="sendRegister" value="S'inscrire" />
+                                <input type="submit" class="btn btn-warning" id="sendRegister" value="S'inscrire" />
                             </div>
                         </div>
                     </form>

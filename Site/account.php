@@ -142,7 +142,14 @@ if (isset ($_POST['sendPostPassword']))
 
 
 //------ Inclut la vue html ------
-require '/views/view-account.php';
+if (get_class($_SESSION['account']) == 'Client')
+{
+    require '/views/view-account.php';
+}
+else
+{
+    require '/views/view-accountPartner.php';
+}
 
 ?>
 

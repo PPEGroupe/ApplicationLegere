@@ -94,4 +94,31 @@ class PartnerManager {
         
         return (isset($partnerList)) ? $partnerList : null;
     }
+    
+    public function GetAccount($email, $password)
+    {
+        $queryString = 'SELECT Identifier, URL, Email, Password '
+                     . 'FROM Partner '
+                     . 'WHERE Email = :Email '
+                     . 'AND Password = :Password';
+        
+        $query = $this->_db->prepare($queryString);
+        
+        $query->bindValue(':Email',     $email);
+        $query->bindValue(':Password',  $password);
+        
+        $query->execute();
+        $data = $query->fetch(PDO::FETCH_ASSOC);
+        
+        if ($data != null) 
+        {
+            $partner = new Partner();
+            $partner->Initialize($data);
+            return $partner;
+        }
+        else
+        {
+            return null;
+        }
+    }
 }

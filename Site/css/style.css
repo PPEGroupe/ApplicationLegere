@@ -190,3 +190,8 @@ table {
 table {
 	overflow: auto;
 }
+
+form input[type="submit"] {
+    width: 180px;
+    height: 35px;
+}

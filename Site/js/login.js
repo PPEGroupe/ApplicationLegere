@@ -1,5 +1,5 @@
-//----------------------------- Inscription ----------------------------- 
 $(function() {
+    //----------------------------- Inscription ----------------------------- 
     $('#register').on('submit', function (e) {
         // On empêche le navigateur de soumettre le formulaire
         e.preventDefault();
@@ -16,13 +16,13 @@ $(function() {
             function(data) {
                 //console.info(data);
                 var html;
-                html  = '<p id="errorRegister" class="bg-warning">'
+                html  = '<div class="alert alert-warning" role="alert" id="errorRegister">';
                 $.each(data, function(key, value) {
                     html += value + '<br />';
                     // Pop-up de notification notify.js
                     $.notify(value, {globalPosition: 'bottom right',  className: 'error'});
                 });
-                html += '</p>';
+                html += '</div>';
                 $('#register h2').after(html);
             }, 
             'json'
@@ -31,21 +31,16 @@ $(function() {
             console.error(data['responseText']);
         });
     });
-});
 
-
-//----------------------------- Connexion -----------------------------
-$(function() {
-    $('#connection').on('submit', function (e) {
-        // On empêche le navigateur de soumettre le formulaire
-        e.preventDefault();
+    //----------------------------- Connexion -----------------------------
+    $('#sendConnectionClient').click(function () {
         // On retire les erreurs qui seraient restées
         $('#errorConnection').remove();
         $.post(
-            'models/connection.php',
+            'models/connectionClient.php',
             {
-                email:                $('#emailConnection').val(),
-                password:             $('#passwordConnection').val()
+                email:    $('#emailConnection').val(),
+                password: $('#passwordConnection').val()
             }, 
             function(data) {
                 //console.info(data);
@@ -53,13 +48,13 @@ $(function() {
                     window.location.href = './index.php';
                 } else {
                     var html;
-                    html  = '<p id="errorConnection" class="bg-warning">'
+                    html  = '<div class="alert alert-warning" role="alert" id="errorConnection">';
                     $.each(data, function(key, value) {
                         html += value + '<br />';
                         // Pop-up de notification notify.js
                         $.notify(value, {globalPosition: 'bottom right',  className: 'error'});
                     });
-                    html += '</p>';
+                    html += '</div>';
                     $('#connection h2').after(html);
                 }
             }, 
@@ -68,5 +63,41 @@ $(function() {
         .fail(function(data) {
             console.error(data['responseText']);
         });
+        
+        return false;
+    });
+    
+    $('#sendConnectionPartner').click(function () {
+        // On retire les erreurs qui seraient restées
+        $('#errorConnection').remove();
+        $.post(
+            'models/connectionPartner.php',
+            {
+                email:    $('#emailConnection').val(),
+                password: $('#passwordConnection').val()
+            }, 
+            function(data) {
+                //console.info(data);
+                if (data == 'success'){
+                    window.location.href = './index.php';
+                } else {
+                    var html;
+                    html  = '<div class="alert alert-warning" role="alert" id="errorConnection">';
+                    $.each(data, function(key, value) {
+                        html += value + '<br />';
+                        // Pop-up de notification notify.js
+                        $.notify(value, {globalPosition: 'bottom right',  className: 'error'});
+                    });
+                    html += '</div>';
+                    $('#connection h2').after(html);
+                }
+            }, 
+            'json'
+        )
+        .fail(function(data) {
+            console.error(data['responseText']);
+        });
+        
+        return false;
     });
 });
