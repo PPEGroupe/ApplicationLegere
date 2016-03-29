@@ -19,7 +19,7 @@
                     <label class="col-sm-4 " for="urlRegister">Site web : </label>
                     <p class="col-sm-3 col-sm-offset-4" ><?php echo $_SESSION['account']->Url(); ?></p>
                 </div>
-                <div class="form-group col-sm-12">
+                <div class="form-group col-sm-12 center">
                     <div class="btn-group" role="group">
                         <button class="btn btn-warning" id="btn-modifierInfo" data-toggle="modal" data-target="#informationModal">Modifier</button>
                         <button class="btn btn-warning" id="btn-modifierPassword" data-toggle="modal" data-target="#passwordModal">Modifier le mot de passe</button>
@@ -145,10 +145,10 @@
             </div>
         </div> 
     
-    <script src="/js/jquery.js"></script>
-    <script src="/js/notify.js"></script>
-    <script src="/js/bootstrap.js"></script>
-    <script src="/js/account.js"></script>
-    <script src="/js/main.js"></script>
+        <script src="/js/jquery.js"></script>
+        <script src="/js/notify.js"></script>
+        <script src="/js/bootstrap.js"></script>
+        <script src="/js/account.js"></script>
+        <script src="/js/main.js"></script>
     </body>
 </html>
