@@ -2,11 +2,11 @@
 	<div class="header">
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-9">
+				<div class="col-xs-9">
 					<h1><a href="/">MegaCasting</a></h1>
 				</div>
 				
-				<div class="col-sm-3">
+				<div class="col-xs-3">
 					<div id="icon">
 						<a href="/"><img src="/pictures/icon.png" class="img-responsive" alt="MegaCasting"/></a>
 					</div>
@@ -22,7 +22,7 @@
                 if (get_class($_SESSION['account']) == 'Client')
                 { ?>
                     <div class="col-sm-3">
-                        <p id="account"><b><?php echo $_SESSION['account']->Company(); ?></b></li>
+                        <p id="account"><b><?php echo $_SESSION['account']->Company(); ?></b></p>
                     </div>
 
                     <div class="col-sm-7">
