@@ -20,7 +20,7 @@ $(function() {
                 $.each(data, function(key, value) {
                     html += value + '<br />';
                     // Pop-up de notification notify.js
-                    $.notify(value, {globalPosition: 'bottom right',  className: 'error'});
+                        $.notify(value, {globalPosition: 'bottom right',  className: 'error'});
                 });
                 html += '</div>';
                 $('#register h2').after(html);

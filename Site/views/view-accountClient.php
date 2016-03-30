@@ -3,8 +3,6 @@
 
     <head>
         <?php require '/views/view-head.php'; ?>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-        
     </head>
 
 <body>
@@ -14,44 +12,44 @@
                     
                         
                         <div class="form-group col-sm-12">
-                            <label class="col-sm-4  " for="companyRegister">Société : </label>
+                            <label class="col-sm-4  " for="company">Société : </label>
                             <b     class="col-sm-3 col-sm-offset-4" ><?php echo $_SESSION['account']->Company(); ?></b>
                         </div>
                         <div class="form-group col-sm-12">
-                            <label class="col-sm-4 " for="emailRegister">Identifiant : </label>
-                            <b     class="col-sm-3 col-sm-offset-4" ><?php echo $_SESSION['account']->Email(); ?></b>
+                            <label class="col-sm-4 " for="email">Identifiant : </label>
+                            <b     class="col-sm-3 col-sm-offset-4" id="emailValue" ><?php echo $_SESSION['account']->Email(); ?></b>
                         </div>
                         <div class="form-group col-sm-12">
-                            <label class="col-sm-4 " for="phoneNumberRegister">N° de téléphone : </label>
-                            <b     class="col-sm-3 col-sm-offset-4" ><?php echo $_SESSION['account']->PhoneNumber(); ?></b>
+                            <label class="col-sm-4 " for="phoneNumber">N° de téléphone : </label>
+                            <b     class="col-sm-3 col-sm-offset-4" id="phoneNumberValue"><?php echo $_SESSION['account']->PhoneNumber(); ?></b>
                         </div>
                         <div class="form-group col-sm-12">
-                            <label class="col-sm-4 " for="faxRegister">N° de Fax : </label>
-                            <b     class="col-sm-3 col-sm-offset-4" ><?php echo $_SESSION['account']->Fax(); ?></b>
+                            <label class="col-sm-4 " for="fax">N° de Fax : </label>
+                            <b     class="col-sm-3 col-sm-offset-4"  id="faxValue"><?php echo $_SESSION['account']->Fax(); ?></b>
                         </div>
                          <div class="form-group col-sm-12">
-                            <label class="col-sm-4 " for="urlRegister">Site web : </label>
-                            <b     class="col-sm-3 col-sm-offset-4" ><?php echo $_SESSION['account']->Url(); ?></b>
+                            <label class="col-sm-4 " for="url">Site web : </label>
+                            <b     class="col-sm-3 col-sm-offset-4" id="urlValue" ><?php echo $_SESSION['account']->Url(); ?></b>
                         </div>
                         <div class="form-group col-sm-12">
-                            <label class="col-sm-4 " for="addressRegister">Adresse : </label>
-                            <b     class="col-sm-3 col-sm-offset-4" ><?php echo $_SESSION['account']->Address(); ?></b>
+                            <label class="col-sm-4 " for="address">Adresse : </label>
+                            <b     class="col-sm-3 col-sm-offset-4" id="addressValue" ><?php echo $_SESSION['account']->Address(); ?></b>
                         </div>
                         <div class="form-group col-sm-12">
-                            <label class="col-sm-4 " for="cityRegister">Ville : </label>
-                            <b     class="col-sm-3 col-sm-offset-4" ><?php echo $_SESSION['account']->City(); ?></b>
+                            <label class="col-sm-4 " for="city">Ville : </label>
+                            <b     class="col-sm-3 col-sm-offset-4" id="cityValue"><?php echo $_SESSION['account']->City(); ?></b>
                         </div>
                         <div class="form-group col-sm-12">
-                            <label class="col-sm-4 " for="zipCodeRegister">Code postal : </label>
-                            <b     class="col-sm-3 col-sm-offset-4" ><?php echo $_SESSION['account']->ZipCode(); ?></b>
+                            <label class="col-sm-4 " for="zipCode">Code postal : </label>
+                            <b     class="col-sm-3 col-sm-offset-4" id="zipCodeValue"><?php echo $_SESSION['account']->ZipCode(); ?></b>
                         </div>
                         <div class="form-group col-sm-12">
                             <div class="col-sm-2 col-sm-offset-1">
-                                <button class="btn btn-warning btn-lg" id="btn-modifierInfo" data-toggle="modal" data-target="#ModalInfo">Modifier</button>
+                                <button class="btn btn-warning btn-lg" id="btn-modifierInfo" data-toggle="modal" data-target="#informationModal">Modifier</button>
                                 
                             </div>
                             <div class="col-sm-2 col-sm-offset-2">
-                                <button class="btn btn-warning btn-lg" id="btn-modifierPassword" data-toggle="modal" data-target="#ModalPassword">Modifier le mot de passe</button>
+                                <button class="btn btn-warning btn-lg" id="btn-modifierPassword" data-toggle="modal" data-target="#passwordModal">Modifier le mot de passe</button>
                                 
                             </div>
                         </div>
@@ -62,7 +60,7 @@
         </section>
             
         
-       <div class="modal fade" id="ModalInfo" tabindex="-1" role="dialog">
+       <div class="modal fade" id="informationModal" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -73,49 +71,49 @@
                             <div class="form-group">
                                 <label for="company" class="col-sm-3 control-label">Société : <span class="require">*</span></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="companyRegister" name="companyRegister" value="<?php echo $_SESSION['account']->Company(); ?>"  placeholder="Société"/>
+                                    <input type="text" class="form-control" id="company" name="company" value="<?php echo $_SESSION['account']->Company(); ?>"  placeholder="Société"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="email" class="col-sm-3 control-label">Identifiant : <span class="require">*</span></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="emailRegister" name="emailRegister" value="<?php echo $_SESSION['account']->Email(); ?>" placeholder="Identifiant" />
+                                    <input type="text" class="form-control" id="email" name="email" value="<?php echo $_SESSION['account']->Email(); ?>" placeholder="Email" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="phoneNumber" class="col-sm-3 control-label">N° de téléphone : </label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="phoneNumberRegister" name="phoneNumberRegister" value="<?php echo $_SESSION['account']->PhoneNumber(); ?>"   placeholder="téléphone"/>
+                                    <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" value="<?php echo $_SESSION['account']->PhoneNumber(); ?>"   placeholder="téléphone"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="zipCod" class="col-sm-3 control-label">N° de Fax : </label>
                                 <div class="col-sm-9">
-                                    <input type="tel" class="form-control" id="faxRegister" name="faxRegister" value="<?php echo $_SESSION['account']->Fax(); ?>" placeholder="Fax"/>
+                                    <input type="tel" class="form-control" id="fax" name="fax" value="<?php echo $_SESSION['account']->Fax(); ?>" placeholder="Fax"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="url" class="col-sm-3 control-label">Site web : </label>
                                 <div class="col-sm-9">
-                                    <input type="tel" class="form-control" id="urlRegister" name="urlRegister" value="<?php echo $_SESSION['account']->Url(); ?>" placeholder="Site web"/>
+                                    <input type="tel" class="form-control" id="url" name="url" value="<?php echo $_SESSION['account']->Url(); ?>" placeholder="Site web"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="address" class="col-sm-3 control-label">Adresse : </label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="addressRegister" name="addressRegister" value="<?php echo $_SESSION['account']->Address(); ?>" placeholder="Adresse"/>
+                                    <input type="text" class="form-control" id="address" name="address" value="<?php echo $_SESSION['account']->Address(); ?>" placeholder="Adresse"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="city" class="col-sm-3 control-label">Ville : </label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="cityRegister" name="cityRegister" value="<?php echo $_SESSION['account']->City(); ?>" placeholder="Ville"/>
+                                    <input type="text" class="form-control" id="city" name="city" value="<?php echo $_SESSION['account']->City(); ?>" placeholder="Ville"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="zipCode" class="col-sm-3 control-label">Code postal : </label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="zipCodeRegister" name="zipCodeRegister" value="<?php echo $_SESSION['account']->ZipCode(); ?>" placeholder="Code postal"/>
+                                    <input type="text" class="form-control" id="zipCode" name="zipCode" value="<?php echo $_SESSION['account']->ZipCode(); ?>" placeholder="Code postal"/>
                                 </div>
                             </div>
                             
@@ -135,30 +133,30 @@
                 </div>
             </div>
         </div> 
-        <div class="modal fade" id="ModalPassword" tabindex="-1" role="dialog">
+        <div class="modal fade" id="passwordModal" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title"><u>[Modification de mot de passe]</u></h4>
                     </div>
-                    <form action="" method="post" class="form-horizontal" enctype="multipart/form-data">
+                    <form action="" method="post" class="form-horizontal">
                         <div class="modal-body">
                             <div class="form-group">
                                 <label for="old password" class="col-sm-4 control-label">Ancien mot de passe : <span class="require">*</span></label>
                                 <div class="col-sm-8 ">
-                                    <input type="password" class="form-control" id="oldPasswordRegister" name="oldPasswordRegister" placeholder="Ancien mot de passe"/>
+                                    <input type="password" class="form-control" id="oldPassword" name="oldPassword" placeholder="Ancien mot de passe"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="new password" class="col-sm-4 control-label">Nouveau mot de passe : <span class="require">*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="password" class="form-control" id="newPasswordRegister" name="newPasswordRegister"  placeholder="Nouveau mot de passe" />
+                                    <input type="password" class="form-control" id="newPassword" name="newPassword"  placeholder="Nouveau mot de passe" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="confirmation password" class="col-sm-4 control-label">Confirmation de mot de passe : <span class="require">*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="password" class="form-control" id="passwordConfirmationRegister" name="passwordConfirmationRegister" placeholder="confirmation Mot de passe "/>
+                                    <input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation" placeholder="confirmation Mot de passe "/>
                                 </div>
                             </div>
                             
@@ -183,7 +181,8 @@
     <script src="/js/jquery.js"></script>
     <script src="/js/notify.js"></script>
     <script src="/js/bootstrap.js"></script>
-    <script src="/js/account.js"></script>
+    <script src="/js/accountClient.js"></script>
     <script src="/js/main.js"></script>
+    
     </body>
 </html>
