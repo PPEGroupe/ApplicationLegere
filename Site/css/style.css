@@ -166,9 +166,10 @@ table {
 	color: #ec971f;
 }
 
-#div_modification{
+#clientUpdate{
     background: #d1d1d1;
     border-radius: 5px;
+    border: #ec971f solid 1px;
     padding : 20px;  
 }
 
