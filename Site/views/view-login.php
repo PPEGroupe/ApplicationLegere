@@ -20,8 +20,8 @@
                             <label for="passwordConnection">Mot de passe</label>
                             <input type="password" class="form-control" id="passwordConnection" name="password" placeholder="Insérer votre mot de passe">
                         </div>
-                        <div class="form-group">
-                            <div class="col-sm-10 col-sm-offset-2 btn-group" role="group">
+                        <div class="form-group center">
+                            <div class="btn-group" role="group">
                                 <input type="submit" class="btn btn-warning" id="sendConnectionClient" value="Connexion client" />
                                 <input type="button" class="btn btn-warning" id="sendConnectionPartner" value="Connexion partenaire" />
                             </div>
@@ -47,8 +47,8 @@
                             <label for="passwordConfirmationRegister">Confirmation de mot de passe</label>
                             <input type="password" class="form-control" id="passwordConfirmationRegister" name="passwordConfirmation" placeholder="Confirmer votre mot de passe">
                         </div>
-                        <div class="form-group">
-                            <div class="col-sm-10 col-sm-offset-2">
+                        <div class="form-group center">
+                            <div class="col-sm-12">
                                 <input type="submit" class="btn btn-warning" id="sendRegister" value="S'inscrire" />
                             </div>
                         </div>

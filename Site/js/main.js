@@ -3,7 +3,6 @@ $(function() {
 	
 	$(window).resize(function() {
 		WindowResize();
-		console.log($('body').width());
 	});
 });
 
@@ -24,7 +23,7 @@ function EmptyIfUndefined(str) {
     }
     return str;
 }
-
+8
 // Fonction adaptant la taille du menu
 function WindowResize() {
 	if ($('body').width() <= 1000) {
@@ -40,9 +39,10 @@ function WindowResize() {
 	}
 	
 	if ($('body').width() <= 768) {
-		$('header .header .row .col-sm-3').insertBefore('header .header .row .col-sm-9');
+		$('header .header .row .col-xs-3 #icon').insertBefore('header .header .row .col-xs-9');
 		$('#account').insertAfter('header .header h1');
 	} else {
-		$('header .header .row .col-sm-3').insertAfter('header .header .row .col-sm-9');
+		$('header .header #icon').appendTo('header .header .row .col-xs-3');
+		$('#account').appendTo('header .nav .row .col-sm-3');
 	}
 }

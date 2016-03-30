@@ -19,7 +19,7 @@
                     <label class="col-sm-4 " for="urlRegister">Site web : </label>
                     <p class="col-sm-3 col-sm-offset-4" ><?php echo $_SESSION['account']->Url(); ?></p>
                 </div>
-                <div class="form-group col-sm-12">
+                <div class="form-group col-sm-12 center">
                     <div class="btn-group" role="group">
                         <button class="btn btn-warning" id="btn-modifierInfo" data-toggle="modal" data-target="#informationModal">Modifier</button>
                         <button class="btn btn-warning" id="btn-modifierPassword" data-toggle="modal" data-target="#passwordModal">Modifier le mot de passe</button>
@@ -37,51 +37,15 @@
                     <form action="" method="post" class="form-horizontal">
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="company" class="col-sm-3 control-label">Société : <span class="require">*</span></label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="companyRegister" name="companyRegister" value="<?php echo $_SESSION['account']->Company(); ?>"  placeholder="Société"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
                                 <label for="email" class="col-sm-3 control-label">Identifiant : <span class="require">*</span></label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" id="emailRegister" name="emailRegister" value="<?php echo $_SESSION['account']->Email(); ?>" placeholder="Identifiant" />
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="phoneNumber" class="col-sm-3 control-label">N° de téléphone : </label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="phoneNumberRegister" name="phoneNumberRegister" value="<?php echo $_SESSION['account']->PhoneNumber(); ?>"   placeholder="téléphone"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="zipCod" class="col-sm-3 control-label">N° de Fax : </label>
-                                <div class="col-sm-9">
-                                    <input type="tel" class="form-control" id="faxRegister" name="faxRegister" value="<?php echo $_SESSION['account']->Fax(); ?>" placeholder="Fax"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
                                 <label for="url" class="col-sm-3 control-label">Site web : </label>
                                 <div class="col-sm-9">
                                     <input type="tel" class="form-control" id="urlRegister" name="urlRegister" value="<?php echo $_SESSION['account']->Url(); ?>" placeholder="Site web"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="address" class="col-sm-3 control-label">Adresse : </label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="addressRegister" name="addressRegister" value="<?php echo $_SESSION['account']->Address(); ?>" placeholder="Adresse"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="city" class="col-sm-3 control-label">Ville : </label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="cityRegister" name="cityRegister" value="<?php echo $_SESSION['account']->City(); ?>" placeholder="Ville"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="zipCode" class="col-sm-3 control-label">Code postal : </label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="zipCodeRegister" name="zipCodeRegister" value="<?php echo $_SESSION['account']->ZipCode(); ?>" placeholder="Code postal"/>
                                 </div>
                             </div>
                             
@@ -101,6 +65,7 @@
                 </div>
             </div>
         </div> 
+        
         <div class="modal fade" id="passwordModal" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -145,10 +110,10 @@
             </div>
         </div> 
     
-    <script src="/js/jquery.js"></script>
-    <script src="/js/notify.js"></script>
-    <script src="/js/bootstrap.js"></script>
-    <script src="/js/account.js"></script>
-    <script src="/js/main.js"></script>
+        <script src="/js/jquery.js"></script>
+        <script src="/js/notify.js"></script>
+        <script src="/js/bootstrap.js"></script>
+        <script src="/js/account.js"></script>
+        <script src="/js/main.js"></script>
     </body>
 </html>
