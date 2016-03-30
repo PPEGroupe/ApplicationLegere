@@ -3,15 +3,49 @@ $(function(){
         $('.offer.active').removeClass('active'); // Désélectionne l'ancienne ligne
         $(this).addClass('active'); // Sélectionne la ligne
         
-        $('#offers #postulate').remove();
+        $('#offers #optionButtons').remove();
         
         var html;
-        html  = '<tr id="postulate" class="toSelect">';
+        html  = '<tr id="optionButtons" class="toSelect">';
         html +=     '<td colspan="6">';
-        html +=         '<button class="btn btn-warning btn-lg" data-toggle="modal" data-target="#postulateModal">Postuler</button>';
+        html +=         '<div class="btn-group" role="group">';
+        html +=             '<button class="btn btn-warning btn-lg" id="moreDetails">Plus de détails</button>';
+        html +=             '<button class="btn btn-warning btn-lg" data-toggle="modal" data-target="#postulateModal" id="postulate">Postuler</button>';
+        html +=         '</div>';
         html +=     '</td>';
         html += '</tr>';
         $(this).after(html);
+    
+        $('#moreDetails').click(function () {
+            $.post(
+                'models/getOfferDetails.php',
+                {
+                    idOffer : KeepNumber($('.offer.active').attr('id'))
+                },
+                function (data) {
+                    var offer = data['Offer'];
+                    var client = data['Client'];
+                    var typeOfContract = data['TypeOfContract'];
+                    $('#detailsModal #company').html(client['Company']);
+                    $('#detailsModal #title').html(offer['Title']);
+                    $('#detailsModal #reference').html(offer['Reference']);
+                    $('#detailsModal #typeOfContract').html(typeOfContract['Label']);
+                    $('#detailsModal #address').html(offer['Address']);
+                    $('#detailsModal #city').html(offer['City']);
+                    $('#detailsModal #zipCode').html(offer['ZipCode']);
+                    $('#detailsModal #dateStartContract').html(offer['DateStartContract']);
+                    $('#detailsModal #jobQuantity').html(offer['JobQuantity']);
+                    $('#detailsModal #jobDescription').html(offer['JobDescription']);
+                    $('#detailsModal #profileDescription').html(offer['ProfileDescription']);
+                    $('#detailsModal').modal('show');
+                },
+                'json'
+            )
+            .fail(function (data) {
+                $('#error').remove();
+                $('body').append('<div id="error">' + data['responseText'] + '</div>');
+            });
+        });
     });
     
     $('#postulateModal').on('shown.bs.modal', function () {

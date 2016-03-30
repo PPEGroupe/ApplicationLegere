@@ -3,8 +3,7 @@
 
     <head>
         <?php require '/views/view-head.php'; ?>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.4.0/clipboard.min.js"></script>
     </head>
 
 <body>
@@ -24,6 +23,9 @@
                         <button class="btn btn-warning" id="btn-modifierInfo" data-toggle="modal" data-target="#informationModal">Modifier</button>
                         <button class="btn btn-warning" id="btn-modifierPassword" data-toggle="modal" data-target="#passwordModal">Modifier le mot de passe</button>
                     </div>
+                </div>
+                <div class="form-group col-sm-12 rss">
+                    <pre><b>Flux RSS :</b>  <span id="rss">http://megacasting.local/flux.xml</span>  <button class="btn btn-default" id="copy" data-clipboard-target="#rss">Copier</button></pre>
                 </div>
             </div>
         </section>
@@ -115,5 +117,10 @@
         <script src="/js/bootstrap.js"></script>
         <script src="/js/account.js"></script>
         <script src="/js/main.js"></script>
+        <script>
+            (function(){
+              new Clipboard('#copy');
+            })();
+        </script>
     </body>
 </html>

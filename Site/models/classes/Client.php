@@ -9,9 +9,8 @@ class Client {
     private $_Address;
     private $_City;
     private $_ZipCode;
-    private $_Company;
     private $_Password;
-    private $_OfferList;
+    private $_Company;
     
     // Méthodes
     public function Initialize(array $data)
@@ -27,12 +26,10 @@ class Client {
         }
     }
     
-    public function setObjects($db)
-    {
-        $offerManager = new OfferManager($db);
-        
-        $this->_OfferList = $offerManager->GetAllByClient($this->Identifier());
-    }
+	public function ToJson()
+	{
+		return '{"Identifier":'. $this->Identifier(). ', "URL":"'. $this->URL(). '", "Email":"'. $this->Email(). '", "PhoneNumber":"'. $this->PhoneNumber(). '", "Fax":"'. $this->Fax(). '", "Address":"'. $this->Address(). '", "City":"'. $this->City(). '", "ZipCode":"'. $this->ZipCode(). '", "Company":"'. $this->Company(). '"}';
+	}
     
     // Propriétés
     function Identifier() {
@@ -66,13 +63,13 @@ class Client {
     function ZipCode() {
         return $this->_ZipCode;
     }
-
-    function Company() {
-        return $this->_Company;
-    }
     
     function Password() {
         return $this->_Password;
+    }
+
+    function Company() {
+        return $this->_Company;
     }
 
     function setIdentifier($_Identifier) {
@@ -106,12 +103,12 @@ class Client {
     function setZipCode($_ZipCode) {
         $this->_ZipCode = $_ZipCode;
     }
-
-    function setCompany($_Company) {
-        $this->_Company = $_Company;
-    }
     
     function setPassword($_Password) {
         $this->_Password = $_Password;
+    }
+
+    function setCompany($_Company) {
+        $this->_Company = $_Company;
     }
 }

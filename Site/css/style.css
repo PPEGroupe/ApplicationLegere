@@ -200,3 +200,21 @@ form input[type="button"] {
 .center {
     text-align: center;
 }
+
+.rss {
+    padding-top: 10px;
+    border-top: 1px #EEE solid;
+}
+
+.rss pre {
+    line-height: 30px;
+}
+
+.rss #copy {
+    float: right;
+}
+
+#detailsModal p b {
+    display: inline-block;
+    width: 200px;
+}

@@ -124,6 +124,75 @@
             </div>
         </div>
         
+        <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Description</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p>
+                                    <b>Société :</b>
+                                    <span id="company"></span>
+                                </p>
+                                <p>
+                                    <b>Titre :</b>
+                                    <span id="title"></span>
+                                </p>
+                                <p>
+                                    <b>Référence :</b>
+                                    <span id="reference"></span>
+                                </p>
+                                <p>
+                                    <b>Type de contract :</b>
+                                    <span id="typeOfContract"></span>
+                                </p>
+                                <p>
+                                    <b>Adresse :</b>
+                                    <span id="address"></span>
+                                </p>
+                                <p>
+                                    <b>Ville :</b>
+                                    <span id="city"></span>
+                                </p>
+                                <p>
+                                    <b>Code postal :</b>
+                                    <span id="zipCode"></span>
+                                </p>
+                                <p>
+                                    <b>Date de début du contrat :</b>
+                                    <span id="dateStartContract"></span>
+                                </p>
+                                <p>
+                                    <b>Nombre de place(s) :</b>
+                                    <span id="jobQuantity"></span>
+                                </p>
+                                <p>
+                                    <b>Description du poste :</b>
+                                    <span id="jobDescription"></span>
+                                </p>
+                                <p>
+                                    <b>Description du profile :</b>
+                                    <span id="profileDescription"></span>
+                                </p>
+                            </div>
+                            
+                            <div class="col-sm-6">
+                                <div id="map" style="height: 400px; border: 1px solid grey; text-align:center">
+                                    <h2>CARTE</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <script src="/js/jquery.js"></script>
         <script src="/js/notify.js"></script>
         <script src="/js/bootstrap.js"></script>

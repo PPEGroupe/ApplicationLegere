@@ -3,9 +3,8 @@ class TypeOfContract {
     // Attributs
     private $_Identifier;
     private $_Label;
-    private $_Offer;
     
-    // Méthode
+    // Méthodes
     public function Initialize(array $data)
     {
         foreach ($data as $key => $value) 
@@ -19,6 +18,11 @@ class TypeOfContract {
         }
     }
     
+	public function ToJson()
+	{
+		return '{"Identifier":'. $this->Identifier(). ', "Label":"'. $this->Label(). '"}';
+	}
+    
     // Propriétés
     function Identifier() {
         return $this->_Identifier;
@@ -28,19 +32,11 @@ class TypeOfContract {
         return $this->_Label;
     }
 
-    function Offer() {
-        return $this->_Offer;
-    }
-
     function setIdentifier($Identifier) {
         $this->_Identifier = $Identifier;
     }
 
     function setLabel($Label) {
         $this->_Label = $Label;
-    }
-
-    function setOffer($Offer) {
-        $this->_Offer = $Offer;
     }
 }

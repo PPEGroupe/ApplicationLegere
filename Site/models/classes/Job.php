@@ -27,6 +27,11 @@ class Job {
         $this->setJobDomain($jobDomainManager->Get($this->IdJobDomain()));
     }
     
+	public function ToJson()
+	{
+		return '{"Identifier":'. $this->Identifier(). ', "Label":"'. $this->Label(). '", "IdJobDomain":'. $this->IdJobDomain(). '}';
+	}
+    
     // Propriétés
     function Identifier() {
         return $this->_Identifier;

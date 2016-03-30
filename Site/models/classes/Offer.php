@@ -21,7 +21,6 @@ class Offer {
     private $_Job;
     private $_TypeOfContract;
     private $_Client;
-    private $_PostList;
     
     
     // Méthodes
@@ -43,13 +42,16 @@ class Offer {
         $typeOfContractManager = new TypeOfContractManager($db);
         $jobManager            = new JobManager($db);
         $clientManager         = new ClientManager($db);
-        $postManager           = new PostManager($db);
         
         $this->setTypeOfContract($typeOfContractManager->Get($this->IdTypeOfContract()));
         $this->setJob($jobManager->Get($this->IdJob()));
         $this->setClient($clientManager->Get($this->IdClient()));
-        $this->setPostList($postManager->GetAllByOffer($this->Identifier()));
     }
+    
+	public function ToJson()
+	{
+		return '{"Identifier":'. $this->Identifier(). ', "Title":"'. $this->Title(). '", "Reference":"'. $this->Reference(). '", "DateStartPublication":"'. $this->DateStartPublication(). '", "PublicationDuration":"'. $this->PublicationDuration(). '", "DateStartContract":"'. $this->DateStartContract(). '", "JobQuantity":'. $this->JobQuantity(). ', "Latitude":"'. $this->Latitude(). '", "Longitude":"'. $this->Longitude(). '", "JobDescription":"'. $this->JobDescription(). '", "ProfileDescription":"'. $this->ProfileDescription(). '", "Address":"'. $this->Address(). '", "City":"'. $this->City(). '", "ZipCode":"'. $this->ZipCode().'", "IdJob":'. $this->IdJob().', "IdTypeOfContract":'. $this->IdTypeOfContract().', "IdClient":'. $this->IdClient().'}';
+	}
     
     // Propriétés
     function Identifier() {
@@ -131,10 +133,6 @@ class Offer {
     function Client() {
         return $this->_Client;
     }
-
-    function PostList() {
-        return $this->_PostList;
-    }
     
     function setIdentifier($_Identifier) {
         $this->_Identifier = (int)$_Identifier;
@@ -214,9 +212,5 @@ class Offer {
 
     function setClient($_Client) {
         $this->_Client = $_Client;
-    }
-
-    function setPostList($_PostList) {
-        $this->_PostList= $_PostList;
     }
 }
