@@ -113,10 +113,18 @@ header #icon img {
 
 section {
     margin-top: 50px;
+    overflow-x: auto;
 }
 
 table {
+    width: 100%;
     border: 1px #DDD solid;
+}
+
+table td,
+table th {
+    padding: 0 10px;
+    white-space: nowrap;
 }
 
 #offers .warning {
@@ -137,12 +145,12 @@ table {
 	font-size: 15px;
 }
 
-#postulateModal .modal-body,
-#postulateModal .modal-footer {
+.modal-body,
+.modal-footer {
     padding-bottom: 0
 }
 
-#postulateModal .modal-body .form-group:last-child {
+.modal-body .form-group:last-child {
     margin-bottom: 0;
 }
 

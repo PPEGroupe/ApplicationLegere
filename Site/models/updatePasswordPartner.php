@@ -9,18 +9,18 @@ if (!empty($_POST))
 {
     if (isset($_SESSION['account']))
     {
-        $clientManager         = new ClientManager($db);
+        $partnerManager = new PartnerManager($db);
         
         
-        $client = $clientManager->Get($_SESSION['account']->Identifier());
-        $client->Initialize($_POST);
+        $partner = $partnerManager->Get($_SESSION['account']->Identifier());
+        $partner->Initialize($_POST);
         
         
         $oldPassword           = trim($_POST['oldPassword']);
         $newPassword           = trim($_POST['newPassword']);
         $confirmationPassword  = trim($_POST['passwordConfirmation']);
     
-        $passwordTest = $client->Password();
+        $passwordTest = $partner->Password();
         
         
         if( empty($oldPassword) || empty($newPassword)  || empty($confirmationPassword) )
@@ -36,7 +36,7 @@ if (!empty($_POST))
             else if (preg_match($regexPassword, $newPassword) == 0)
             {
                 $error[] = 'Veuillez renseigner un mot de passe valide!
-                            Il doit contenir au moins 6 caractères dont une lettre et un chiffre';
+                            Il doit contenir au moins 6 caractères dont une lettre et un chiffre.';
             }
             else if ($newPassword != $confirmationPassword)
             {
@@ -46,10 +46,10 @@ if (!empty($_POST))
         if(!isset($error))
         {
            
-            $client->setPassword($newPassword);
+            $partner->setPassword($newPassword);
             
-            $clientManager->UpdatePassword($client);
-            $_SESSION['account'] = $client;
+            $partnerManager->UpdatePassword($partner);
+            $_SESSION['account'] = $partner;
             
             echo json_encode('success');
         }else

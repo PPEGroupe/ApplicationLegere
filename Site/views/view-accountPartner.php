@@ -12,17 +12,15 @@
             <div class="col-sm-6 col-sm-offset-3" id="div_modification">
                 <div class="form-group col-sm-12">
                     <label class="col-sm-4 " for="emailRegister">Identifiant : </label>
-                    <p class="col-sm-3 col-sm-offset-4" ><?php echo $_SESSION['account']->Email(); ?></p>
+                    <p id="emailValue" class="col-sm-3 col-sm-offset-4" ><?php echo $_SESSION['account']->Email(); ?></p>
                 </div>
                  <div class="form-group col-sm-12">
                     <label class="col-sm-4 " for="urlRegister">Site web : </label>
-                    <p class="col-sm-3 col-sm-offset-4" ><?php echo $_SESSION['account']->Url(); ?></p>
+                    <p id="urlValue" class="col-sm-3 col-sm-offset-4" ><?php echo $_SESSION['account']->Url(); ?></p>
                 </div>
                 <div class="form-group col-sm-12 center">
-                    <div class="btn-group" role="group">
-                        <button class="btn btn-warning" id="btn-modifierInfo" data-toggle="modal" data-target="#informationModal">Modifier</button>
-                        <button class="btn btn-warning" id="btn-modifierPassword" data-toggle="modal" data-target="#passwordModal">Modifier le mot de passe</button>
-                    </div>
+                    <button class="btn btn-warning" id="btn-modifierInfo" data-toggle="modal" data-target="#informationModal">Modifier</button>
+                    <button class="btn btn-warning" id="btn-modifierPassword" data-toggle="modal" data-target="#passwordModal">Modifier le mot de passe</button>
                 </div>
                 <div class="form-group col-sm-12 rss">
                     <pre><b>Flux RSS :</b>  <span id="rss">http://megacasting.local/rss.php</span>  <button class="btn btn-default" id="copy" data-clipboard-target="#rss">Copier</button></pre>
@@ -39,15 +37,15 @@
                     <form action="" method="post" class="form-horizontal">
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="email" class="col-sm-3 control-label">Identifiant : <span class="require">*</span></label>
+                                <label for="email" class="col-sm-3 control-label">Email : <span class="require">*</span></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="emailRegister" name="emailRegister" value="<?php echo $_SESSION['account']->Email(); ?>" placeholder="Identifiant" />
+                                    <input type="text" class="form-control" id="email" value="<?php echo $_SESSION['account']->Email(); ?>" placeholder="Email" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="url" class="col-sm-3 control-label">Site web : </label>
                                 <div class="col-sm-9">
-                                    <input type="tel" class="form-control" id="urlRegister" name="urlRegister" value="<?php echo $_SESSION['account']->Url(); ?>" placeholder="Site web"/>
+                                    <input type="tel" class="form-control" id="url" value="<?php echo $_SESSION['account']->Url(); ?>" placeholder="Site web"/>
                                 </div>
                             </div>
                             
@@ -79,19 +77,19 @@
                             <div class="form-group">
                                 <label for="old password" class="col-sm-4 control-label">Ancien mot de passe : <span class="require">*</span></label>
                                 <div class="col-sm-8 ">
-                                    <input type="password" class="form-control" id="oldPasswordRegister" name="oldPasswordRegister" placeholder="Ancien mot de passe"/>
+                                    <input type="password" class="form-control" id="oldPassword" placeholder="Ancien mot de passe"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="new password" class="col-sm-4 control-label">Nouveau mot de passe : <span class="require">*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="password" class="form-control" id="newPasswordRegister" name="newPasswordRegister"  placeholder="Nouveau mot de passe" />
+                                    <input type="password" class="form-control" id="newPassword" placeholder="Nouveau mot de passe" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="confirmation password" class="col-sm-4 control-label">Confirmation de mot de passe : <span class="require">*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="password" class="form-control" id="passwordConfirmationRegister" name="passwordConfirmationRegister" placeholder="confirmation Mot de passe "/>
+                                    <input type="password" class="form-control" id="passwordConfirmation" placeholder="confirmation Mot de passe "/>
                                 </div>
                             </div>
                             
@@ -115,7 +113,7 @@
         <script src="/js/jquery.js"></script>
         <script src="/js/notify.js"></script>
         <script src="/js/bootstrap.js"></script>
-        <script src="/js/account.js"></script>
+        <script src="/js/accountPartner.js"></script>
         <script src="/js/main.js"></script>
         <script>
             (function(){

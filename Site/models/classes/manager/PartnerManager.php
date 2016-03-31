@@ -53,6 +53,18 @@ class PartnerManager {
 
         $query->execute();
     }
+    
+    public function UpdatePassword(Partner $partner)
+    {
+        $queryString = 'UPDATE Partner SET '
+                     . 'Password = :Password '
+                     . 'WHERE Identifier = :Identifier';
+        
+        $query = $this->_db->prepare($queryString);
+        $query->bindValue(':Identifier', $partner->Identifier());
+        $query->bindValue(':Password',   $partner->Password());
+        $query->execute();
+    }
 
     public function Get($id)
     {

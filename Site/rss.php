@@ -2,7 +2,7 @@
 require '/models/ClassesLoader.php';
 require '/models/page.php';
 
-header('Content-Type: application/xml');
+header('Content-Type: application/xml; charset=utf8');
 
 $offerManager = new OfferManager($db);
 $offerList = $offerManager->GetAll();

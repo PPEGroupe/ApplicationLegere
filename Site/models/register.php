@@ -30,7 +30,7 @@ if (!empty($_POST))
         else if (preg_match($regexPassword, $password) == 0)
         {
             $error[] = 'Veuillez renseigner un mot de passe valide!
-                        Il doit contenir au moins 6 caractères dont un chiffre';
+                        Il doit contenir au moins 6 caractères dont une lettre et un chiffre';
         }
         else if ($password != $passwordConfirmation)
         {

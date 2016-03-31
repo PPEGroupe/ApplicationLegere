@@ -72,13 +72,13 @@ class ClientManager {
     
     public function UpdatePassword(Client $client)
     {
-        $queryString = 'UPDATE CLient SET '
+        $queryString = 'UPDATE Client SET '
                      . 'Password = :Password '
                      . 'WHERE Identifier = :Identifier';
         
         $query = $this->_db->prepare($queryString);
-        $query->bindValue(':Identifier',    $client->Identifier());
-        $query->bindValue(':Password',    $client->Password());
+        $query->bindValue(':Identifier', $client->Identifier());
+        $query->bindValue(':Password',   $client->Password());
         $query->execute();
     }
 
