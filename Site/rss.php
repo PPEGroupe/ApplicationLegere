@@ -2,7 +2,7 @@
 require '/models/ClassesLoader.php';
 require '/models/page.php';
 
-header('Content-Type: text/html; charset=utf-8');
+header('Content-Type: application/xml');
 
 $offerManager = new OfferManager($db);
 $offerList = $offerManager->GetAll();
@@ -33,8 +33,6 @@ if (isset($_SESSION['account']))
 	
 	$xml .= '</channel>'.PHP_EOL; 
 	$xml .= '</rss>'; 
-	
-	$file = fopen("flux.xml", 'w+');
-	fputs($file, $xml);
-	fclose($file);
+    
+    echo $xml;
 }

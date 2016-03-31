@@ -1,5 +1,6 @@
-$(function(){
-   $('.offer').click(function() {
+$(function() {
+    InitializeMoreDetails();
+    $('.offer').click(function() {
         $('.offer.active').removeClass('active'); // Désélectionne l'ancienne ligne
         $(this).addClass('active'); // Sélectionne la ligne
         
@@ -16,36 +17,7 @@ $(function(){
         html += '</tr>';
         $(this).after(html);
     
-        $('#moreDetails').click(function () {
-            $.post(
-                'models/getOfferDetails.php',
-                {
-                    idOffer : KeepNumber($('.offer.active').attr('id'))
-                },
-                function (data) {
-                    var offer = data['Offer'];
-                    var client = data['Client'];
-                    var typeOfContract = data['TypeOfContract'];
-                    $('#detailsModal #company').html(client['Company']);
-                    $('#detailsModal #title').html(offer['Title']);
-                    $('#detailsModal #reference').html(offer['Reference']);
-                    $('#detailsModal #typeOfContract').html(typeOfContract['Label']);
-                    $('#detailsModal #address').html(offer['Address']);
-                    $('#detailsModal #city').html(offer['City']);
-                    $('#detailsModal #zipCode').html(offer['ZipCode']);
-                    $('#detailsModal #dateStartContract').html(offer['DateStartContract']);
-                    $('#detailsModal #jobQuantity').html(offer['JobQuantity']);
-                    $('#detailsModal #jobDescription').html(offer['JobDescription']);
-                    $('#detailsModal #profileDescription').html(offer['ProfileDescription']);
-                    $('#detailsModal').modal('show');
-                },
-                'json'
-            )
-            .fail(function (data) {
-                $('#error').remove();
-                $('body').append('<div id="error">' + data['responseText'] + '</div>');
-            });
-        });
+        InitializeMoreDetails();
     });
     
     $('#postulateModal').on('shown.bs.modal', function () {
@@ -87,3 +59,35 @@ $(function(){
     }); 
 });
 
+function InitializeMoreDetails() {
+    $('#moreDetails').click(function () {
+        $.post(
+            'models/getOfferDetails.php',
+            {
+                idOffer : KeepNumber($('.offer.active').attr('id'))
+            },
+            function (data) {
+                var offer = data['Offer'];
+                var client = data['Client'];
+                var typeOfContract = data['TypeOfContract'];
+                $('#detailsModal #company').html(client['Company']);
+                $('#detailsModal #title').html(offer['Title']);
+                $('#detailsModal #reference').html(offer['Reference']);
+                $('#detailsModal #typeOfContract').html(typeOfContract['Label']);
+                $('#detailsModal #address').html(offer['Address']);
+                $('#detailsModal #city').html(offer['City']);
+                $('#detailsModal #zipCode').html(offer['ZipCode']);
+                $('#detailsModal #dateStartContract').html(offer['DateStartContract']);
+                $('#detailsModal #jobQuantity').html(offer['JobQuantity']);
+                $('#detailsModal #jobDescription').html(offer['JobDescription']);
+                $('#detailsModal #profileDescription').html(offer['ProfileDescription']);
+                $('#detailsModal').modal('show');
+            },
+            'json'
+        )
+        .fail(function (data) {
+            $('#error').remove();
+            $('body').append('<div id="error">' + data['responseText'] + '</div>');
+        });
+    });
+}

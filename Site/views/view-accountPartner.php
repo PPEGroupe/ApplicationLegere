@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 <div class="form-group col-sm-12 rss">
-                    <pre><b>Flux RSS :</b>  <span id="rss">http://megacasting.local/flux.xml</span>  <button class="btn btn-default" id="copy" data-clipboard-target="#rss">Copier</button></pre>
+                    <pre><b>Flux RSS :</b>  <span id="rss">http://megacasting.local/rss.php</span>  <button class="btn btn-default" id="copy" data-clipboard-target="#rss">Copier</button></pre>
                 </div>
             </div>
         </section>

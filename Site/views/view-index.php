@@ -24,8 +24,12 @@
 <?php               if(isset($offerList))
                     {
                         foreach($offerList as $key => $offer)
-                        { ?>
-                            <tr class="offer" id="offer<?php echo $offer->Identifier(); ?>">
+                        { 
+                            $active= '';
+                            if (isset($_GET['offer']) && $_GET['offer'] == $offer->Identifier())
+                                $active= 'active';
+                            ?>
+                            <tr class="offer <?php echo $active; ?>" id="offer<?php echo $offer->Identifier(); ?>">
                                 <td><?php echo $offer->Reference(); ?></td>
                                 <td><?php echo $offer->Title(); ?></td>
                                 <td><?php echo $offer->City(); ?></td>
@@ -33,7 +37,17 @@
                                 <td><?php echo $offer->JobQuantity(); ?></td>
                                 <td><?php echo $offer->Client()->Company(); ?></td>
                             </tr>
-<?php                   }
+<?php                       if (isset($_GET['offer']) && $_GET['offer'] == $offer->Identifier())
+                            { ?>
+                               <tr id="optionButtons" class="toSelect">
+                                   <td colspan="6">
+                                       <div class="btn-group" role="group">
+                                           <button class="btn btn-warning btn-lg" id="moreDetails">Plus de détails</button><button class="btn btn-warning btn-lg" data-toggle="modal" data-target="#postulateModal" id="postulate">Postuler</button>
+                                        </div>
+                                    </td>
+                                </tr> 
+<?php                       }
+                        }
                     }
                     else
                     { ?>
