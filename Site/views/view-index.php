@@ -5,7 +5,7 @@
         <!-- Elément Google Maps indiquant que la carte doit être affiché en plein écran et qu'elle ne peut pas être redimensionnée par l'utilisateur -->
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
         
-        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?"></script>
         
     </head>
     
@@ -15,7 +15,7 @@
         <section class="container">
            <form id="searchInput" action="" method="post">
                 <div class="input-group col-md-12">
-                    <input type="text" class="form-control input-lg" name="searchText" placeholder="Chercher" />
+                    <input type="text" class="form-control input-lg" name="searchText" placeholder="Chercher" value="<?php echo $keyword; ?>" autofocus/>
                     <span class="input-group-btn">
                         <button class="btn btn-info btn-lg" type="submit" name="search">GO !
                         </button>
@@ -61,7 +61,8 @@
                                <tr id="optionButtons" class="toSelect">
                                    <td colspan="8">
                                        <div class="btn-group" role="group">
-                                           <button class="btn btn-warning btn-lg" id="moreDetails">Plus de détails</button><button class="btn btn-warning btn-lg" data-toggle="modal" data-target="#postulateModal" id="postulate">Postuler</button>
+                                           <button class="btn btn-warning btn-lg" id="moreDetails">Plus de détails</button>
+                                           <button class="btn btn-warning btn-lg" data-toggle="modal" data-target="#postulateModal" id="postulate">Postuler</button>
                                         </div>
                                     </td>
                                 </tr>
@@ -212,10 +213,10 @@
                                 </p>
                             </div>
                             
-                            <div class="col-sm-6" >
-                                <div id="map" style="height: 400px; border: 1px solid grey; text-align:center">
-                                     <div id="carte" style="width:100%; height:100%"></div>
-                                </div>
+                            <div id="mapContainer"class="col-sm-6" >
+                                
+                                <div id="map"></div>
+                                
                             </div>
                         </div>
                     </div>
