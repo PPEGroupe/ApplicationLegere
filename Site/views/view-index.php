@@ -57,7 +57,8 @@
                                <tr id="optionButtons" class="toSelect">
                                    <td colspan="6">
                                        <div class="btn-group" role="group">
-                                           <button class="btn btn-warning btn-lg" id="moreDetails">Plus de détails</button><button class="btn btn-warning btn-lg" data-toggle="modal" data-target="#postulateModal" id="postulate">Postuler</button>
+                                           <button class="btn btn-warning btn-lg" id="moreDetails">Plus de détails</button>
+                                           <button class="btn btn-warning btn-lg" data-toggle="modal" data-target="#postulateModal" id="postulate">Postuler</button>
                                         </div>
                                     </td>
                                 </tr>
