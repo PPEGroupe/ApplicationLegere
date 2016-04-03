@@ -5,7 +5,7 @@
         <!-- Elément Google Maps indiquant que la carte doit être affiché en plein écran et qu'elle ne peut pas être redimensionnée par l'utilisateur -->
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
         
-        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?"></script>
         
     </head>
     
@@ -198,10 +198,10 @@
                                 </p>
                             </div>
                             
-                            <div class="col-sm-6" >
-                                <div id="map" style="height: 400px; border: 1px solid grey; text-align:center">
-                                     <div id="carte" style="width:100%; height:100%"></div>
-                                </div>
+                            <div id="mapContainer"class="col-sm-6" >
+                                
+                                <div id="map"></div>
+                                
                             </div>
                         </div>
                     </div>
