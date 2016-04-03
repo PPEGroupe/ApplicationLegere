@@ -84,15 +84,18 @@ function InitializeMoreDetails() {
                 $('#detailsModal #jobDescription').html(offer['JobDescription']);
                 $('#detailsModal #profileDescription').html(offer['ProfileDescription']);
                 
+                //supprimer les div map
                 $('#map').remove();
+                //Ajouter les div map dans la div mapContainer.
                 $('#mapContainer').html('<div id="map"></div>');
                 
-                //var longitude = parseFloat(offer['Longitude']);
-                //var latitude  = parseFloat(offer['Latitude']);
+                var longitude = parseFloat(offer['Longitude']);
+                var latitude  = parseFloat(offer['Latitude']);
                 
-                
-                
-                var latlng = new google.maps.LatLng(46.779231, -1.686588);
+                console.log(longitude);
+                console.log(latitude);
+
+                var latlng = new google.maps.LatLng(latitude, longitude);
                 
                 var options = {
                     center: latlng,
@@ -105,7 +108,7 @@ function InitializeMoreDetails() {
                 var map = new google.maps.Map(document.getElementById("map"), options);
                  
                 var marqueur = new google.maps.Marker({
-                     position: new google.maps.LatLng(46.779231, -1.686588),
+                     position: new google.maps.LatLng(latitude, longitude),
                      map: map,
                      
                 });
