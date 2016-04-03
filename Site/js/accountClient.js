@@ -1,6 +1,5 @@
 $(function(){
 	$('#informationModal form').on('submit', function (e) {
-        
         $.post(
             'models/updateAccountClient.php',
             {
@@ -14,9 +13,6 @@ $(function(){
                 zipCode:       $('#zipCode').val()
             },
             function(data){
-                
-                console.log(data);
-                
                 if(data == 'success'){
                     $.notify('Votre compte a été mis à jour.', {globalPosition: 'bottom right',  className: 'success'});
                     $('#informationModal').modal('hide');

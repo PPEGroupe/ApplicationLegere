@@ -13,43 +13,43 @@
                         <h2 class="modal-title">[Informations personnelles]</h2>
                     </div>    
                     <div class="form-group col-sm-12">
-                        <label class="col-sm-4" for="company">Société : </label>
-                        <p     class="col-sm-5 col-sm-offset-1" ><?php echo $_SESSION['account']->Company(); ?></p>
+                        <label class="col-sm-4" for="companyValue">Société : </label>
+                        <p     class="col-sm-5 col-sm-offset-1" id="companyValue"><?php echo $_SESSION['account']->Company(); ?></p>
                     </div>
                     <div class="form-group col-sm-12">
-                        <label class="col-sm-4" for="email">Identifiant : </label>
+                        <label class="col-sm-4" for="emailValue">Identifiant : </label>
                         <p     class="col-sm-5 col-sm-offset-1" id="emailValue" ><?php echo $_SESSION['account']->Email(); ?></p>
                     </div>
                     <div class="form-group col-sm-12">
-                        <label class="col-sm-4" for="phoneNumber">N° de téléphone : </label>
+                        <label class="col-sm-4" for="phoneNumberValue">N° de téléphone : </label>
                         <p     class="col-sm-5 col-sm-offset-1" id="phoneNumberValue"><?php echo $_SESSION['account']->PhoneNumber(); ?></p>
                     </div>
                     <div class="form-group col-sm-12">
-                        <label class="col-sm-4" for="fax">N° de Fax : </label>
+                        <label class="col-sm-4" for="faxValue">N° de Fax : </label>
                         <p     class="col-sm-5 col-sm-offset-1"  id="faxValue"><?php echo $_SESSION['account']->Fax(); ?></p>
                     </div>
                      <div class="form-group col-sm-12">
-                        <label class="col-sm-4" for="url">Site web : </label>
+                        <label class="col-sm-4" for="urlValue">Site web : </label>
                         <p     class="col-sm-5 col-sm-offset-1" id="urlValue" ><?php echo $_SESSION['account']->Url(); ?></p>
                     </div>
                     <div class="form-group col-sm-12">
-                        <label class="col-sm-4" for="address">Adresse : </label>
+                        <label class="col-sm-4" for="addressValue">Adresse : </label>
                         <p     class="col-sm-5 col-sm-offset-1" id="addressValue" ><?php echo $_SESSION['account']->Address(); ?></p>
                     </div>
                     <div class="form-group col-sm-12">
-                        <label class="col-sm-4" for="city">Ville : </label>
+                        <label class="col-sm-4" for="cityValue">Ville : </label>
                         <p     class="col-sm-5 col-sm-offset-1" id="cityValue"><?php echo $_SESSION['account']->City(); ?></p>
                     </div>
                     <div class="form-group col-sm-12">
-                        <label class="col-sm-4" for="zipCode">Code postal : </label>
+                        <label class="col-sm-4" for="zipCodeValue">Code postal : </label>
                         <p     class="col-sm-5 col-sm-offset-1" id="zipCodeValue"><?php echo $_SESSION['account']->ZipCode(); ?></p>
                     </div>
                     
                    <div class="btn-group col-sm-12" role="group">
                        <div class="form-group center">
-                           <button class="btn btn-warning" id="btn-modifierInfo" data-toggle="modal" data-target="#informationModal">Modifier</button>
+                           <button class="btn btn-warning" data-toggle="modal" data-target="#informationModal">Modifier</button>
 
-                           <button class="btn btn-warning" id="btn-modifierPassword" data-toggle="modal" data-target="#passwordModal">Modifier le mot de passe</button>
+                           <button class="btn btn-warning" data-toggle="modal" data-target="#passwordModal">Modifier le mot de passe</button>
                        </div>
                     </div>
                 </div>
@@ -164,7 +164,7 @@
 										<p class="require">* Champ obligatoire</p>
                                     </div>
                                     <div class="col-sm-6">
-                                        <button type="button" class="btn btn-warning" data-dismiss="modal">Annuler</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
                                         <button type="submit" class="btn btn-warning" name="sendPostPassword">valider</button>
                                     </div>
                                 </div>

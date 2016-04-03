@@ -194,6 +194,10 @@ form input[type="button"] {
     height: 35px;
 }
 
+.closeButton {
+    margin-bottom: 15px !important;
+}
+
 .center {
     text-align: center;
 }
