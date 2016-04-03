@@ -8,40 +8,40 @@
 <body>
     <?php require '/views/view-header.php'; ?>
         <section class="container">
-                <div class="col-sm-6 col-sm-offset-3" id="clientUpdate">
+                <div class="col-sm-8 col-sm-offset-2">
                     <div class="form-group col-sm-12">
-                    <h4 class="modal-title"><u>[Informations personnelles]</u></h4>
+                        <h2 class="modal-title">[Informations personnelles]</h2>
                     </div>    
                     <div class="form-group col-sm-12">
-                        <label class="col-sm-4  " for="company">Société : </label>
+                        <label class="col-sm-4" for="company">Société : </label>
                         <p     class="col-sm-5 col-sm-offset-1" ><?php echo $_SESSION['account']->Company(); ?></p>
                     </div>
                     <div class="form-group col-sm-12">
-                        <label class="col-sm-4 " for="email">Identifiant : </label>
+                        <label class="col-sm-4" for="email">Identifiant : </label>
                         <p     class="col-sm-5 col-sm-offset-1" id="emailValue" ><?php echo $_SESSION['account']->Email(); ?></p>
                     </div>
                     <div class="form-group col-sm-12">
-                        <label class="col-sm-4 " for="phoneNumber">N° de téléphone : </label>
+                        <label class="col-sm-4" for="phoneNumber">N° de téléphone : </label>
                         <p     class="col-sm-5 col-sm-offset-1" id="phoneNumberValue"><?php echo $_SESSION['account']->PhoneNumber(); ?></p>
                     </div>
                     <div class="form-group col-sm-12">
-                        <label class="col-sm-4 " for="fax">N° de Fax : </label>
+                        <label class="col-sm-4" for="fax">N° de Fax : </label>
                         <p     class="col-sm-5 col-sm-offset-1"  id="faxValue"><?php echo $_SESSION['account']->Fax(); ?></p>
                     </div>
                      <div class="form-group col-sm-12">
-                        <label class="col-sm-4 " for="url">Site web : </label>
+                        <label class="col-sm-4" for="url">Site web : </label>
                         <p     class="col-sm-5 col-sm-offset-1" id="urlValue" ><?php echo $_SESSION['account']->Url(); ?></p>
                     </div>
                     <div class="form-group col-sm-12">
-                        <label class="col-sm-4 " for="address">Adresse : </label>
+                        <label class="col-sm-4" for="address">Adresse : </label>
                         <p     class="col-sm-5 col-sm-offset-1" id="addressValue" ><?php echo $_SESSION['account']->Address(); ?></p>
                     </div>
                     <div class="form-group col-sm-12">
-                        <label class="col-sm-4 " for="city">Ville : </label>
+                        <label class="col-sm-4" for="city">Ville : </label>
                         <p     class="col-sm-5 col-sm-offset-1" id="cityValue"><?php echo $_SESSION['account']->City(); ?></p>
                     </div>
                     <div class="form-group col-sm-12">
-                        <label class="col-sm-4 " for="zipCode">Code postal : </label>
+                        <label class="col-sm-4" for="zipCode">Code postal : </label>
                         <p     class="col-sm-5 col-sm-offset-1" id="zipCodeValue"><?php echo $_SESSION['account']->ZipCode(); ?></p>
                     </div>
                     
