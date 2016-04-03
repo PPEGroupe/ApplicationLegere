@@ -8,7 +8,7 @@ $(function() {
         
         var html;
         html  = '<tr id="optionButtons" class="toSelect">';
-        html +=     '<td colspan="6">';
+        html +=     '<td colspan="8">';
         html +=         '<div class="btn-group" role="group">';
         html +=             '<button class="btn btn-warning btn-lg" id="moreDetails">Plus de détails</button>';
         html +=             '<button class="btn btn-warning btn-lg" data-toggle="modal" data-target="#postulateModal" id="postulate">Postuler</button>';
