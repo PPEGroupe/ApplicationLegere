@@ -9,38 +9,40 @@
         <?php require '/views/view-header.php'; ?>
         
         <section class="container">
-            <table class="table" id="offers">
-                <thead>
-                    <tr>
-                        <th>Ref.</th>
-                        <th>Offre</th>
-                        <th>Ville</th>
-                        <th>Contrat</th>
-                        <th>Nb. places</th>
-                    </tr>
-                </thead>
-                
-                <tbody>
+            <div class="scrollable">
+                <table class="table" id="offers">
+                    <thead>
+                        <tr>
+                            <th>Ref.</th>
+                            <th>Offre</th>
+                            <th>Ville</th>
+                            <th>Contrat</th>
+                            <th>Nb. places</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
 <?php               if(isset($offerList))
-                    {
-                        foreach($offerList as $key => $offer)
+                        {
+                            foreach($offerList as $key => $offer)
+                            { ?>
+                                <tr class="offer" id="offer<?php echo $offer->Identifier(); ?>">
+                                    <td><?php echo $offer->Reference(); ?></td>
+                                    <td><?php echo $offer->Title(); ?></td>
+                                    <td><?php echo $offer->City(); ?></td>
+                                    <td><?php echo $offer->TypeOfContract()->Label(); ?></td>
+                                    <td><?php echo $offer->JobQuantity(); ?></td>
+                                    <td class="hidden"><?php echo $postManager->CountByOffer($offer->Identifier()); ?></td>
+                                </tr>
+<?php                       }
+                        }
+                        else
                         { ?>
-                            <tr class="offer" id="offer<?php echo $offer->Identifier(); ?>">
-                                <td><?php echo $offer->Reference(); ?></td>
-                                <td><?php echo $offer->Title(); ?></td>
-                                <td><?php echo $offer->City(); ?></td>
-                                <td><?php echo $offer->TypeOfContract()->Label(); ?></td>
-                                <td><?php echo $offer->JobQuantity(); ?></td>
-                                <td class="hidden"><?php echo $postManager->CountByOffer($offer->Identifier()); ?></td>
-                            </tr>
-<?php                   }
-                    }
-                    else
-                    { ?>
-                        <tr class="warning"><td colspan="5">Aucune offre n'a été trouvée</td></tr>
-<?php               }?>
-                </tbody>
-            </table>
+                            <tr class="warning"><td colspan="5">Aucune offre n'a été trouvée</td></tr>
+<?php                   }?>
+                    </tbody>
+                </table>
+            </div>
         </section>
         
         <div class="modal fade" id="postsModal" tabindex="-1" role="dialog">

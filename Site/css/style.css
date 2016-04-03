@@ -104,8 +104,12 @@ h1 a:visited {
 
 section {
     margin-top: 50px;
+}
+
+.scrollable {
     overflow-x: auto;
 }
+
 .table {
     margin-bottom: 0;
 }

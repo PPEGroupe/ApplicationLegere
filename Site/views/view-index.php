@@ -23,58 +23,60 @@
                 </div>
             </form>
             <br/>
-            <table class="table" id="offers">
-                <thead>
-                    <tr>
-                        <th>Ref.</th>
-                        <th>Offre</th>
-                        <th>Ville</th>
-                        <th>Contrat</th>
-                        <th>Nb. places</th>
-                        <th>Société</th>
-                        <th>Métier</th>
-                        <th>Domaine métier</th>
-                    </tr>
-                </thead>
-                
-                <tbody>
-<?php               if(isset($offerList))
-                    {
-                        foreach($offerList as $key => $offer)
-                        { 
-                            $active= '';
-                            if (isset($_GET['offer']) && $_GET['offer'] == $offer->Identifier())
-                                $active= 'active';
-                            ?>
-                            <tr class="offer <?php echo $active; ?>" id="offer<?php echo $offer->Identifier(); ?>">
-                                <td><?php echo $offer->Reference(); ?></td>
-                                <td><?php echo $offer->Title(); ?></td>
-                                <td><?php echo $offer->City(); ?></td>
-                                <td><?php echo $offer->TypeOfContract()->Label(); ?></td>
-                                <td><?php echo $offer->JobQuantity(); ?></td>
-                                <td><?php echo $offer->Client()->Company(); ?></td>
-                                <td><?php echo $offer->Job()->Label(); ?></td>
-                                <td><?php echo $offer->Job()->JobDomain()->Label(); ?></td>
-                            </tr>
-<?php                       if (isset($_GET['offer']) && $_GET['offer'] == $offer->Identifier())
-                            { ?>
-                               <tr id="optionButtons" class="toSelect">
-                                   <td colspan="8">
-                                       <div class="btn-group" role="group">
-                                           <button class="btn btn-warning btn-lg" id="moreDetails">Plus de détails</button>
-                                           <button class="btn btn-warning btn-lg" data-toggle="modal" data-target="#postulateModal" id="postulate">Postuler</button>
-                                        </div>
-                                    </td>
+            <div class="scrollable">
+                <table class="table" id="offers">
+                    <thead>
+                        <tr>
+                            <th>Ref.</th>
+                            <th>Offre</th>
+                            <th>Ville</th>
+                            <th>Contrat</th>
+                            <th>Nb. places</th>
+                            <th>Société</th>
+                            <th>Métier</th>
+                            <th>Domaine métier</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+<?php                   if(isset($offerList))
+                        {
+                            foreach($offerList as $key => $offer)
+                            { 
+                                $active= '';
+                                if (isset($_GET['offer']) && $_GET['offer'] == $offer->Identifier())
+                                    $active= 'active';
+                                ?>
+                                <tr class="offer <?php echo $active; ?>" id="offer<?php echo $offer->Identifier(); ?>">
+                                    <td><?php echo $offer->Reference(); ?></td>
+                                    <td><?php echo $offer->Title(); ?></td>
+                                    <td><?php echo $offer->City(); ?></td>
+                                    <td><?php echo $offer->TypeOfContract()->Label(); ?></td>
+                                    <td><?php echo $offer->JobQuantity(); ?></td>
+                                    <td><?php echo $offer->Client()->Company(); ?></td>
+                                    <td><?php echo $offer->Job()->Label(); ?></td>
+                                    <td><?php echo $offer->Job()->JobDomain()->Label(); ?></td>
                                 </tr>
+<?php                           if (isset($_GET['offer']) && $_GET['offer'] == $offer->Identifier())
+                                { ?>
+                                   <tr id="optionButtons" class="toSelect">
+                                       <td colspan="8">
+                                           <div class="btn-group" role="group">
+                                               <button class="btn btn-warning btn-lg" id="moreDetails">Plus de détails</button>
+                                               <button class="btn btn-warning btn-lg" data-toggle="modal" data-target="#postulateModal" id="postulate">Postuler</button>
+                                            </div>
+                                        </td>
+                                    </tr>
 <?php                       }
+                            }
                         }
-                    }
-                    else
-                    { ?>
-                        <tr class="warning"><td colspan="8">Aucune offre n'est disponible</td></tr>
+                        else
+                        { ?>
+                            <tr class="warning"><td colspan="8">Aucune offre n'est disponible</td></tr>
 <?php               }?>
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </section>
         
         <div class="modal fade" id="postulateModal" tabindex="-1" role="dialog">
