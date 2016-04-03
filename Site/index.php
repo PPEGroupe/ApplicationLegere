@@ -4,10 +4,12 @@ require '/models/page.php';
 
 $offerManager = new OfferManager($db);
 
+$keyword = '';
 // Moteur de recherche
 if (isset($_POST['search']) && !empty($_POST['searchText']))
 {
-    $offerList = $offerManager->SearchOffer($_POST['searchText']);
+    $keyword = $_POST['searchText'];
+    $offerList = $offerManager->SearchOffer($keyword);
 }
 else
 {

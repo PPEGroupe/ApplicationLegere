@@ -15,7 +15,7 @@
         <section class="container">
            <form id="searchInput" action="" method="post">
                 <div class="input-group col-md-12">
-                    <input type="text" class="form-control input-lg" name="searchText" placeholder="Chercher" />
+                    <input type="text" class="form-control input-lg" name="searchText" placeholder="Chercher" value="<?php echo $keyword; ?>" autofocus/>
                     <span class="input-group-btn">
                         <button class="btn btn-info btn-lg" type="submit" name="search">GO !
                         </button>
