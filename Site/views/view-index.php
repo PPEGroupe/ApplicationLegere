@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
     <head>
         <?php require '/views/view-head.php'; ?>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <!-- Elément Google Maps indiquant que la carte doit être affiché en plein écran et qu'elle ne peut pas être redimensionnée par l'utilisateur -->
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+        
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+        
     </head>
     
-    <body>
+    <body onload="InitializeMoreDetails()">
         <?php require '/views/view-header.php'; ?>
         
         <section class="container">
@@ -55,7 +60,7 @@
                                            <button class="btn btn-warning btn-lg" id="moreDetails">Plus de détails</button><button class="btn btn-warning btn-lg" data-toggle="modal" data-target="#postulateModal" id="postulate">Postuler</button>
                                         </div>
                                     </td>
-                                </tr> 
+                                </tr>
 <?php                       }
                         }
                     }
@@ -203,9 +208,9 @@
                                 </p>
                             </div>
                             
-                            <div class="col-sm-6">
+                            <div class="col-sm-6" >
                                 <div id="map" style="height: 400px; border: 1px solid grey; text-align:center">
-                                    <h2>CARTE</h2>
+                                     <div id="carte" style="width:100%; height:100%"></div>
                                 </div>
                             </div>
                         </div>

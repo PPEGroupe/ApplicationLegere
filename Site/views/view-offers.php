@@ -2,6 +2,7 @@
 <html>
     <head>
         <?php require '/views/view-head.php'; ?>
+        
     </head>
     
     <body>
