@@ -129,10 +129,11 @@ class Offer {
     function TypeOfContract() {
         return $this->_TypeOfContract;
     }
-
+    
     function Client() {
         return $this->_Client;
     }
+    
     
     function setIdentifier($_Identifier) {
         $this->_Identifier = (int)$_Identifier;

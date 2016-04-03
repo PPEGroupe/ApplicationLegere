@@ -32,6 +32,8 @@
                         <th>Contrat</th>
                         <th>Nb. places</th>
                         <th>Société</th>
+                        <th>Métier</th>
+                        <th>Domaine métier</th>
                     </tr>
                 </thead>
                 
@@ -51,11 +53,13 @@
                                 <td><?php echo $offer->TypeOfContract()->Label(); ?></td>
                                 <td><?php echo $offer->JobQuantity(); ?></td>
                                 <td><?php echo $offer->Client()->Company(); ?></td>
+                                <td><?php echo $offer->Job()->Label(); ?></td>
+                                <td><?php echo $offer->Job()->JobDomain()->Label(); ?></td>
                             </tr>
 <?php                       if (isset($_GET['offer']) && $_GET['offer'] == $offer->Identifier())
                             { ?>
                                <tr id="optionButtons" class="toSelect">
-                                   <td colspan="6">
+                                   <td colspan="8">
                                        <div class="btn-group" role="group">
                                            <button class="btn btn-warning btn-lg" id="moreDetails">Plus de détails</button>
                                            <button class="btn btn-warning btn-lg" data-toggle="modal" data-target="#postulateModal" id="postulate">Postuler</button>
@@ -67,7 +71,7 @@
                     }
                     else
                     { ?>
-                        <tr class="warning"><td colspan="6">Aucune offre n'est disponible</td></tr>
+                        <tr class="warning"><td colspan="8">Aucune offre n'est disponible</td></tr>
 <?php               }?>
                 </tbody>
             </table>
