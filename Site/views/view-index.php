@@ -13,6 +13,16 @@
         <?php require '/views/view-header.php'; ?>
         
         <section class="container">
+           <form id="searchInput" action="" method="post">
+                <div class="input-group col-md-12">
+                    <input type="text" class="form-control input-lg" name="searchText" placeholder="Chercher" value="<?php echo $keyword; ?>" autofocus/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-info btn-lg" type="submit" name="search">GO !
+                        </button>
+                    </span>
+                </div>
+            </form>
+            <br/>
             <table class="table" id="offers">
                 <thead>
                     <tr>
@@ -47,7 +57,8 @@
                                <tr id="optionButtons" class="toSelect">
                                    <td colspan="6">
                                        <div class="btn-group" role="group">
-                                           <button class="btn btn-warning btn-lg" id="moreDetails">Plus de détails</button><button class="btn btn-warning btn-lg" data-toggle="modal" data-target="#postulateModal" id="postulate">Postuler</button>
+                                           <button class="btn btn-warning btn-lg" id="moreDetails">Plus de détails</button>
+                                           <button class="btn btn-warning btn-lg" data-toggle="modal" data-target="#postulateModal" id="postulate">Postuler</button>
                                         </div>
                                     </td>
                                 </tr>

@@ -171,4 +171,34 @@ class OfferManager {
 
         return null;
     }
+    
+    public function SearchOffer($keyword)
+    { 
+        
+        $queryString = 'SELECT Offer.Identifier, Offer.Title, Offer.Reference, Offer.DateStartPublication, Offer.PublicationDuration, Offer.JobQuantity, Offer.Latitude, Offer.Longitude, Offer.JobDescription, Offer.ProfileDescription, Offer.Address, Offer.City, Offer.ZipCode, Offer.IdTypeOfContract, Offer.IdJob, Offer.IdClient '
+                     . 'FROM Offer '
+                     . 'INNER JOIN Job ON Job.Identifier = Offer.IdJob '
+                     . 'INNER JOIN JobDomain ON JobDomain.Identifier = Job.idJobDomain '
+                     . 'INNER JOIN Client ON Client.Identifier = Offer.IdClient '
+                     . 'INNER JOIN TypeOfContract ON TypeOfContract.Identifier = Offer.IdTypeOfContract '
+                     . 'WHERE Offer.Title LIKE \'%'. $keyword .'%\' '
+                     . 'OR Offer.JobDescription LIKE \'%'. $keyword .'%\' '
+                     . 'OR Offer.City LIKE \'%'. $keyword .'%\' '
+                     . 'OR Client.Company LIKE \'%'. $keyword .'%\' '
+                     . 'OR Job.Label LIKE \'%'. $keyword .'%\' '
+                     . 'OR JobDomain.Label LIKE \'%'. $keyword .'%\' '
+                     . 'OR TypeOfContract.Label LIKE \'%'. $keyword .'%\'';
+        
+        $query = $this->_db->query($queryString);
+
+        while ($data = $query->fetch(PDO::FETCH_ASSOC))
+        {
+            $offer = new Offer();
+            $offer->Initialize($data);
+            $offer->setObjects($this->_db);
+            $offerList[] = $offer;
+        }
+        
+        return (isset($offerList)) ? $offerList : null;
+    }
 }

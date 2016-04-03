@@ -9,7 +9,10 @@
 <body>
     <?php require '/views/view-header.php'; ?>
         <section class="container">
-            <div class="col-sm-6 col-sm-offset-3" id="div_modification">
+            <div class="col-sm-8 col-sm-offset-2">
+                <div class="form-group col-sm-12">
+                    <h2 class="modal-title">[Informations personnelles]</h2>
+                </div>  
                 <div class="form-group col-sm-12">
                     <label class="col-sm-4 " for="emailRegister">Identifiant : </label>
                     <p id="emailValue" class="col-sm-3 col-sm-offset-4" ><?php echo $_SESSION['account']->Email(); ?></p>

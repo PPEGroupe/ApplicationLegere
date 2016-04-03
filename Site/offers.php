@@ -13,3 +13,7 @@ if (isset($_SESSION['account']))
 	
     require '/views/view-offers.php';
 }
+else
+{
+    require '/views/view-denied.php';
+}
