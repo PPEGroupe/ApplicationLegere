@@ -14,16 +14,21 @@ $(function() {
                 passwordConfirmation: $('#passwordConfirmationRegister').val()
             }, 
             function(data) {
-                //console.info(data);
-                var html;
-                html  = '<div class="alert alert-warning" role="alert" id="errorRegister">';
-                $.each(data, function(key, value) {
-                    html += value + '<br />';
-                    // Pop-up de notification notify.js
+                if (data == 'success') {
+                    var html = '<div class="alert alert-success" role="alert" id="successRegister">Inscription validée</div>';
+                    $.notify('Inscription validée', {globalPosition: 'bottom right',  className: 'success'});
+                    $('#register h2').after(html);
+                } else {
+                    var html;
+                    html  = '<div class="alert alert-warning" role="alert" id="errorRegister">';
+                    $.each(data, function(key, value) {
+                        html += value + '<br />';
+                        // Pop-up de notification notify.js
                         $.notify(value, {globalPosition: 'bottom right',  className: 'error'});
-                });
-                html += '</div>';
-                $('#register h2').after(html);
+                    });
+                    html += '</div>';
+                    $('#register h2').after(html);
+                }
             }, 
             'json'
         )
@@ -36,6 +41,7 @@ $(function() {
     $('#sendConnectionClient').click(function () {
         // On retire les erreurs qui seraient restées
         $('#errorConnection').remove();
+        
         $.post(
             'models/connectionClient.php',
             {
@@ -43,9 +49,8 @@ $(function() {
                 password: $('#passwordConnection').val()
             }, 
             function(data) {
-                //console.info(data);
-                if (data == 'success'){
-                    window.location.href = './index.php';
+                if (data == 'success') {
+                    window.location.href = '/';
                 } else {
                     var html;
                     html  = '<div class="alert alert-warning" role="alert" id="errorConnection">';
