@@ -223,7 +223,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                        <button type="button" class="btn btn-default closeButton" data-dismiss="modal">Fermer</button>
                     </div>
                 </div>
             </div>

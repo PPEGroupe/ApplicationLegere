@@ -5,6 +5,7 @@ $(function() {
         e.preventDefault();
         // On retire les erreurs qui seraient restées
         $('#errorRegister').remove();
+        $('#successRegister').remove();
         $.post(
             'models/register.php',
             {
