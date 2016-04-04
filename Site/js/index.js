@@ -1,5 +1,7 @@
+var map;
+var marker;
+var latitude, longitude;
 $(function() {
-    InitializeMoreDetails();
     $('.offer').click(function() {
         $('.offer.active').removeClass('active'); // Désélectionne l'ancienne ligne
         $(this).addClass('active'); // Sélectionne la ligne
@@ -18,6 +20,12 @@ $(function() {
         $(this).after(html);
     
         InitializeMoreDetails();
+    });
+    
+    $('#detailsModal').on('shown.bs.modal', function () {
+        $('#displayMap').hide();
+        $('#map').show();
+        InitializeMap();
     });
     
     $('#postulateModal').on('shown.bs.modal', function () {
@@ -60,14 +68,12 @@ $(function() {
 });
 
 function InitializeMoreDetails() {
-    
     $('#moreDetails').click(function () {
         $.post(
             'models/getOfferDetails.php',
             {
                 idOffer : KeepNumber($('.offer.active').attr('id'))
             },
-            
             function (data) {
                 var offer = data['Offer'];
                 var client = data['Client'];
@@ -84,45 +90,37 @@ function InitializeMoreDetails() {
                 $('#detailsModal #jobDescription').html(offer['JobDescription']);
                 $('#detailsModal #profileDescription').html(offer['ProfileDescription']);
                 
-                //supprimer les div map
-                $('#map').remove();
-                //Ajouter les div map dans la div mapContainer.
-                $('#mapContainer').html('<div id="map"></div>');
-                
-                var longitude = parseFloat(offer['Longitude']);
-                var latitude  = parseFloat(offer['Latitude']);
-                
-                console.log(longitude);
-                console.log(latitude);
+                latitude = offer['Latitude'].trim();
+                longitude = offer['Longitude'].trim();
 
-                var latlng = new google.maps.LatLng(latitude, longitude);
-                
-                var options = {
-                    center: latlng,
-                    zoom: 10,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                };
-                
-                
-                
-                var map = new google.maps.Map(document.getElementById("map"), options);
-                 
-                var marqueur = new google.maps.Marker({
-                     position: new google.maps.LatLng(latitude, longitude),
-                     map: map,
-                     
-                });
+                                
+                $('#errorMap').remove();
+                $('#map').hide();
+                if (latitude == '' || longitude == '') {
+                    $('#mapContainer').prepend('<div class="alert alert-warning" role="alert" id="errorMap">Adresse non trouvée</div>');
+                }
                 
                 $('#detailsModal').modal('show');
             },
             'json'
-        )
-        .fail(function (data) {
-            $('#error').remove();
-            $('body').append('<div id="error">' + data['responseText'] + '</div>');
-        });
+        );
     });
 }
 
+function InitializeMap() {
+    var latlng = new google.maps.LatLng(latitude, longitude);
 
+    var options = {
+        center: latlng,
+        zoom: 15,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    map = new google.maps.Map(document.getElementById("map"), options);
+
+    marker = new google.maps.Marker({
+         position: latlng,
+         map: map
+    });
+}
 

@@ -1,15 +1,25 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
+<!DOCTYPE html>
+<html>
     <head>
         <?php require '/views/view-head.php'; ?>
-        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-        <!-- Elément Google Maps indiquant que la carte doit être affiché en plein écran et qu'elle ne peut pas être redimensionnée par l'utilisateur -->
-        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-        
-        <script type="text/javascript" src="http://maps.google.com/maps/api/js?"></script>
-        
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+        <script type="text/javascript">
+            function initialiser() {
+                var latlng = new google.maps.LatLng(48.062252, -0.811476);
+
+                var options = {
+                    center: latlng,
+                    zoom: 13,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+
+                map = new google.maps.Map(document.getElementById("map"), options);
+                
+            }
+        </script>
     </head>
     
-    <body onload="InitializeMoreDetails()">
+    <body onload="initialiser()">
         <?php require '/views/view-header.php'; ?>
         
         <section class="container">
@@ -215,10 +225,8 @@
                                 </p>
                             </div>
                             
-                            <div id="mapContainer"class="col-sm-6" >
-                                
+                            <div id="mapContainer"class="col-sm-6">
                                 <div id="map"></div>
-                                
                             </div>
                         </div>
                     </div>

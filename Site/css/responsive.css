@@ -1,9 +1,7 @@
-@media (max-width: 1000px) {
-	header #icon {
-		width: 130px;
-		height: 130px;
-		margin-left: 41px;
-	}
+@media (max-width: 992px) {
+    #detailsModal .modal-body span {
+        display: block;
+    }
 }
 
 @media (max-width: 768px) {
