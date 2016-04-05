@@ -13,7 +13,7 @@ if (isset($_POST['search']) && !empty($_POST['searchText']))
 }
 else
 {
-    $offerList = $offerManager->GetAll();    
+    $offerList = $offerManager->GetAllFromPublication();    
 }
 
 if (isset($_SESSION['account']))

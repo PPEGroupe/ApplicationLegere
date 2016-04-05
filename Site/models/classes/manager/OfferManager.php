@@ -133,6 +133,25 @@ class OfferManager {
         return (isset($offerList)) ? $offerList : null;
     }
 
+    public function GetAllFromPublication()
+    {
+        $queryString = 'SELECT Identifier, Title, Reference, DateStartPublication, PublicationDuration, JobQuantity, Latitude, Longitude, JobDescription, ProfileDescription, Address, City, ZipCode, IdTypeOfContract, IdJob, IdClient '
+                     . 'FROM Offer '
+                     . 'WHERE DATEDIFF(DAY, DateStartPublication, GETDATE()) <= PublicationDuration';
+        
+        $query = $this->_db->query($queryString);
+
+        while ($data = $query->fetch(PDO::FETCH_ASSOC))
+        {
+            $offer = new Offer();
+            $offer->Initialize($data);
+            $offer->setObjects($this->_db);
+            $offerList[] = $offer;
+        }
+
+        return (isset($offerList)) ? $offerList : null;
+    }
+
     public function GetAllByClient($idClient)
     {
         $queryString = 'SELECT Identifier, Title, Reference, DateStartPublication, PublicationDuration, JobQuantity, Latitude, Longitude, JobDescription, ProfileDescription, Address, City, ZipCode, IdTypeOfContract, IdJob, IdClient '
@@ -181,13 +200,14 @@ class OfferManager {
                      . 'INNER JOIN JobDomain ON JobDomain.Identifier = Job.idJobDomain '
                      . 'INNER JOIN Client ON Client.Identifier = Offer.IdClient '
                      . 'INNER JOIN TypeOfContract ON TypeOfContract.Identifier = Offer.IdTypeOfContract '
-                     . 'WHERE Offer.Title LIKE \'%'. $keyword .'%\' '
+                     . 'WHERE DATEDIFF(DAY, DateStartPublication, GETDATE()) <= PublicationDuration '
+                     . 'AND ( Offer.Title LIKE \'%'. $keyword .'%\' '
                      . 'OR Offer.JobDescription LIKE \'%'. $keyword .'%\' '
                      . 'OR Offer.City LIKE \'%'. $keyword .'%\' '
                      . 'OR Client.Company LIKE \'%'. $keyword .'%\' '
                      . 'OR Job.Label LIKE \'%'. $keyword .'%\' '
                      . 'OR JobDomain.Label LIKE \'%'. $keyword .'%\' '
-                     . 'OR TypeOfContract.Label LIKE \'%'. $keyword .'%\'';
+                     . 'OR TypeOfContract.Label LIKE \'%'. $keyword .'%\' )';
         
         $query = $this->_db->query($queryString);
 
