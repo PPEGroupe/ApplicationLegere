@@ -45,7 +45,7 @@ if (!empty($_POST))
             $client = new Client(); 
             $client->setCompany($company);
             $client->setEmail($email);
-            $client->setPassword($password);
+            $client->setPassword(md5($password));
 
             $clientManager->Add($client);
         }

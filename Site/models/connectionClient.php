@@ -10,19 +10,15 @@ if (!empty($_POST))
     $partnerManager = new PartnerManager($db);
     
     $email    = trim($_POST['email']);
-    $password = trim($_POST['password']);
+    $password = md5(trim($_POST['password']));
     
     if (empty($_POST['email']) || empty($_POST['password']) )
     {
         $error[] = 'Veuillez remplir tous les champs';
     } 
-    if (strlen($email) < 3 ) 
+    else if (strlen($email) < 3 ) 
     {
         $error[] = 'L\'email est invalide.';
-    }
-    else if (strlen($password) < 4)
-    {
-        $error[] = 'Le mot de passe est composé de plus de 4 caractères!';
     }
     else if (preg_match($regexEmail, $email) == 0)
     {
@@ -41,6 +37,7 @@ if (!empty($_POST))
             $error[] = 'Vous n\' êtes pas connu du site, inscrivez-vous :)';
         }
     }
+    
     if (isset($error))
     {
         echo json_encode($error);
