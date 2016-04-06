@@ -1,5 +1,24 @@
 $(function() {
     //----------------------------- Inscription ----------------------------- 
+    $('#openWebUserRegister').click(function () {
+        
+        $('#webUserRegisterModal').modal('show');
+    });
+    
+    $('#openClientRegister').click(function () {
+        
+        $('#clientRegisterModal').modal('show');
+    });
+    
+    $('#openPartnerRegister').click(function () {
+        
+        $('#partnerRegisterModal').modal('show');
+    });
+    
+    
+    
+    
+    
     $('#register').on('submit', function (e) {
         // On empêche le navigateur de soumettre le formulaire
         e.preventDefault();

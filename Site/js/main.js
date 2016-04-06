@@ -15,4 +15,3 @@ function EmptyIfUndefined(str) {
     }
     return str;
 }
-8

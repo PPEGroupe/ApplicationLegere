@@ -168,7 +168,7 @@ table th {
 }
 
 .modal-footer .require {
-	padding-top: 10px;
+	padding-top: 5px;
     margin-bottom: 0;
 	text-align: left;
 }
@@ -190,12 +190,6 @@ table th {
 	display: inline-block;
 	width: 150px;
 	line-height: 25px;
-}
-
-form input[type="submit"],
-form input[type="button"] {
-    width: 180px;
-    height: 35px;
 }
 
 .closeButton {
@@ -260,4 +254,27 @@ form input[type="button"] {
 
 #errorMap {
     text-align: center;
+}
+
+.optionMenu {
+    padding: 0 10px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.optionMenu:first-child {
+    padding: 5px 10px 0 10px;
+}
+
+.optionMenu:last-child {
+    padding: 0 10px 5px 10px;
+}
+
+form .modal-footer {
+    margin: 0px -30px;
+}
+
+form .modal-footer .form-group {
+    padding: 0;
+    padding-right: 15px;
 }
