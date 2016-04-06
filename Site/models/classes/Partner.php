@@ -3,10 +3,11 @@ class Partner {
     // Attributs
     private $_Identifier;
     private $_URL;
-    private $_Email;
-    private $_Password;
+    private $_DateRegister;
+    private $_IsValid;
+    private $_IdAccount;
     
-    // Méthode
+    // Méthodes
     public function Initialize(array $data)
     {
         foreach ($data as $key => $value) 
@@ -20,6 +21,17 @@ class Partner {
         }
     }
     
+    public function ToJson()
+    {
+        return '{"Identifier":'. $this->Identifier(). ', "URL":"'. $this->URL(). '"DateRegister":"'. $this->DateRegister(). '", "IsValid":'. $this->IsValid(). ', "IdAccount":'. $this->IdAccount(). ' }';
+    }
+
+    function Account($db) {
+        $accountManager = new AccountManager($db);
+        
+        return $accountManager->Get($this->IdAccount());
+    }
+    
     // Propriétés
     function Identifier() {
         return $this->_Identifier;
@@ -28,15 +40,18 @@ class Partner {
     function URL() {
         return $this->_URL;
     }
-
-    function Email() {
-        return $this->_Email;
+    function DateRegister() {
+        return $this->_DateRegister;
     }
 
-    function Password() {
-        return $this->_Password;
+    function IsValid() {
+        return $this->_IsValid;
     }
 
+    function IdAccount() {
+        return $this->_IdAccount;
+    }
+    
     function setIdentifier($Identifier) {
         $this->_Identifier = $Identifier;
     }
@@ -45,11 +60,15 @@ class Partner {
         $this->_URL = $URL;
     }
 
-    function setEmail($Email) {
-        $this->_Email = $Email;
+    function setDateRegister($DateRegister) {
+        $this->_DateRegister = $DateRegister;
     }
 
-    function setPassword($Password) {
-        $this->_Password = $Password;
+    function setIsValid($IsValid) {
+        $this->_IsValid = $IsValid;
+    }
+
+    function setIdAccount($IdAccount) {
+        $this->_IdAccount = $IdAccount;
     }
 }

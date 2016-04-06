@@ -15,13 +15,14 @@ class Offer {
     private $_Address;
     private $_City;
     private $_ZipCode;
+    private $_NumberViews;
+    private $_IsDeleted;
     private $_IdTypeOfContract;
     private $_IdJob;
     private $_IdClient;
-    private $_Job;
     private $_TypeOfContract;
+    private $_Job;
     private $_Client;
-    
     
     // Méthodes
     public function Initialize(array $data)
@@ -37,22 +38,29 @@ class Offer {
         }
     }
     
-    public function setObjects($db)
+    public function ToJson()
     {
-        $typeOfContractManager = new TypeOfContractManager($db);
-        $jobManager            = new JobManager($db);
-        $clientManager         = new ClientManager($db);
-        
-        $this->setTypeOfContract($typeOfContractManager->Get($this->IdTypeOfContract()));
-        $this->setJob($jobManager->Get($this->IdJob()));
-        $this->setClient($clientManager->Get($this->IdClient()));
+        return '{"Identifier":'. $this->Identifier(). ', "Title":"'. $this->Title(). '", "Reference":"'. $this->Reference(). '", "DateStartPublication":"'. $this->DateStartPublication(). '", "PublicationDuration":"'. $this->PublicationDuration(). '", "DateStartContract":"'. $this->DateStartContract(). '", "JobQuantity":'. $this->JobQuantity(). ', "Latitude":"'. $this->Latitude(). '", "Longitude":"'. $this->Longitude(). '", "JobDescription":"'. $this->JobDescription(). '", "ProfileDescription":"'. $this->ProfileDescription(). '", "Address":"'. $this->Address(). '", "City":"'. $this->City(). '", "ZipCode":"'. $this->ZipCode().'", "NumberViews":'. $this->NumberViews().', "IsDeleted":'. $this->IsDeleted().', "IdJob":'. $this->IdJob().', "IdTypeOfContract":'. $this->IdTypeOfContract().', "IdClient":'. $this->IdClient().'}';
     }
-    
-	public function ToJson()
-	{
-		return '{"Identifier":'. $this->Identifier(). ', "Title":"'. $this->Title(). '", "Reference":"'. $this->Reference(). '", "DateStartPublication":"'. $this->DateStartPublication(). '", "PublicationDuration":"'. $this->PublicationDuration(). '", "DateStartContract":"'. $this->DateStartContract(). '", "JobQuantity":'. $this->JobQuantity(). ', "Latitude":"'. $this->Latitude(). '", "Longitude":"'. $this->Longitude(). '", "JobDescription":"'. $this->JobDescription(). '", "ProfileDescription":"'. $this->ProfileDescription(). '", "Address":"'. $this->Address(). '", "City":"'. $this->City(). '", "ZipCode":"'. $this->ZipCode().'", "IdJob":'. $this->IdJob().', "IdTypeOfContract":'. $this->IdTypeOfContract().', "IdClient":'. $this->IdClient().'}';
-	}
-    
+
+    function TypeOfContract($db) {
+        $typeOfContractManager = new TypeOfContractManager($db);
+        
+        return $typeOfContractManager->Get($this->IdTypeOfContract());
+    }
+
+    function Job($db) {
+        $jobManager = new JobManager($db);
+        
+        return $jobManager->Get($this->IdJob());
+    }
+
+    function Client($db) {
+        $clientManager = new ClientManager($db);
+        
+        return $clientManager->Get($this->IdClient());
+    }
+
     // Propriétés
     function Identifier() {
         return $this->_Identifier;
@@ -109,6 +117,14 @@ class Offer {
     function ZipCode() {
         return $this->_ZipCode;
     }
+    
+    function NumberViews() {
+        return $this->_NumberViews;
+    }
+
+    function IsDeleted() {
+        return $this->_IsDeleted;
+    }
 
     function IdTypeOfContract() {
         return $this->_IdTypeOfContract;
@@ -121,19 +137,6 @@ class Offer {
     function IdClient() {
         return $this->_IdClient;
     }
-
-    function Job() {
-        return $this->_Job;
-    }
-
-    function TypeOfContract() {
-        return $this->_TypeOfContract;
-    }
-    
-    function Client() {
-        return $this->_Client;
-    }
-    
     
     function setIdentifier($_Identifier) {
         $this->_Identifier = (int)$_Identifier;
@@ -191,6 +194,14 @@ class Offer {
         $this->_ZipCode = $_ZipCode;
     }
 
+    function setNumberViews($NumberViews) {
+        $this->_NumberViews = $NumberViews;
+    }
+
+    function setIsDeleted($IsDeleted) {
+        $this->_IsDeleted = $IsDeleted;
+    }
+
     function setIdTypeOfContract($_IdTypeOfContract) {
         $this->_IdTypeOfContract = (int)$_IdTypeOfContract;
     }
@@ -201,17 +212,5 @@ class Offer {
 
     function setIdClient($_IdClient) {
         $this->_IdClient = (int)$_IdClient;
-    }
-
-    function setJob($_Job) {
-        $this->_Job = $_Job;
-    }
-
-    function setTypeOfContract($_TypeOfContract) {
-        $this->_TypeOfContract = $_TypeOfContract;
-    }
-
-    function setClient($_Client) {
-        $this->_Client = $_Client;
     }
 }

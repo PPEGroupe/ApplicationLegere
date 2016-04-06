@@ -1,10 +1,9 @@
 <?php
-class TypeOfContract {
+class Account {
     // Attributs
     private $_Identifier;
-    private $_Label;
-    private $_IdOffer;
-
+    private $_Email;
+    private $_Password;
     
     // Méthodes
     public function Initialize(array $data)
@@ -22,13 +21,7 @@ class TypeOfContract {
     
     public function ToJson()
     {
-        return '{"Identifier":'. $this->Identifier(). ', "Label":"'. $this->Label(). '"}';
-    }
-
-    function Offer($db) {
-        $offerManager = new OfferManager($db);
-        
-        return $offerManager->Get($this->IdOffer());
+        return '{"Identifier":'. $this->Identifier(). ', "Email":"'. $this->Email(). '"}';
     }
     
     // Propriétés
@@ -36,23 +29,23 @@ class TypeOfContract {
         return $this->_Identifier;
     }
 
-    function Label() {
-        return $this->_Label;
+    function Email() {
+        return $this->_Email;
     }
-    
-    function getIdOffer() {
-        return $this->_IdOffer;
+
+    function Password() {
+        return $this->_Password;
     }
 
     function setIdentifier($Identifier) {
         $this->_Identifier = $Identifier;
     }
 
-    function setLabel($Label) {
-        $this->_Label = $Label;
+    function setEmail($Email) {
+        $this->_Email = $Email;
     }
 
-    function setIdOffer($IdOffer) {
-        $this->_IdOffer = $IdOffer;
+    function setPassword($Password) {
+        $this->_Password = $Password;
     }
 }

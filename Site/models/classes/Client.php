@@ -3,14 +3,13 @@ class Client {
     // Attributs
     private $_Identifier;
     private $_URL;
-    private $_Email;
     private $_PhoneNumber;
     private $_Fax;
     private $_Address;
     private $_City;
     private $_ZipCode;
-    private $_Password;
     private $_Company;
+    private $_IdAccount;
     
     // Méthodes
     public function Initialize(array $data)
@@ -26,10 +25,16 @@ class Client {
         }
     }
     
-	public function ToJson()
-	{
-		return '{"Identifier":'. $this->Identifier(). ', "URL":"'. $this->URL(). '", "Email":"'. $this->Email(). '", "PhoneNumber":"'. $this->PhoneNumber(). '", "Fax":"'. $this->Fax(). '", "Address":"'. $this->Address(). '", "City":"'. $this->City(). '", "ZipCode":"'. $this->ZipCode(). '", "Company":"'. $this->Company(). '"}';
-	}
+    public function ToJson()
+    {
+        return '{"Identifier":'. $this->Identifier(). ', "URL":"'. $this->URL(). '", "PhoneNumber":"'. $this->PhoneNumber(). '", "Fax":"'. $this->Fax(). '", "Address":"'. $this->Address(). '", "City":"'. $this->City(). '", "ZipCode":"'. $this->ZipCode(). '", "Company":"'. $this->Company(). '", "IdAccount":'. $this->IdAccount(). '}';
+    }
+
+    function Account($db) {
+        $accountManager = new AccountManager($db);
+        
+        return $accountManager->Get($this->IdAccount());
+    }
     
     // Propriétés
     function Identifier() {
@@ -38,10 +43,6 @@ class Client {
 
     function URL() {
         return $this->_URL;
-    }
-
-    function Email() {
-        return $this->_Email;
     }
 
     function PhoneNumber() {
@@ -63,13 +64,13 @@ class Client {
     function ZipCode() {
         return $this->_ZipCode;
     }
-    
-    function Password() {
-        return $this->_Password;
-    }
 
     function Company() {
         return $this->_Company;
+    }
+
+    function IdAccount() {
+        return $this->_IdAccount;
     }
 
     function setIdentifier($_Identifier) {
@@ -78,10 +79,6 @@ class Client {
 
     function setURL($_URL) {
         $this->_URL = $_URL;
-    }
-
-    function setEmail($_Email) {
-        $this->_Email = $_Email;
     }
 
     function setPhoneNumber($_PhoneNumber) {
@@ -103,12 +100,12 @@ class Client {
     function setZipCode($_ZipCode) {
         $this->_ZipCode = $_ZipCode;
     }
-    
-    function setPassword($_Password) {
-        $this->_Password = $_Password;
-    }
 
     function setCompany($_Company) {
         $this->_Company = $_Company;
+    }
+
+    function setIdAccount($IdAccount) {
+        $this->_IdAccount = $IdAccount;
     }
 }

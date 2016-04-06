@@ -4,7 +4,6 @@ class Job {
     private $_Identifier;
     private $_Label;
     private $_IdJobDomain;
-    private $_JobDomain;
     
     // Méthodes
     public function Initialize(array $data)
@@ -20,17 +19,16 @@ class Job {
         }
     }
     
-    public function setObjects($db)
+    public function ToJson()
     {
-        $jobDomainManager = new JobDomainManager($db);
-        
-        $this->setJobDomain($jobDomainManager->Get($this->IdJobDomain()));
+        return '{"Identifier":'. $this->Identifier(). ', "Label":"'. $this->Label(). '", "IdJobDomain":'. $this->IdJobDomain(). '}';
     }
     
-	public function ToJson()
-	{
-		return '{"Identifier":'. $this->Identifier(). ', "Label":"'. $this->Label(). '", "IdJobDomain":'. $this->IdJobDomain(). '}';
-	}
+    function JobDomain($db) {
+        $jobDomainManager = new JobDomainManager($db);
+        
+        return $jobDomainManager->Get($this->IdJobDomain());
+    }
     
     // Propriétés
     function Identifier() {
@@ -45,10 +43,6 @@ class Job {
         return $this->_IdJobDomain;
     }
 
-    function JobDomain() {
-        return $this->_JobDomain;
-    }
-
     function setIdentifier($_Identifier) {
         $this->_Identifier = $_Identifier;
     }
@@ -59,9 +53,5 @@ class Job {
 
     function setIdJobDomain($_IdJobDomain) {
         $this->_IdJobDomain = $_IdJobDomain;
-    }
-
-    function setJobDomain($_JobDomain) {
-        $this->_JobDomain = $_JobDomain;
     }
 }

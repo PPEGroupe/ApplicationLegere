@@ -18,19 +18,20 @@ class ClientManager {
     // Méthodes	
     public function Add(Client $client)
     {
-        $queryString = 'INSERT INTO Client (URL, Email, PhoneNumber, Fax, Address, City ,ZipCode, Company, Password) VALUES '
-                     . '(:URL, :Email, :PhoneNumber, :Fax, :Address, :City, :ZipCode, :Company, :Password)';
+        $queryString = 'INSERT INTO Client (URL, PhoneNumber, Fax, Address, City ,ZipCode, Company, DateRegister, IsValid, IdAccount) VALUES '
+                     . '(:URL, :PhoneNumber, :Fax, :Address, :City, :ZipCode, :Company, :DateRegister, :IsValid, :IdAccount)';
         
         $query = $this->_db->prepare($queryString);
         $query->bindValue(':URL',           $client->URL());
-        $query->bindValue(':Email',         $client->Email());
         $query->bindValue(':PhoneNumber',   $client->PhoneNumber());
         $query->bindValue(':Fax',           $client->Fax());
         $query->bindValue(':Address',       $client->Address());
         $query->bindValue(':City',          $client->City());
         $query->bindValue(':ZipCode',       $client->ZipCode());
         $query->bindValue(':Company',       $client->Company());
-        $query->bindValue(':Password',      $client->Password());
+        $query->bindValue(':DateRegister',  $client->DateRegister());
+        $query->bindValue(':IsValid',       $client->IsValid());
+        $query->bindValue(':IdAccount',     $client->IdAccount());
 
         $query->execute();
     }
@@ -47,44 +48,36 @@ class ClientManager {
     {
         $queryString = 'UPDATE Client SET '
                      . 'URL = :URL, '
-                     . 'Email = :Email, '
                      . 'PhoneNumber = :PhoneNumber, '
                      . 'Fax = :Fax, '
                      . 'Address = :Address, '
                      . 'City = :City, '
                      . 'ZipCode = :ZipCode, '
-                     . 'Company = :Company '
+                     . 'Company = :Company, '
+                     . 'DateRegister = :DateRegister, '
+                     . 'IsValid = :IsValid, '
+                     . 'IdAccount = :IdAccount '
                      . 'WHERE Identifier = :Identifier';
         
         $query = $this->_db->prepare($queryString);
         $query->bindValue(':URL',           $client->URL());
-        $query->bindValue(':Email',         $client->Email());
         $query->bindValue(':PhoneNumber',   $client->PhoneNumber());
         $query->bindValue(':Fax',           $client->Fax());
         $query->bindValue(':Address',       $client->Address());
         $query->bindValue(':City',          $client->City());
         $query->bindValue(':ZipCode',       $client->ZipCode());
         $query->bindValue(':Company',       $client->Company());
+        $query->bindValue(':DateRegister',  $client->DateRegister());
+        $query->bindValue(':IsValid',       $client->IsValid());
+        $query->bindValue(':IdAccount',     $client->IdAccount());
         $query->bindValue(':Identifier',    $client->Identifier());
 
-        $query->execute();
-    }
-    
-    public function UpdatePassword(Client $client)
-    {
-        $queryString = 'UPDATE Client SET '
-                     . 'Password = :Password '
-                     . 'WHERE Identifier = :Identifier';
-        
-        $query = $this->_db->prepare($queryString);
-        $query->bindValue(':Identifier', $client->Identifier());
-        $query->bindValue(':Password',   $client->Password());
         $query->execute();
     }
 
     public function Get($identifier)
     {
-        $queryString = 'SELECT Identifier, URL, Email, PhoneNumber, Fax, Address, City, ZipCode, Company, Password '
+        $queryString = 'SELECT Identifier, URL, PhoneNumber, Fax, Address, City ,ZipCode, Company, DateRegister, IsValid, IdAccount '
                      . 'FROM Client '
                      . 'WHERE Identifier = :Identifier';
         
@@ -111,7 +104,7 @@ class ClientManager {
     {
         // lazy loading / lazy load
         // injection de dépendance // container 
-        $queryString = 'SELECT Identifier, URL, Email, PhoneNumber, Fax, Address, City, ZipCode, Company, Password '
+        $queryString = 'SELECT Identifier, URL, PhoneNumber, Fax, Address, City ,ZipCode, Company, DateRegister, IsValid, IdAccount '
                      . 'FROM Client';
         
         $query = $this->_db->query($queryString);
@@ -128,17 +121,15 @@ class ClientManager {
         return (isset($clientList)) ? $clientList : null;
     }
     
-    public function GetAccount($email, $password)
+    public function GetByAccount($idAccount)
     {
-        $queryString = 'SELECT Identifier, URL, Email, PhoneNumber, Fax, Address, City, ZipCode, Company, Password '
+        $queryString = 'SELECT Identifier, URL, PhoneNumber, Fax, Address, City ,ZipCode, Company, DateRegister, IsValid, IdAccount '
                      . 'FROM Client '
-                     . 'WHERE Email = :Email '
-                     . 'AND Password = :Password';
+                     . 'WHERE IdAccount = :IdAccount';
         
         $query = $this->_db->prepare($queryString);
         
-        $query->bindValue(':Email',     $email);
-        $query->bindValue(':Password',  $password);
+        $query->bindValue(':IdAccount', $idAccount);
         
         $query->execute();
         $data = $query->fetch(PDO::FETCH_ASSOC);
@@ -155,15 +146,15 @@ class ClientManager {
         }
     }
     
-    public function Exist($email)
+    public function CompanyExists($company)
     {
         $queryString = 'SELECT Identifier '
                      . 'FROM Client '
-                     . 'WHERE Email = :Email';
+                     . 'WHERE Company = :Company';
         
         $query = $this->_db->prepare($queryString);
         
-        $query->bindValue(':Email', $email);
+        $query->bindValue(':Company', $company);
         
         $query->execute();
         

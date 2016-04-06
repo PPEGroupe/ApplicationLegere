@@ -1,5 +1,5 @@
 <?php
-class Post {
+class WebUser {
     // Attributs
     private $_Identifier;
     private $_Firstname;
@@ -9,11 +9,8 @@ class Post {
     private $_Address;
     private $_City;
     private $_ZipCode;
-    private $_DatePost;
-    private $_Letter;
-    private $_CV;
-    private $_IdOffer;
-    private $_IdWebUser;
+    private $_DateRegister;
+    private $_IdAccount;
     
     // Méthodes
     public function Initialize(array $data)
@@ -28,22 +25,16 @@ class Post {
             }
         }
     }
-
-    function Offer($db) {
-        $offerManager = new OfferManager($db);
-        
-        return $offerManager->Get($this->IdOffer());
-    }
-
-    function WebUser($db) {
-        $webUserManager = new WebUserManager($db);
-        
-        return $webUserManager->Get($this->IdWebUser());
-    }
     
     public function ToJson()
     {
         return '{"Identifier":'. $this->Identifier(). ', "Firstname":"'. $this->Firstname(). '", "Lastname":"'. $this->Lastname(). '", "Email":"'. $this->Email(). '", "PhoneNumber":"'. $this->PhoneNumber(). '", "Address":"'. $this->Address(). '", "City":"'. $this->City(). '", "ZipCode":"'. $this->ZipCode(). '", "DatePost":"'. $this->DatePost(). '", "Letter":"'. $this->Letter(). '", "CV":"'. $this->CV(). '", "IdOffer":'. $this->IdOffer(). '}';
+    }
+
+    function Account($db) {
+        $accountManager = new AccountManager($db);
+        
+        return $accountManager->Get($this->IdAccount());
     }
     
     // Propriétés
@@ -94,9 +85,6 @@ class Post {
     function IdOffer() {
         return $this->_IdOffer;
     }
-    function IdWebUser() {
-        return $this->_IdWebUser;
-    }
 
     function setIdentifier($Identifier) {
         $this->_Identifier = $Identifier;
@@ -145,8 +133,12 @@ class Post {
     function setIdOffer($IdOffer) {
         $this->_IdOffer = $IdOffer;
     }
+    
+    function setDateRegister($DateRegister) {
+        $this->_DateRegister = $DateRegister;
+    }
 
-    function setIdWebUser($IdWebUser) {
-        $this->_IdWebUser = $IdWebUser;
+    function setIdAccount($IdAccount) {
+        $this->_IdAccount = $IdAccount;
     }
 }

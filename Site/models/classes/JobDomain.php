@@ -3,7 +3,6 @@ class JobDomain {
     // Attributs
     private $_Identifier;
     private $_Label;
-    private $_Job;
     private $_IdJob;
     
     // Méthode
@@ -20,10 +19,16 @@ class JobDomain {
         }
     }
     
-	public function ToJson()
-	{
-		return '{"Identifier":'. $this->Identifier(). ', "Label":"'. $this->Label(). '", "IdJob":'. $this->IdJob(). '}';
-	}
+    public function ToJson()
+    {
+        return '{"Identifier":'. $this->Identifier(). ', "Label":"'. $this->Label(). '", "IdJob":'. $this->IdJob(). '}';
+    }
+    
+    function Job($db) {
+        $jobManager = new JobManager($db);
+        
+        return $jobManager->Get($this->IdJob());
+    }
     
     // Propriétés
     function Identifier() {
@@ -32,10 +37,6 @@ class JobDomain {
 
     function Label() {
         return $this->_Label;
-    }
-
-    function Job() {
-        return $this->_Job;
     }
 
     function IdJob() {
@@ -48,10 +49,6 @@ class JobDomain {
 
     function setLabel($Label) {
         $this->_Label = $Label;
-    }
-
-    function setJob($Job) {
-        $this->_Job = $Job;
     }
     
     function setIdJob($IdJob) {
