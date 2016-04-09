@@ -1,3 +1,41 @@
+$(function () {
+    $('#changeToClient').click(function () {
+        $.post(
+            'models/changeAccount.php',
+            {
+                target : 'client'
+            },
+            function () {
+                location.reload();
+            }
+        )
+    });
+    
+    $('#changeToPartner').click(function () {
+        $.post(
+            'models/changeAccount.php',
+            {
+                target : 'partner'
+            },
+            function () {
+                location.reload();
+            }
+        )
+    });
+    
+    $('#changeToWebUser').click(function () {
+        $.post(
+            'models/changeAccount.php',
+            {
+                target : 'webUser'
+            },
+            function () {
+                location.reload();
+            }
+        )
+    });
+})
+
 // Fonction supprimant les lettre d'une chaine (utilisée pour garder l'identifiant d'un id)
 function KeepNumber(str) {
     var again = /[a-zA-Z]/.test(str);

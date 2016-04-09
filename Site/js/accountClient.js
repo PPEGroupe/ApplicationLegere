@@ -40,11 +40,9 @@ $(function(){
     });
     
     $('#passwordModal form').on('submit', function (e) {
-        
         $.post(
             'models/updatePasswordClient.php',
             {
-                
                 oldPassword:            $('#oldPassword').val(),
                 newPassword:            $('#newPassword').val(),
                 passwordConfirmation:   $('#passwordConfirmation').val()

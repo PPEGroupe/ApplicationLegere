@@ -16,11 +16,15 @@ else
     $offerList = $offerManager->GetAllFromPublication();    
 }
 
-if (isset($_SESSION['account']))
+if (isset($_SESSION['client']))
 {
-    $client = $_SESSION['account'];
+    $client = $_SESSION['client'];
     $numberOfferClient = $offerManager->CountByClient($client->Identifier());
 }
-
+else if (isset($_SESSION['webUser']))
+{
+    $postManager = new PostManager($db);
+    $numberPostWebUser = $postManager->CountByWebUser($webUser->Identifier());
+}
 
 require '/views/view-index.php';

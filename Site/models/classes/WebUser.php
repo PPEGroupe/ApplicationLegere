@@ -4,7 +4,6 @@ class WebUser {
     private $_Identifier;
     private $_Firstname;
     private $_Lastname;
-    private $_Email;
     private $_PhoneNumber;
     private $_Address;
     private $_City;
@@ -50,10 +49,6 @@ class WebUser {
         return $this->_Lastname;
     }
 
-    function Email() {
-        return $this->_Email;
-    }
-
     function PhoneNumber() {
         return $this->_PhoneNumber;
     }
@@ -85,6 +80,10 @@ class WebUser {
     function IdOffer() {
         return $this->_IdOffer;
     }
+    
+    function DateRegister() {
+        return $this->_DateRegister;
+    }
 
     function setIdentifier($Identifier) {
         $this->_Identifier = $Identifier;
@@ -96,10 +95,6 @@ class WebUser {
 
     function setLastname($Lastname) {
         $this->_Lastname = $Lastname;
-    }
-
-    function setEmail($Email) {
-        $this->_Email = $Email;
     }
 
     function setPhoneNumber($PhoneNumber) {

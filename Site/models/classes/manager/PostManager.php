@@ -156,4 +156,22 @@ class PostManager {
 
         return null;
     }
+    
+	public function CountByWebUser($idWebUser)
+    {
+        $queryString = 'SELECT COUNT(Identifier) AS Number '
+                     . 'FROM Post '
+                     . 'WHERE IdWebUser = :IdWebUser';
+        
+        $query = $this->_db->prepare($queryString);
+        $query->bindValue(':IdWebUser', $idWebUser);
+        $query->execute();
+
+        if ($data = $query->fetch(PDO::FETCH_ASSOC))
+        {
+			return $data['Number'];
+        }
+
+        return null;
+    }
 }
