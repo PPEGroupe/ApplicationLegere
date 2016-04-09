@@ -9,11 +9,11 @@ if (!empty($_POST))
 {
     if (isset($_SESSION['account']))
     {
-        $clientManager = new ClientManager($db);
+        $accountManager = new AccountManager($db);
         
         
-        $client = $clientManager->Get($_SESSION['account']->Identifier());
-        $client->Initialize($_POST);
+        $account = $accountManager->Get($_SESSION['account']->Identifier());
+        $account->Initialize($_POST);
         
         $company              = trim($_POST['company']);
         $email                = trim($_POST['email']);
@@ -44,18 +44,18 @@ if (!empty($_POST))
         if (!isset($error))
         {
             
-            $client->setCompany($company);
-            $client->setIdentifier($_SESSION['account']->Identifier());
-            $client->setEmail($email);
-            $client->setPhoneNumber($phoneNumber);
-            $client->setFax($fax);
-            $client->setUrl($url);
-            $client->setAddress($address);
-            $client->setCity($city);
-            $client->setZipCode($zipCode);
+            $account->setCompany($company);
+            $account->setIdentifier($_SESSION['account']->Identifier());
+            $account->setEmail($email);
+            $account->setPhoneNumber($phoneNumber);
+            $account->setFax($fax);
+            $account->setUrl($url);
+            $account->setAddress($address);
+            $account->setCity($city);
+            $account->setZipCode($zipCode);
             
-            $clientManager->Update($client);
-            $_SESSION['account'] = $client;
+            $accountManager->Update($account);
+            $_SESSION['account'] = $account;
             
             echo json_encode('success');
             //header("Refresh:0; url=account.php");  // à supprimer apres la résolution de prob (lien entre account.js et account.php "Notify") RB.

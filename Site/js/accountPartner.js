@@ -1,7 +1,8 @@
+// Vérifie et enregistre les changements
 $(function(){
 	$('#informationModal form').on('submit', function (e) {
         $.post(
-            'models/updateAccountPartner.php',
+            'models/updateAccount.php',
             {
                 email:         $('#email').val(),
                 url:           $('#url').val()
@@ -31,10 +32,11 @@ $(function(){
         return false;
     });
     
+    //Vérifie le changement de mot de passe 
     $('#passwordModal form').on('submit', function (e) {
         
         $.post(
-            'models/updatePasswordPartner.php',
+            'models/updatePassword.php',
             {
                 
                 oldPassword:            $('#oldPassword').val(),
