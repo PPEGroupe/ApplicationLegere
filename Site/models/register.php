@@ -14,6 +14,7 @@ if (!empty($_POST))
     else
     {
         $clientManager        = new ClientManager($db);
+        
         $company              = trim($_POST['company']);
         $email                = trim($_POST['email']);
         $password             = trim($_POST['password']);

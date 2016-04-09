@@ -2,7 +2,7 @@
 $(function(){
 	$('#informationModal form').on('submit', function (e) {
         $.post(
-            'models/updateAccount.php',
+            'models/updateAccountClient.php',
             {
                 company:       $('#company').val(),
                 email:         $('#email').val(),
@@ -27,8 +27,8 @@ $(function(){
                     $('#zipCodeValue').html($('#zipCode').val());
                 } else {
                     $.each(data.reverse(), function(key, value) {
-						$.notify(value, {globalPosition: 'bottom right',  className: 'error'});
-					});
+			$.notify(value, {globalPosition: 'bottom right',  className: 'error'});
+                    });
                 }
             },
             'json'
@@ -43,7 +43,7 @@ $(function(){
     //Vérifie le changement de mot de passe 
     $('#passwordModal form').on('submit', function (e) {
         $.post(
-            'models/updatePassword.php',
+            'models/updatePasswordClient.php',
             {
                 oldPassword:            $('#oldPassword').val(),
                 newPassword:            $('#newPassword').val(),
@@ -60,8 +60,8 @@ $(function(){
                 } else {
                     console.log('else');
                     $.each(data.reverse(), function(key, value) {
-						$.notify(value, {globalPosition: 'bottom right',  className: 'error'});
-					});
+			$.notify(value, {globalPosition: 'bottom right',  className: 'error'});
+                    });
                 }
             },
             'json'
@@ -71,9 +71,6 @@ $(function(){
         }); 
         return false;
     });
-    
-    
-   
 });
 
 

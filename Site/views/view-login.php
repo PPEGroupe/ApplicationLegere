@@ -7,6 +7,7 @@
 
 <body>
     <?php require '/views/view-header.php'; ?>
+    <!-- -------------------------------------------------------------- ### Connexion ### ---------------------------------------------------------- -->
         <section class="container">
             <div class="row">
                 <div class="col-sm-offset-3 col-sm-6">
@@ -39,7 +40,9 @@
                 </div>
             </div>
         </section>
+        <!-- -------------------------------------------------------------- ### Modales ### ---------------------------------------------------------- -->
         
+        <!-- --------------------------------------------------------------- ## WebUser ## -------------------------------------------------------- -->
         <div class="modal fade" id="webUserRegisterModal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -63,7 +66,7 @@
                             <div class="modal-footer">
                                 <div class="form-group">
                                     <div class="col-sm-6">
-										<p class="require">* Champ obligatoire</p>
+					<p class="require">* Champ obligatoire</p>
                                     </div>
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
                                     <input type="submit" class="btn btn-warning" id="sendWebUser" value="S'inscrire" />
@@ -74,7 +77,7 @@
                 </div>
             </div>
         </div>
-        
+        <!-- --------------------------------------------------------------- ## Client ## -------------------------------------------------------- -->
         <div class="modal fade" id="clientRegisterModal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -113,7 +116,7 @@
                 </div>
             </div>
         </div>
-        
+        <!-- --------------------------------------------------------------- ## Partner ## -------------------------------------------------------- -->
         <div class="modal fade" id="partnerRegisterModal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
