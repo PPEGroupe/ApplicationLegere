@@ -99,7 +99,6 @@ class AccountManager {
         {
             $account = new Account();
             $account->Initialize($data);
-            $account->SetObject($this->_db);
             $accountList[] = $account;
         }
 

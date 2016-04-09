@@ -122,6 +122,26 @@ class PostManager {
         return (isset($postList)) ? $postList : null;
     }
 
+    public function GetAllByWebUser($idWebUser)
+    {
+        $queryString = 'SELECT Identifier, Firstname, Lastname, Email, PhoneNumber, Address, City, ZipCode, DatePost, Letter, CV, IdOffer '
+                     . 'FROM Post '
+                     . 'WHERE IdWebUser = :IdWebUser';
+        
+        $query = $this->_db->prepare($queryString);
+        $query->bindValue(':IdWebUser', $idWebUser);
+        $query->execute();
+
+        while ($data = $query->fetch(PDO::FETCH_ASSOC))
+        {
+            $post = new Post();
+            $post->Initialize($data);
+            $postList[] = $post;
+        }
+
+        return (isset($postList)) ? $postList : null;
+    }
+
     public function GetAll()
     {
         $queryString = 'SELECT Identifier, Firstname, Lastname, Email, PhoneNumber, Address, City, ZipCode, DatePost Letter, CV, IdOffer '

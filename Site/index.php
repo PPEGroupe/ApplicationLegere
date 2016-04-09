@@ -21,9 +21,10 @@ if (isset($_SESSION['client']))
     $client = $_SESSION['client'];
     $numberOfferClient = $offerManager->CountByClient($client->Identifier());
 }
-else if (isset($_SESSION['webUser']))
+if (isset($_SESSION['webUser']))
 {
     $postManager = new PostManager($db);
+    $webUser = $_SESSION['webUser'];
     $numberPostWebUser = $postManager->CountByWebUser($webUser->Identifier());
 }
 
