@@ -1,3 +1,9 @@
+@media (min-width: 768px) {
+    #menu #responsiveMenu .dropdown-menu .optionMenu {
+        padding: 5px 10px;
+    }
+}
+
 @media (max-width: 992px) {
     #detailsModal .modal-body span {
         display: block;
@@ -5,6 +11,10 @@
 }
 
 @media (max-width: 768px) {
+    body {
+        padding-top: 120px;
+    }
+    
     #icon {
         width: 100px;
         height: 100px;
@@ -45,5 +55,9 @@
     #menu #responsiveMenu .dropdown-menu a,
     #menu #responsiveMenu .dropdown-menu .action {
         padding: 10px 0;
+    }
+    
+    #menu #responsiveMenu .dropdown-menu .action {
+        color: #777;
     }
 }

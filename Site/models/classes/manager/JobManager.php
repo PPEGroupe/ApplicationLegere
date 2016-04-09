@@ -67,7 +67,6 @@ class JobManager {
         {
             $job = new Job();
             $job->Initialize($data);
-            $job->setObjects($this->_db);
             return $job;
         }
         else
@@ -87,7 +86,6 @@ class JobManager {
         {
             $job = new Job();
             $job->Initialize($data);
-            $job->setObjects($this->_db);
             $jobList[] = $job;
         }
 

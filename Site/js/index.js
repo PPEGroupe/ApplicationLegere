@@ -103,7 +103,9 @@ function InitializeMoreDetails() {
                 $('#detailsModal').modal('show');
             },
             'json'
-        );
+        ).fail(function(data) {
+            console.log(data['responseText']);
+        });
     });
 }
 

@@ -106,7 +106,6 @@ class OfferManager {
         {
             $offer = new Offer();
             $offer->Initialize($data);
-            $offer->setObjects($this->_db);
             return $offer;
         }
         else
@@ -126,7 +125,6 @@ class OfferManager {
         {
             $offer = new Offer();
             $offer->Initialize($data);
-            $offer->setObjects($this->_db);
             $offerList[] = $offer;
         }
 
@@ -145,7 +143,6 @@ class OfferManager {
         {
             $offer = new Offer();
             $offer->Initialize($data);
-            $offer->setObjects($this->_db);
             $offerList[] = $offer;
         }
 
@@ -166,7 +163,6 @@ class OfferManager {
         {
             $offer = new Offer();
             $offer->Initialize($data);
-            $offer->setObjects($this->_db);
             $offerList[] = $offer;
         }
 
@@ -215,7 +211,6 @@ class OfferManager {
         {
             $offer = new Offer();
             $offer->Initialize($data);
-            $offer->setObjects($this->_db);
             $offerList[] = $offer;
         }
         

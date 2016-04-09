@@ -114,7 +114,6 @@ class ClientManager {
         {
             $client = new Client();
             $client->Initialize($data);
-            $client->SetObject($this->_db);
             $clientList[] = $client;
         }
 

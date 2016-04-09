@@ -70,7 +70,6 @@ class PackManager {
         {
             $pack = new Pack();
             $pack->Initialize($data);
-            $pack->setObjects($this->_db);
             return $pack;
         }
         else
@@ -90,7 +89,6 @@ class PackManager {
         {
             $pack = new Pack();
             $pack->Initialize($data);
-            $pack->setObjects($this->_db);
             $packList[] = $pack;
         }
 

@@ -61,11 +61,11 @@
                                     <td><?php echo $offer->Reference(); ?></td>
                                     <td><?php echo $offer->Title(); ?></td>
                                     <td><?php echo $offer->City(); ?></td>
-                                    <td><?php echo $offer->TypeOfContract()->Label(); ?></td>
+                                    <td><?php echo $offer->TypeOfContract($db)->Label(); ?></td>
                                     <td><?php echo $offer->JobQuantity(); ?></td>
-                                    <td><?php echo $offer->Client()->Company(); ?></td>
-                                    <td><?php echo $offer->Job()->Label(); ?></td>
-                                    <td><?php echo $offer->Job()->JobDomain()->Label(); ?></td>
+                                    <td><?php echo $offer->Client($db)->Company(); ?></td>
+                                    <td><?php echo $offer->Job($db)->Label(); ?></td>
+                                    <td><?php echo $offer->Job($db)->JobDomain($db)->Label(); ?></td>
                                 </tr>
 <?php                           if (isset($_GET['offer']) && $_GET['offer'] == $offer->Identifier())
                                 { ?>
