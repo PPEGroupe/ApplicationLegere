@@ -33,7 +33,14 @@
                     <li><a <?php Selected('account'); ?> href="account.php">Mon compte</a></li>
                     <li><a <?php Selected('logout');  ?> href="logout.php">Déconnexion</a></li>
                 </ul>
-<?php		     }
+<?php		    }  
+                else
+                { ?>
+                <ul class="nav navbar-nav">
+                    <li><a <?php Selected('index'); ?> href="/">Accueil</a></li>
+                    <li><a <?php Selected('login'); ?> href="login.php">Se connecter ou s'inscrire</a></li>
+                </ul>
+<?php		   }
             }
 			else
 			{ ?>

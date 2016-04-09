@@ -6,8 +6,7 @@ $regexEmail           = '#^[\w.-]+@[\w.-]+\.[a-z]{2,6}$#i';
 //----------------------------------- Tests Connexion -----------------------------------
 if (!empty($_POST))
 {
-    $clientManager  = new ClientManager($db);
-    $partnerManager = new PartnerManager($db);
+    $accountManager  = new accountManager($db);
     
     $email    = trim($_POST['email']);
     $password = md5(trim($_POST['password']));
@@ -26,11 +25,11 @@ if (!empty($_POST))
     }
     else
     {
-        $client = $clientManager->GetAccount($email, $password);
+        $account = $accountManager->GetAccount($email, $password);
 
-        if ($client != null)
+        if ($account != null)
         {
-            $_SESSION['account'] = $client;
+            $_SESSION['account'] = $account;
         }
         else
         {
