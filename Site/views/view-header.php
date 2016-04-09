@@ -14,33 +14,78 @@
         </div>
         
         <div class="collapse navbar-collapse" id="responsiveMenu">
-<?php		if (isset($_SESSION['account']))
-			{ 
-                if (get_class($_SESSION['account']) == 'Client')
+<?php		if (isset($_SESSION['account']) && isset($_SESSION['connected']))
+			{
+                if ($_SESSION['connected'] == 'client')
                 { ?>
-                <p id="account"><?php echo $_SESSION['account']->Company(); ?></p>
+                <p id="account"><?php echo $_SESSION['client']->Company(); ?></p>
                 <ul class="nav navbar-nav">
-                    <li><a <?php Selected('index');   ?> href="/">Accueil</a></li>
-                    <li><a <?php Selected('account'); ?> href="account.php">Mon compte</a></li>
+                    <li><a href="/" <?php Selected('index');   ?> href="/">Accueil</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="<?php SelectedWithoutClass('account'); ?>dropdown-toggle" data-toggle="dropdown">Mon compte <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="account.php" tabindex="-1" class="optionMenu">Mon compte</a></li>
+                            <li role="separator" class="divider"></li>
+<?php		                if (isset($_SESSION['partner']) && $_SESSION['partner'] != null) 
+                            { ?>
+                                <li id="changeToParter" class="action optionMenu">Se connecter en tant que partenaire</li>
+<?php		                }
+                            if (isset($_SESSION['webUser']) && $_SESSION['webUser'] != null) 
+                            { ?>
+                                <li id="changeToWebUser" class="action optionMenu">Se connecter en tant qu'utilisateur</li>
+<?php		                } ?>
+                        </ul>
+                    </li>
                     <li><a <?php Selected('offers');  ?> href="offers.php">Mes offres <span class="label label-warning"><?php echo $numberOfferClient; ?></span></a></li>
                     <li><a <?php Selected('logout');  ?> href="logout.php">Déconnexion</a></li>
                 </ul>
-<?php		     }
-			     else if(get_class($_SESSION['account']) == 'Partner')
-			     { ?>
+<?php		    }
+			    else if ($_SESSION['connected'] == 'partner')
+			    { ?>
                 <ul class="nav navbar-nav">
                     <li><a <?php Selected('index');   ?> href="/">Accueil</a></li>
-                    <li><a <?php Selected('account'); ?> href="account.php">Mon compte</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="<?php SelectedWithoutClass('account'); ?>dropdown-toggle" data-toggle="dropdown">Mon compte <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a tabindex="-1">Mon compte</a></li>
+                            <li role="separator" class="divider"></li>
+<?php		                if (isset($_SESSION['partner']) && $_SESSION['client'] != null) 
+                            { ?>
+                                <li id="changeToClient" class="action optionMenu">Se connecter en tant qu'entreprise</li>
+<?php		                }
+                            if (isset($_SESSION['webUser']) && $_SESSION['webUser'] != null) 
+                            { ?>
+                                <li id="changeToWebUser" class="action optionMenu">Se connecter en tant qu'utilisateur</li>
+<?php		                } ?>
+                        </ul>
+                    </li>
                     <li><a <?php Selected('logout');  ?> href="logout.php">Déconnexion</a></li>
                 </ul>
 <?php		    }  
-                else
+                else if ($_SESSION['connected'] == 'webUser')
                 { ?>
+                <p id="account"><?php echo $_SESSION['webUser']->Firstname(), ' ', $_SESSION['webUser']->Lastname(); ?></p>
                 <ul class="nav navbar-nav">
-                    <li><a <?php Selected('index'); ?> href="/">Accueil</a></li>
-                    <li><a <?php Selected('login'); ?> href="login.php">Se connecter ou s'inscrire</a></li>
+                    <li><a href="/" <?php Selected('index');   ?> href="/">Accueil</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="<?php SelectedWithoutClass('account'); ?>dropdown-toggle" data-toggle="dropdown">Mon compte <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="account.php" tabindex="-1" class="optionMenu">Mon compte</a></li>
+                            <li role="separator" class="divider"></li>
+<?php		                if (isset($_SESSION['client']) && $_SESSION['client'] != null) 
+                            { ?>
+                                <li id="changeToClient" class="action optionMenu">Se connecter en tant qu'entreprise</li>
+<?php		                }
+                            if (isset($_SESSION['partner']) && $_SESSION['partner'] != null) 
+                            { ?>
+                                <li id="changeToParter" class="action optionMenu">Se connecter en tant que partenaire</li>
+<?php		                } ?>
+                        </ul>
+                    </li>
+                    <li><a <?php Selected('posts');  ?> href="posts.php">Mes candidatures <span class="label label-warning"><?php echo $numberPostWebUser; ?></span></a></li>
+                    <li><a <?php Selected('logout');  ?> href="logout.php">Déconnexion</a></li>
                 </ul>
-<?php		   }
+<?php		    }
             }
 			else
 			{ ?>
@@ -52,3 +97,4 @@
         </div>
     </div>
 </nav>
+<?php //var_dump($_SESSION); ?>

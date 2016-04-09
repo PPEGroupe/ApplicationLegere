@@ -2,19 +2,28 @@
 require '/models/ClassesLoader.php';
 require '/models/page.php';
 
-if (isset($_SESSION['account']))
+if (isset($_SESSION['connected']))
 {
-    $offerManager = new OfferManager($db);
-    $client = $_SESSION['account'];
-    $numberOfferClient = $offerManager->CountByClient($client->Identifier());
+    $account = $_SESSION['account'];
     
-    if (get_class($_SESSION['account']) == 'Client')
+    if ($_SESSION['connected'] == 'client')
     {
+        $offerManager = new OfferManager($db);
+        $client = $_SESSION['client'];
+        $numberOfferClient = $offerManager->CountByClient($client->Identifier());
         require '/views/view-accountClient.php';
     }
-    else
+    else if ($_SESSION['connected'] == 'partner')
     {
+        $parter = $_SESSION['partner'];
         require '/views/view-accountPartner.php';
+    }
+    else if ($_SESSION['connected'] == 'webUser')
+    {
+        $postManager = new PostManager($db);
+        $webUser = $_SESSION['webUser'];
+        $numberPostWebUser = $postManager->CountByWebUser($webUser->Identifier());
+        require '/views/view-accountWebUser.php';
     }
 }
 else

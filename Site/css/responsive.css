@@ -29,9 +29,21 @@
     
     #menu #responsiveMenu ul,
     #menu #responsiveMenu p {
-        display: block;
         width: 100%;
         padding: 0;
         text-align: center;
+    }
+    
+    #menu #responsiveMenu .dropdown-menu {
+        background: #FEFEFE;
+    }
+    
+    #menu #responsiveMenu .dropdown-menu .divider {
+        margin: 0;
+    }
+    
+    #menu #responsiveMenu .dropdown-menu a,
+    #menu #responsiveMenu .dropdown-menu .action {
+        padding: 10px 0;
     }
 }

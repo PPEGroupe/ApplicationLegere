@@ -21,6 +21,7 @@ $(function() {
         e.preventDefault();
         // On retire les erreurs qui seraient restées
         $('#errorConnection').remove();
+        $('#error').remove(); // TO DELETE : TEST
         
         $.post(
             'models/connection.php',
@@ -46,7 +47,7 @@ $(function() {
             'json'
         )
         .fail(function(data) {
-            console.error(data['responseText']);
+            $('body').append('<div id="error">' + data['responseText'] + '</div>');
         });
     });
     

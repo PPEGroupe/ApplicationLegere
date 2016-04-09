@@ -1,5 +1,5 @@
 <?php
-class WebUser {
+class WebUserManager {
     // Attributs
     private $_db;
 
@@ -106,7 +106,6 @@ class WebUser {
         {
             $webUser = new WebUser();
             $webUser->Initialize($data);
-            $webUser->SetObject($this->_db);
             $webUserList[] = $webUser;
         }
 
@@ -116,7 +115,7 @@ class WebUser {
     public function GetByAccount($idAccount)
     {
         $queryString = 'SELECT Identifier, Firstname, Lastname, PhoneNumber, Address, City, ZipCode, DateRegister, IdAccount '
-                     . 'FROM Client '
+                     . 'FROM WebUser '
                      . 'WHERE IdAccount = :IdAccount';
         
         $query = $this->_db->prepare($queryString);
@@ -128,9 +127,9 @@ class WebUser {
         
         if ($data != null) 
         {
-            $client = new Client();
-            $client->Initialize($data);
-            return $client;
+            $webUser = new WebUser();
+            $webUser->Initialize($data);
+            return $webUser;
         }
         else
         {

@@ -38,7 +38,8 @@ body * {
     float: right;
 }
 
-#menu #responsiveMenu .nav a:hover {
+#menu #responsiveMenu .nav a:hover,
+#menu #responsiveMenu .nav .action:hover {
     background: #F0AD4E;
 	color: #222;
 }
@@ -52,7 +53,8 @@ body * {
     font-weight: bold;
 }
 
-#menu #responsiveMenu .nav a.selected {
+#menu #responsiveMenu .nav a.selected,
+#menu #responsiveMenu .nav .action.selected {
     background: #ec971f;
 	color: #222;
 	text-decoration: none;
@@ -102,6 +104,10 @@ h1 a:visited {
     border-radius: 35%;
 }
 
+.action {
+    cursor: pointer;
+}
+
 section {
     margin-top: 50px;
 }
@@ -144,9 +150,10 @@ table th {
 	font-size: 15px;
 }
 
+/*
 .modal-body {
     overflow-x: auto;
-}
+}*/
 
 .modal-body,
 .modal-footer {
@@ -277,4 +284,13 @@ form .modal-footer {
 form .modal-footer .form-group {
     padding: 0;
     padding-right: 15px;
+}
+
+#menu #responsiveMenu .dropdown-menu .optionMenu {
+    padding: 5px 10px;
+}
+
+#dadeRegister {
+    text-align: center;
+    font-style: italic;
 }

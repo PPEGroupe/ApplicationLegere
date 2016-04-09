@@ -18,13 +18,14 @@ class PartnerManager {
     // Méthodes	
     public function Add(Partner $partner)
     {
-        $queryString = 'INSERT INTO Partner (URL, Email, Password) VALUES '
-                     . '(:URL, :Email, :Password)';
+        $queryString = 'INSERT INTO Partner (URL, DateRegister, IsValid, IdAccount) VALUES '
+                     . '(:URL, :DateRegister, :IsValid, :IdAccount)';
         
         $query = $this->_db->prepare($queryString);
-        $query->bindValue(':URL',       $partner->URL());
-        $query->bindValue(':Email',     $partner->Email());
-        $query->bindValue(':Password',  $partner->Password());
+        $query->bindValue(':URL',          $partner->URL());
+        $query->bindValue(':DateRegister', $partner->DateRegister());
+        $query->bindValue(':IdAccount',    $partner->IdAccount());
+        $query->bindValue(':IsValid',      $partner->IsValid());
 
         $query->execute();
     }
@@ -41,34 +42,24 @@ class PartnerManager {
     {
         $queryString = 'UPDATE Partner SET '
                      . 'URL = :URL, '
-                     . 'Email = :Email, '
-                     . 'Password = :Password '
+                     . 'DateRegister = :DateRegister, '
+                     . 'IsValid = :IsValid, '
+                     . 'IdAccount = :IdAccount '
                      . 'WHERE Identifier = :Identifier';
         
         $query = $this->_db->prepare($queryString);
-        $query->bindValue(':URL',        $partner->URL());
-        $query->bindValue(':Email',      $partner->Email());
-        $query->bindValue(':Password',   $partner->Password());
-        $query->bindValue(':Identifier', $partner->Identifier());
+        $query->bindValue(':URL',          $partner->URL());
+        $query->bindValue(':DateRegister', $partner->DateRegister());
+        $query->bindValue(':IsValid',      $partner->IsValid());
+        $query->bindValue(':IdAccount',    $partner->IdAccount());
+        $query->bindValue(':Identifier',   $partner->Identifier());
 
-        $query->execute();
-    }
-    
-    public function UpdatePassword(Partner $partner)
-    {
-        $queryString = 'UPDATE Partner SET '
-                     . 'Password = :Password '
-                     . 'WHERE Identifier = :Identifier';
-        
-        $query = $this->_db->prepare($queryString);
-        $query->bindValue(':Identifier', $partner->Identifier());
-        $query->bindValue(':Password',   $partner->Password());
         $query->execute();
     }
 
     public function Get($id)
     {
-        $queryString = 'SELECT Identifier, URL, Email, Password '
+        $queryString = 'SELECT Identifier, URL, DateRegister, IsValid, IdAccount '
                      . 'FROM Partner '
                      . 'WHERE Identifier = :Identifier';
         
@@ -92,7 +83,7 @@ class PartnerManager {
 
     public function GetAll()
     {
-        $queryString = 'SELECT Identifier, URL, Email, Password '
+        $queryString = 'SELECT Identifier, URL, DateRegister, IsValid, IdAccount '
                      . 'FROM Partner';
         
         $query = $this->_db->query($queryString);
@@ -107,26 +98,24 @@ class PartnerManager {
         return (isset($partnerList)) ? $partnerList : null;
     }
     
-    public function GetAccount($email, $password)
+    public function GetByAccount($idAccount)
     {
-        $queryString = 'SELECT Identifier, URL, Email, Password '
+        $queryString = 'SELECT Identifier, URL, DateRegister, IsValid, IdAccount '
                      . 'FROM Partner '
-                     . 'WHERE Email = :Email '
-                     . 'AND Password = :Password';
+                     . 'WHERE IdAccount = :IdAccount';
         
         $query = $this->_db->prepare($queryString);
         
-        $query->bindValue(':Email',     $email);
-        $query->bindValue(':Password',  $password);
+        $query->bindValue(':IdAccount', $idAccount);
         
         $query->execute();
         $data = $query->fetch(PDO::FETCH_ASSOC);
         
         if ($data != null) 
         {
-            $partner = new Partner();
-            $partner->Initialize($data);
-            return $partner;
+            $client = new Client();
+            $client->Initialize($data);
+            return $client;
         }
         else
         {
