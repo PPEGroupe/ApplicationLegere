@@ -1,4 +1,7 @@
-<?php require 'ClassesLoader.php';
+<?php 
+
+require '/models/ClassesLoader.php';
+require '/models/page.php';
 
 $regexPassword        = '#^(?=.*[a-z])(?=.*[0-9]).{6,}$#';
 $regexEmail           = '#^[\w.-]+@[\w.-]+\.[a-z]{2,6}$#i';

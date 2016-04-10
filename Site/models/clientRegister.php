@@ -7,7 +7,7 @@ $regexEmail    = '#^[\w.-]+@[\w.-]+\.[a-z]{2,6}$#i';
 //----------------------------------- Tests Inscription -----------------------------------
 if (!empty($_POST)) 
 {
-    if (empty($_POST['email']) || empty($_POST['password']) || empty($_POST['passwordConfirmation']) || empty($_POST['company']))
+    if (empty($_POST['emailClient']) || empty($_POST['passwordClient']) || empty($_POST['passwordConfirmationClient']) || empty($_POST['companyClient']))
     {
         $error[] = 'Veuillez remplir tous les champs';
     }
@@ -15,10 +15,10 @@ if (!empty($_POST))
     {
         $clientManager        = new ClientManager($db);
         
-        $company              = trim($_POST['company']);
-        $email                = trim($_POST['email']);
-        $password             = trim($_POST['password']);
-        $passwordConfirmation = trim($_POST['passwordConfirmation']);
+        $company              = trim($_POST['companyClient']);
+        $email                = trim($_POST['emailClient']);
+        $password             = trim($_POST['passwordClient']);
+        $passwordConfirmation = trim($_POST['passwordConfirmationClient']);
         
         if (strlen($email) < 3 || preg_match($regexEmail, $email) == 0) 
         {

@@ -131,7 +131,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="companyPartner">Site web <span class="require">*</span></label>
-                                <input type="text" class="form-control" id="companyPartner" placeholder="Insérez le lien de votre site web">
+                                <input type="text" class="form-control" id="urlPartner" placeholder="Insérez le lien de votre site web">
                             </div>
                             <div class="form-group">
                                 <label for="passwordPartner">Mot de passe <span class="require">*</span></label>

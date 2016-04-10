@@ -84,7 +84,11 @@ class WebUser {
     function DateRegister() {
         return $this->_DateRegister;
     }
-
+    
+    function IdAccount() {
+        return $this->_IdAccount;
+    }
+    
     function setIdentifier($Identifier) {
         $this->_Identifier = $Identifier;
     }

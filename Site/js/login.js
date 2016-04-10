@@ -63,7 +63,7 @@ $(function() {
         $('#errorRegister').remove();
         $('#successRegister').remove();
         $.post(
-            'models/register.php',
+            'models/webUserRegister.php',
             {
                 email:                $('#emailWebUser').val(),
                 password:             $('#passwordWebUser').val(),
@@ -101,7 +101,7 @@ $(function() {
         $('#errorRegister').remove();
         $('#successRegister').remove();
         $.post(
-            'models/register.php',
+            'models/clientRegister.php',
             {
                 company:              $('#companyClient').val(),
                 email:                $('#emailClient').val(),
@@ -128,7 +128,7 @@ $(function() {
             'json'
         )
         .fail(function(data) {
-            console.error(data['responseText']);
+            console.error(data['responseText']);                                                                                                                                                                                                                                                                                     
         });
     });
     
@@ -136,14 +136,14 @@ $(function() {
     $('#partnerRegister').on('submit', function (e) {
         // On empêche le navigateur de soumettre le formulaire
         e.preventDefault();
-        // On retire les erreurs qui seraient restées
+//        // On retire les erreurs qui seraient restées
         $('#errorRegister').remove();
         $('#successRegister').remove();
         $.post(
-            'models/register.php',
+            'models/partnerRegister.php',
             {
-                company:              $('#companyPartner').val(),
                 email:                $('#emailPartner').val(),
+                url:                  $('#urlPartner').val(),
                 password:             $('#passwordPartner').val(),
                 passwordConfirmation: $('#passwordConfirmationPartner').val()
             }, 
