@@ -72,7 +72,7 @@ class WebUserManager {
     public function Get($identifier)
     {
         $queryString = 'SELECT Identifier, Firstname, Lastname, PhoneNumber, Address, City, ZipCode, DateRegister, IdAccount '
-                     . 'FROM Client '
+                     . 'FROM WebUser '
                      . 'WHERE Identifier = :Identifier';
         
         
@@ -84,9 +84,9 @@ class WebUserManager {
 
         if ($data != null) 
         {
-            $client = new Client();
-            $client->Initialize($data);
-            return $client;
+            $webUser = new WebUser();
+            $webUser->Initialize($data);
+            return $webUser;
         }
         else
         {

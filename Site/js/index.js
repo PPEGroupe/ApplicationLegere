@@ -24,7 +24,10 @@ $(function() {
     
     $('#detailsModal').on('shown.bs.modal', function () {
         $('#displayMap').hide();
-        $('#map').show();
+        
+        if(!$('#errorMap').is(":visible")) {
+            $('#map').show();
+        }
         InitializeMap();
     });
     
@@ -33,7 +36,7 @@ $(function() {
         $('#idOffer').val(idOffer);
     });
 	
-	$('#postulateModal form').on('submit', function (e) {
+    $('#postulateModal form').on('submit', function (e) {
         // On empêche le navigateur de soumettre le formulaire
         e.preventDefault();
  
@@ -50,19 +53,20 @@ $(function() {
             data: data,
             success: function (response) {
                 if (response == 'success') {
-					$.notify('Votre candidature a été envoyée avec succès.', {globalPosition: 'bottom right',  className: 'success'});
-					$('#postulateModal').modal('hide');
-					$('#postulateModal form')[0].reset();
-				} else {
-					// Liste chaque erreur dans le sens inverse car il parcourt par la fin
-					$.each(response.reverse(), function(key, value) {
-						$.notify(value, {globalPosition: 'bottom right',  className: 'error'});
-					});
-				}
+                    $.notify('Votre candidature a été envoyée avec succès.', {globalPosition: 'bottom right',  className: 'success'});
+                    $('#postulateModal').modal('hide');
+                    $('#postulateModal form')[0].reset();
+                } else {
+                    // Liste chaque erreur dans le sens inverse car il parcourt par la fin
+                    $.each(response.reverse(), function(key, value) {
+                        $.notify(value, {globalPosition: 'bottom right',  className: 'error'});
+                    });
+                }
             }
         })
-		.fail(function (response) {
-			console.log(response['responseText']);
+	.fail(function (response) {
+            $('#error').remove();
+            $('body').append('<div id="error">' + response['responseText'] + '</div>');
         });
     }); 
 });
@@ -92,7 +96,6 @@ function InitializeMoreDetails() {
                 
                 latitude = offer['Latitude'].trim();
                 longitude = offer['Longitude'].trim();
-
                                 
                 $('#errorMap').remove();
                 $('#map').hide();
@@ -101,10 +104,18 @@ function InitializeMoreDetails() {
                 }
                 
                 $('#detailsModal').modal('show');
+                
+                $.post(
+                    'models/addOfferView.php',
+                    {
+                        idOffer : KeepNumber($('.offer.active').attr('id'))
+                    }
+                );
             },
             'json'
         ).fail(function(data) {
-            console.log(data['responseText']);
+            $('#error').remove();
+            $('body').append('<div id="error">' + data['responseText'] + '</div>');
         });
     });
 }

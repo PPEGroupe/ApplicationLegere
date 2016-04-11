@@ -66,7 +66,7 @@
                 { ?>
                 <p id="account"><?php echo $_SESSION['webUser']->Firstname(), ' ', $_SESSION['webUser']->Lastname(); ?></p>
                 <ul class="nav navbar-nav">
-                    <li><a href="/" <?php Selected('index');   ?> href="/">Accueil</a></li>
+                    <li><a href="/" <?php Selected('index'); ?>>Accueil</a></li>
                     <li class="dropdown">
                         <a href="#" class="<?php SelectedWithoutClass('account'); ?>dropdown-toggle" data-toggle="dropdown">Mon compte <span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -82,8 +82,8 @@
 <?php		                } ?>
                         </ul>
                     </li>
-                    <li><a <?php Selected('posts');  ?> href="posts.php">Mes candidatures <span class="label label-warning"><?php echo $numberPostWebUser; ?></span></a></li>
-                    <li><a <?php Selected('logout');  ?> href="logout.php">Déconnexion</a></li>
+                    <li><a <?php Selected('posts'); ?> href="posts.php">Mes candidatures <span class="label label-warning"><?php echo $numberPostWebUser; ?></span></a></li>
+                    <li><a <?php Selected('logout'); ?> href="logout.php">Déconnexion</a></li>
                 </ul>
 <?php		    }
             }
@@ -97,4 +97,3 @@
         </div>
     </div>
 </nav>
-<?php //var_dump($_SESSION); ?>

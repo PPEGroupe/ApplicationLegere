@@ -2,13 +2,6 @@
 class Post {
     // Attributs
     private $_Identifier;
-    private $_Firstname;
-    private $_Lastname;
-    private $_Email;
-    private $_PhoneNumber;
-    private $_Address;
-    private $_City;
-    private $_ZipCode;
     private $_DatePost;
     private $_Letter;
     private $_CV;
@@ -43,7 +36,7 @@ class Post {
     
     public function ToJson()
     {
-        return '{"Identifier":'. $this->Identifier(). ', "Firstname":"'. $this->Firstname(). '", "Lastname":"'. $this->Lastname(). '", "Email":"'. $this->Email(). '", "PhoneNumber":"'. $this->PhoneNumber(). '", "Address":"'. $this->Address(). '", "City":"'. $this->City(). '", "ZipCode":"'. $this->ZipCode(). '", "DatePost":"'. $this->DatePost(). '", "Letter":"'. $this->Letter(). '", "CV":"'. $this->CV(). '", "IdOffer":'. $this->IdOffer(). '}';
+        return '{"Identifier":'. $this->Identifier(). ', "DatePost":"'. $this->DatePost(). '", "Letter":"'. $this->Letter(). '", "CV":"'. $this->CV(). '", "IdWebUser":'. $this->IdWebUser(). ', "IdOffer":'. $this->IdOffer(). '}';
     }
     
     // Propriétés

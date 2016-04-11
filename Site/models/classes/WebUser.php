@@ -27,7 +27,7 @@ class WebUser {
     
     public function ToJson()
     {
-        return '{"Identifier":'. $this->Identifier(). ', "Firstname":"'. $this->Firstname(). '", "Lastname":"'. $this->Lastname(). '", "Email":"'. $this->Email(). '", "PhoneNumber":"'. $this->PhoneNumber(). '", "Address":"'. $this->Address(). '", "City":"'. $this->City(). '", "ZipCode":"'. $this->ZipCode(). '", "DatePost":"'. $this->DatePost(). '", "Letter":"'. $this->Letter(). '", "CV":"'. $this->CV(). '", "IdOffer":'. $this->IdOffer(). '}';
+        return '{"Identifier":'. $this->Identifier(). ', "Firstname":"'. $this->Firstname(). '", "Lastname":"'. $this->Lastname(). '", "PhoneNumber":"'. $this->PhoneNumber(). '", "Address":"'. $this->Address(). '", "City":"'. $this->City(). '", "ZipCode":"'. $this->ZipCode(). '", "DateRegister":"'. $this->DateRegister(). '", "IdAccount":'. $this->IdAccount(). '}';
     }
 
     function Account($db) {
@@ -65,8 +65,8 @@ class WebUser {
         return $this->_ZipCode;
     }
 
-    function DatePost() {
-        return $this->_DatePost;
+    function DateRegister() {
+        return $this->_DateRegister;
     }
 
     function Letter() {
@@ -77,12 +77,8 @@ class WebUser {
         return $this->_CV;
     }
     
-    function IdOffer() {
-        return $this->_IdOffer;
-    }
-    
-    function DateRegister() {
-        return $this->_DateRegister;
+    function IdAccount() {
+        return $this->_IdAccount;
     }
 
     function setIdentifier($Identifier) {

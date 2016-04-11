@@ -61,6 +61,10 @@ class Offer {
         return $clientManager->Get($this->IdClient());
     }
 
+    function AddView() {
+        $this->_NumberViews++;
+    }
+
     // Propriétés
     function Identifier() {
         return $this->_Identifier;

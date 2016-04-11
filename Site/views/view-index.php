@@ -101,43 +101,43 @@
                             <div class="form-group">
                                 <label for="firstname" class="col-sm-3 control-label">Prénom <span class="require">*</span></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Prénom"/>
+                                    <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Prénom" value="<?php echo $firstname; ?>"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="lastname" class="col-sm-3 control-label">Nom <span class="require">*</span></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Nom"/>
+                                    <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Nom" value="<?php echo $lastname; ?>"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="email" class="col-sm-3 control-label">E-mail <span class="require">*</span></label>
                                 <div class="col-sm-9">
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="E-mail"/>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="E-mail" value="<?php echo $email; ?>"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="phoneNumber" class="col-sm-3 control-label">N° Téléphone <span class="require">*</span></label>
                                 <div class="col-sm-9">
-                                    <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="N° Téléphone"/>
+                                    <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="N° Téléphone" value="<?php echo $phoneNumber; ?>"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="address" class="col-sm-3 control-label">Adresse <span class="require">*</span></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="address" name="address" placeholder="Adresse postale"/>
+                                    <input type="text" class="form-control" id="address" name="address" placeholder="Adresse postale" value="<?php echo $address; ?>"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="city" class="col-sm-3 control-label">Ville <span class="require">*</span></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="city" name="city" placeholder="Ville"/>
+                                    <input type="text" class="form-control" id="city" name="city" placeholder="Ville" value="<?php echo $city; ?>"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="zipCode" class="col-sm-3 control-label">Code postal <span class="require">*</span></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="zipCode" name="zipCode" placeholder="Code postal"/>
+                                    <input type="text" class="form-control" id="zipCode" name="zipCode" placeholder="Code postal" value="<?php echo $zipCode; ?>"/>
                                 </div>
                             </div>
                             <div class="form-group">

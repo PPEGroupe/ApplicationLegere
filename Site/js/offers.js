@@ -9,19 +9,23 @@ $(function(){
         var html;
         html  = '<tr id="displayPosts" class="toSelect">';
         html +=     '<td colspan="5">';
-        html +=         '<button class="btn btn-warning btn-lg">';
-        html +=             'Voir les candidatures <span class="label label-warning">' + $(this).children('.hidden').html() + '</span>';
-        html +=         '</button>';
+        html +=         '<div class="btn-group" role="group">';
+        html +=             '<button class="btn btn-warning btn-lg" id="moreDetails">Plus de détails</button>';
+        html +=             '<button class="btn btn-warning btn-lg" id="openPosts">';
+        html +=                 'Voir les candidatures <span class="label label-warning">' + $(this).children('.hidden').html() + '</span>';
+        html +=             '</button>';
+        html +=         '</div>';
         html +=     '</td>';
         html += '</tr>';
         $(this).after(html);
 		
-		InitializeDisplayPosts();
+        InitializeDisplayPosts();
+        InitializeMoreDetails();
     });
 	
 	// Lorsque la modal postDetailsModal se ferme
 	$('#postDetailsModal').on('hide.bs.modal', function (event) {
-		$('#postsModal').modal('show');
+        $('#postsModal').modal('show');
 	});
 });
 
@@ -43,47 +47,51 @@ function InitializePost() {
         html += '</tr>';
         $(this).after(html);
 		
-		InitializeDisplayDetails();
+        InitializeDisplayPostDetails();
     });
 }
 
 function InitializeDisplayPosts() {
-	// Clic sur le bouton "Voir les candidatures"
-    $('#offers #displayPosts button').click(function() {
+    // Clic sur le bouton "Voir les candidatures"
+    $('#offers #displayPosts #openPosts').click(function() {
         var idOffer = KeepNumber($('.offer.active').attr('id'));
 		
-		$.post(
-			'models/getPosts.php',
-			{
-				idOffer : idOffer
-			},
-			function (data) {
+        $.post(
+            'models/getPosts.php',
+            {
+                    idOffer : idOffer
+            },
+            function (data) {
                 $('#posts tbody').html('');
                 
-				$.each(data, function(key, value) {
+                $.each(data, function(key, value) {
+                    var post = value['Post'];
+                    var webUser = value['WebUser'];
                     var html;
-                    html  = '<tr id="post' + value['Identifier'] + '" class="post">';
-                    html +=     '<td>' + EmptyIfUndefined(value['Firstname']) + '</td>';
-                    html +=     '<td>' + EmptyIfUndefined(value['Lastname']) + '</td>';
-                    html +=     '<td>' + EmptyIfUndefined(value['Address']) + '</td>';
-                    html +=     '<td>' + EmptyIfUndefined(value['City']) + '</td>';
-                    html +=     '<td>' + EmptyIfUndefined(value['NumberPhone']) + '</td>';
-                    html +=     '<td>' + EmptyIfUndefined(value['Email']) + '</td>';
-                    html +=     '<td>' + EmptyIfUndefined(value['DatePost']) + '</td>';
+                    html  = '<tr id="post' + post['Identifier'] + '" class="post">';
+                    html +=     '<td>' + EmptyIfUndefined(webUser['Firstname']) + '</td>';
+                    html +=     '<td>' + EmptyIfUndefined(webUser['Lastname']) + '</td>';
+                    html +=     '<td>' + EmptyIfUndefined(webUser['Address']) + '</td>';
+                    html +=     '<td>' + EmptyIfUndefined(webUser['City']) + '</td>';
+                    html +=     '<td>' + EmptyIfUndefined(webUser['PhoneNumber']) + '</td>';
+                    html +=     '<td>' + EmptyIfUndefined(post['DatePost']) + '</td>';
                     html += '</tr>';
-                    
+
                     $('#posts tbody').append(html);
                     InitializePost();
                 });
-				
-				$('#postsModal').modal('show');
-			},
-			'json'
-		);
+
+                $('#postsModal').modal('show');
+            },
+            'json'
+        ).fail(function(data) {
+            $('#error').remove();
+            $('body').append('<div id="error">' + data['responseText'] + '</div>');
+        });
     });
 }
 
-function InitializeDisplayDetails() {
+function InitializeDisplayPostDetails() {
 	// Clic sur le bouton "Plus de détails"
     $('#posts #displayDetails button').click(function() {
         var idPost = KeepNumber($('.post.active').attr('id'));
@@ -132,5 +140,53 @@ function InitializeDisplayDetails() {
 			},
 			'json'
 		);
+    });
+}
+
+function InitializeMoreDetails() {
+    $('#moreDetails').click(function () {
+        $.post(
+            'models/getOfferDetails.php',
+            {
+                idOffer : KeepNumber($('.offer.active').attr('id'))
+            },
+            function (data) {
+                var offer = data['Offer'];
+                var client = data['Client'];
+                var typeOfContract = data['TypeOfContract'];
+                $('#detailsModal #company').html(client['Company']);
+                $('#detailsModal #title').html(offer['Title']);
+                $('#detailsModal #reference').html(offer['Reference']);
+                $('#detailsModal #typeOfContract').html(typeOfContract['Label']);
+                $('#detailsModal #address').html(offer['Address']);
+                $('#detailsModal #city').html(offer['City']);
+                $('#detailsModal #zipCode').html(offer['ZipCode']);
+                $('#detailsModal #dateStartContract').html(offer['DateStartContract']);
+                $('#detailsModal #jobQuantity').html(offer['JobQuantity']);
+                $('#detailsModal #jobDescription').html(offer['JobDescription']);
+                $('#detailsModal #profileDescription').html(offer['ProfileDescription']);
+                
+                if (offer['NumberViews'] >= 2) {
+                    $('#detailsModal #numberViews').html(offer['NumberViews'] + ' vues');
+                } else {
+                    $('#detailsModal #numberViews').html(offer['NumberViews'] + ' vue');
+                }
+                
+                latitude = offer['Latitude'].trim();
+                longitude = offer['Longitude'].trim();
+                                
+                $('#errorMap').remove();
+                $('#map').hide();
+                if (latitude == '' || longitude == '') {
+                    $('#mapContainer').prepend('<div class="alert alert-warning" role="alert" id="errorMap">Adresse non trouvée</div>');
+                }
+                
+                $('#detailsModal').modal('show');
+            },
+            'json'
+        ).fail(function(data) {
+            $('#error').remove();
+            $('body').append('<div id="error">' + data['responseText'] + '</div>');
+        });
     });
 }

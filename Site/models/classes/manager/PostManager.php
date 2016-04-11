@@ -18,21 +18,15 @@ class PostManager {
     // Méthodes	
     public function Add(Post $post)
     {
-        $queryString = 'INSERT INTO Post (Firstname, Lastname, Email, PhoneNumber, Address, City, ZipCode, DatePost, Letter, CV, IdOffer) VALUES '
-                     . '(:Firstname, :Lastname, :Email, :PhoneNumber, :Address, :City, :ZipCode, :DatePost, :Letter, :CV, :IdOffer)';
+        $queryString = 'INSERT INTO Post (DatePost, Letter, CV, IdWebUser, IdOffer) VALUES '
+                     . '(:DatePost, :Letter, :CV, :IdWebUser, :IdOffer)';
         
         $query = $this->_db->prepare($queryString);
-        $query->bindValue(':Firstname',     $post->Firstname());
-        $query->bindValue(':Lastname',      $post->Lastname());
-        $query->bindValue(':Email',         $post->Email());
-        $query->bindValue(':PhoneNumber',   $post->PhoneNumber());
-        $query->bindValue(':Address',       $post->Address());
-        $query->bindValue(':City',          $post->City());
-        $query->bindValue(':ZipCode',       $post->ZipCode());
-        $query->bindValue(':DatePost',      $post->DatePost());
-        $query->bindValue(':Letter',        $post->Letter());
-        $query->bindValue(':CV',            $post->CV());
-        $query->bindValue(':IdOffer',       $post->IdOffer());
+        $query->bindValue(':DatePost',  $post->DatePost());
+        $query->bindValue(':Letter',    $post->Letter());
+        $query->bindValue(':CV',        $post->CV());
+        $query->bindValue(':IdWebUser', $post->IdWebUser());
+        $query->bindValue(':IdOffer',   $post->IdOffer());
 
         $query->execute();
     }
@@ -48,38 +42,27 @@ class PostManager {
     public function Update(Post $post)
     {
         $queryString = 'UPDATE Post SET '
-                     . 'Firstname = :Firstname, '
-                     . 'Lastname = :Lastname, '
-                     . 'Email = :Email, '
-                     . 'PhoneNumber = :PhoneNumber, '
-                     . 'Address = :Address, '
-                     . 'City = :City, '
-                     . 'ZipCode = :ZipCode, '
-                     . 'DatePost = :DatePost '
-                     . 'Letter = :Letter '
-                     . 'CV = :CV '
-                     . 'IdOffer = :IdOffer '
+                     . 'DatePost = :DatePost, '
+                     . 'Letter = :Letter, '
+                     . 'CV = :CV, '
+                     . 'IdOffer = :IdOffer, '
+                     . 'IdWebUser = :IdWebUser '
                      . 'WHERE Identifier = :Identifier';
         
         $query = $this->_db->prepare($queryString);
-        $query->bindValue(':Firstname',     $post->Firstname());
-        $query->bindValue(':Lastname',      $post->Lastname());
-        $query->bindValue(':Email',         $post->Email());
-        $query->bindValue(':PhoneNumber',   $post->PhoneNumber());
-        $query->bindValue(':Address',       $post->Address());
-        $query->bindValue(':City',          $post->City());
-        $query->bindValue(':ZipCode',       $post->ZipCode());
-        $query->bindValue(':DatePost',      $post->DatePost());
-        $query->bindValue(':Letter',        $post->Letter());
-        $query->bindValue(':CV',            $post->CV());
-        $query->bindValue(':IdOffer',       $post->IdOffer());
+        $query->bindValue(':DatePost',   $post->DatePost());
+        $query->bindValue(':Letter',     $post->Letter());
+        $query->bindValue(':CV',         $post->CV());
+        $query->bindValue(':IdWebUser',  $post->IdWebUser());
+        $query->bindValue(':IdOffer',    $post->IdOffer());
+        $query->bindValue(':Identifier', $post->Identifier());
 
         $query->execute();
     }
 
     public function Get($identifier)
     {
-        $queryString = 'SELECT Identifier, Firstname, Lastname, Email, PhoneNumber, Address, City, ZipCode, DatePost, Letter, CV, IdOffer '
+        $queryString = 'SELECT Identifier, DatePost, Letter, CV, IdWebUser, IdOffer '
                      . 'FROM Post '
                      . 'WHERE Identifier = :Identifier';
         
@@ -104,7 +87,7 @@ class PostManager {
 
     public function GetAllByOffer($idOffer)
     {
-        $queryString = 'SELECT Identifier, Firstname, Lastname, Email, PhoneNumber, Address, City, ZipCode, DatePost, Letter, CV, IdOffer '
+        $queryString = 'SELECT Identifier, DatePost, Letter, CV, IdWebUser, IdOffer '
                      . 'FROM Post '
                      . 'WHERE IdOffer = :IdOffer';
         
@@ -124,7 +107,7 @@ class PostManager {
 
     public function GetAllByWebUser($idWebUser)
     {
-        $queryString = 'SELECT Identifier, Firstname, Lastname, Email, PhoneNumber, Address, City, ZipCode, DatePost, Letter, CV, IdOffer '
+        $queryString = 'SELECT Identifier, DatePost, Letter, CV, IdWebUser, IdOffer '
                      . 'FROM Post '
                      . 'WHERE IdWebUser = :IdWebUser';
         
@@ -144,7 +127,7 @@ class PostManager {
 
     public function GetAll()
     {
-        $queryString = 'SELECT Identifier, Firstname, Lastname, Email, PhoneNumber, Address, City, ZipCode, DatePost Letter, CV, IdOffer '
+        $queryString = 'SELECT Identifier, DatePost, Letter, CV, IdWebUser, IdOffer '
                      . 'FROM Post';
         
         $query = $this->_db->query($queryString);
