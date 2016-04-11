@@ -2,7 +2,7 @@
 $(function(){
 	$('#informationModal form').on('submit', function (e) {
         $.post(
-            'models/updateAccount.php',
+            'models/updateAccountPartner.php',
             {
                 email:         $('#email').val(),
                 url:           $('#url').val()
@@ -18,8 +18,8 @@ $(function(){
                     $('#urlValue').html($('#url').val());
                 } else {
                     $.each(data.reverse(), function(key, value) {
-						$.notify(value, {globalPosition: 'bottom right',  className: 'error'});
-					});
+			$.notify(value, {globalPosition: 'bottom right',  className: 'error'});
+                    });
                 }
             },
             'json'
@@ -52,8 +52,8 @@ $(function(){
                     $('#passwordModal form')[0].reset();
                 } else {
                     $.each(data.reverse(), function(key, value) {
-						$.notify(value, {globalPosition: 'bottom right',  className: 'error'});
-					});
+			$.notify(value, {globalPosition: 'bottom right',  className: 'error'});
+                    });
                 }
             },
             'json'

@@ -1,4 +1,7 @@
-<?php require 'ClassesLoader.php';
+<?php 
+
+require '/models/ClassesLoader.php';
+require '/models/page.php';
 
 $regexPassword        = '#^(?=.*[a-z])(?=.*[0-9]).{6,}$#';
 $regexEmail           = '#^[\w.-]+@[\w.-]+\.[a-z]{2,6}$#i';
@@ -6,14 +9,17 @@ $regexEmail           = '#^[\w.-]+@[\w.-]+\.[a-z]{2,6}$#i';
 //----------------------------------- Tests Connexion -----------------------------------
 if (!empty($_POST))
 {
+    // Instancie les managers
     $accountManager  = new AccountManager($db);
     $clientManager   = new ClientManager($db);
     $webUserManager  = new WebUserManager($db);
     $partnerManager  = new PartnerManager($db);
     
+    // Récupère de la vue
     $email    = trim($_POST['email']);
     $password = md5(trim($_POST['password']));
     
+    // Fait les test sur l'email
     if (empty($_POST['email']) || empty($_POST['password']) )
     {
         $error[] = 'Veuillez remplir tous les champs';
@@ -32,12 +38,15 @@ if (!empty($_POST))
 
         if ($account != null)
         {
+            // Met à jour la session
             $_SESSION['account'] = $account;
             
+            // Récupère de la BDD par comptes grace aux Identifiants
             $_SESSION['client']  = $clientManager->GetByAccount($account->Identifier());
             $_SESSION['partner'] = $partnerManager->GetByAccount($account->Identifier());
             $_SESSION['webUser'] = $webUserManager->GetByAccount($account->Identifier());
             
+            // Vérifie la connexion
             if ($_SESSION['client'] != null) 
             {
                 $_SESSION['connected'] = 'client';
