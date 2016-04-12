@@ -16,20 +16,13 @@ class WebUserManager {
     }
 
     // Méthodes	
-    public function Add(WebUser $webUser)
+    public function Add($idAccount)
     {
-        $queryString = 'INSERT INTO WebUser (Firstname, Lastname, PhoneNumber, Address, City, ZipCode, DateRegister, IdAccount) VALUES '
-                     . '(:Firstname, :Lastname, :PhoneNumber, :Address, :City, :ZipCode, :DateRegister, :IdAccount)';
+        $queryString = 'INSERT INTO WebUser (IdAccount) VALUES '
+                     . '(:IdAccount)';
         
         $query = $this->_db->prepare($queryString);
-        $query->bindValue(':Firstname',    $webUser->Firstname());
-        $query->bindValue(':Lastname',     $webUser->Lastname());
-        $query->bindValue(':PhoneNumber',  $webUser->PhoneNumber());
-        $query->bindValue(':Address',      $webUser->Address());
-        $query->bindValue(':City',         $webUser->City());
-        $query->bindValue(':ZipCode',      $webUser->ZipCode());
-        $query->bindValue(':DateRegister', $webUser->DateRegister());
-        $query->bindValue(':IdAccount',    $webUser->IdAccount());
+        $query->bindValue(':IdAccount', $idAccount);
 
         $query->execute();
     }
