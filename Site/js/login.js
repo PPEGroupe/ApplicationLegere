@@ -73,6 +73,7 @@ $(function() {
                 if (data == 'success') {
                     var html = '<div class="alert alert-success" role="alert" id="successRegister">Inscription validée</div>';
                     $.notify('Inscription validée', {globalPosition: 'bottom right',  className: 'success'});
+                    $('#webUserRegisterModal').modal('hide');
                     $('#register h2').after(html);
                 } else {
                     var html;
@@ -112,6 +113,7 @@ $(function() {
                 if (data == 'success') {
                     var html = '<div class="alert alert-success" role="alert" id="successRegister">Inscription validée</div>';
                     $.notify('Inscription validée', {globalPosition: 'bottom right',  className: 'success'});
+                    $('#clientRegisterModal').modal('hide');
                     $('#register h2').after(html);
                 } else {
                     var html;
@@ -151,6 +153,7 @@ $(function() {
                 if (data == 'success') {
                     var html = '<div class="alert alert-success" role="alert" id="successRegister">Inscription validée</div>';
                     $.notify('Inscription validée', {globalPosition: 'bottom right',  className: 'success'});
+                    $('#partnerRegisterModal').modal('hide');
                     $('#register h2').after(html);
                 } else {
                     var html;

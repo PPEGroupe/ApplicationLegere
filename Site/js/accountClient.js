@@ -31,8 +31,7 @@ $(function(){
                     });
                 }
             },
-            'json'
-            
+            'json'  
         )
         .fail(function(data) {
             console.error(data['responseText']);
@@ -47,8 +46,7 @@ $(function(){
             {
                 oldPassword:            $('#oldPassword').val(),
                 newPassword:            $('#newPassword').val(),
-                passwordConfirmation:   $('#passwordConfirmation').val()
-                
+                passwordConfirmation:   $('#passwordConfirmation').val() 
             },
             function(data){
                 

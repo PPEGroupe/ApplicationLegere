@@ -9,6 +9,7 @@ class Client {
     private $_City;
     private $_ZipCode;
     private $_Company;
+    private $_DateRegister;
     private $_IdAccount;
     
     // Méthodes
@@ -68,7 +69,11 @@ class Client {
     function Company() {
         return $this->_Company;
     }
-
+    
+    function DateRegister() {
+        return $this->_DateRegister;
+    }
+    
     function IdAccount() {
         return $this->_IdAccount;
     }
@@ -104,8 +109,12 @@ class Client {
     function setCompany($_Company) {
         $this->_Company = $_Company;
     }
+    
+    function setDateRegister($_DateRegister) {
+        $this->_DateRegister = $_DateRegister;
+    }
 
-    function setIdAccount($IdAccount) {
-        $this->_IdAccount = $IdAccount;
+    function setIdAccount($_IdAccount) {
+        $this->_IdAccount = $_IdAccount;
     }
 }

@@ -45,7 +45,7 @@
                     <p     class="col-sm-5 col-sm-offset-1" id="zipCodeValue"><?php echo $client->ZipCode(); ?></p>
                 </div>
                  <div class="form-group col-sm-12">
-                    <p id="dateRegister"><?php echo 'Inscrit depuis le ', date('d/m/Y', strtotime($_SESSION['client']->DateRegister())); ?></p>
+                     <p id="dateRegister"><?php echo 'Inscrit depuis le ', date('d/m/Y', strtotime($client->DateRegister())); ?></p>
                 </div>
 
                <div class="btn-group col-sm-12" role="group">
