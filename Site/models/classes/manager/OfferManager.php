@@ -18,8 +18,8 @@ class OfferManager {
     // Méthodes	
     public function Add(Offer $offer)
     {
-        $queryString = 'INSERT INTO Offer (Title, Reference, DateStartPublication, PublicationDuration, JobQuantity, Latitude, Longitude, JobDescription, ProfileDescription, Address, City, ZipCode, IdTypeOfContract, IdJob, IdClient) VALUES '
-                     . '(:Title, :Reference, :DateStartPublication, :PublicationDuration, :JobQuantity, :Latitude, :Longitude, :JobDescription, :ProfileDescription, :Address, :City, :ZipCode, :IdTypeOfContract, :IdJob, :IdClient)';
+        $queryString = 'INSERT INTO Offer (Title, Reference, DateStartPublication, PublicationDuration, JobQuantity, Latitude, Longitude, JobDescription, ProfileDescription, Address, City, ZipCode, NumberViews, IsDeleted, IdTypeOfContract, IdJob, IdClient) VALUES '
+                     . '(:Title, :Reference, :DateStartPublication, :PublicationDuration, :JobQuantity, :Latitude, :Longitude, :JobDescription, :ProfileDescription, :Address, :City, :ZipCode, :NumberViews, :IsDeleted, :IdTypeOfContract, :IdJob, :IdClient)';
         
         $query = $this->_db->prepare($queryString);
         $query->bindValue(':Title',                 $offer->Title());
@@ -34,17 +34,24 @@ class OfferManager {
         $query->bindValue(':Address',               $offer->Address());
         $query->bindValue(':City',                  $offer->City());
         $query->bindValue(':ZipCode',               $offer->ZipCode());
+        $query->bindValue(':NumberViews',          $offer->NumberViews());
+        $query->bindValue(':IsDeleted',             $offer->IsDeleted());
         $query->bindValue(':IdTypeOfContract',      $offer->IdTypeOfContract());
         $query->bindValue(':IdJob',                 $offer->IdJob());
         $query->bindValue(':IdClient',              $offer->IdClient());
 
         $query->execute();
     }
-
-    public function Remove($id)
+    
+    public function AddView(Offer $offer)
     {
-        $query = $this->_db->prepare('DELETE FROM Offer WHERE Identifer = :Identifer');
-        $query->bindValue(':Identifer', $id);
+        $queryString = 'UPDATE Offer SET '
+                     . 'NumberViews = :NumberViews '
+                     . 'WHERE Identifier = :Identifier';
+        
+        $query = $this->_db->prepare($queryString);
+        $query->bindValue(':NumberViews', $offer->NumberViews());
+        $query->bindValue(':Identifier',  $offer->Identifier());
 
         $query->execute();
     }
@@ -64,6 +71,8 @@ class OfferManager {
                      . 'Address = :Address, '
                      . 'City = :City, '
                      . 'ZipCode = :ZipCode, '
+                     . 'NumberViews = :NumberViews, '
+                     . 'IsDeleted = :IsDeleted, '
                      . 'IdTypeOfContract = : IdTypeOfContract, '
                      . 'IdJob = :IdJob, '
                      . 'IdClient = :IdClient '
@@ -82,6 +91,8 @@ class OfferManager {
         $query->bindValue(':Address',               $offer->Address());
         $query->bindValue(':City',                  $offer->City());
         $query->bindValue(':ZipCode',               $offer->ZipCode());
+        $query->bindValue(':NumberViews',          $offer->NumberViews());
+        $query->bindValue(':IsDeleted',             $offer->IsDeleted());
         $query->bindValue(':IdTypeOfContract',      $offer->IdTypeOfContract());
         $query->bindValue(':IdJob',                 $offer->IdJob());
         $query->bindValue(':IdClient',              $offer->IdClient());
@@ -90,9 +101,17 @@ class OfferManager {
         $query->execute();
     }
 
+    public function Remove($id)
+    {
+        $query = $this->_db->prepare('DELETE FROM Offer WHERE Identifer = :Identifer');
+        $query->bindValue(':Identifer', $id);
+
+        $query->execute();
+    }
+
     public function Get($id)
     {
-        $queryString = 'SELECT Identifier, Title, Reference, DateStartPublication, PublicationDuration, JobQuantity, Latitude, Longitude, JobDescription, ProfileDescription, Address, City, ZipCode, IdTypeOfContract, IdJob, IdClient '
+        $queryString = 'SELECT Identifier, Title, Reference, DateStartPublication, PublicationDuration, JobQuantity, Latitude, Longitude, JobDescription, ProfileDescription, Address, City, ZipCode, NumberViews, IsDeleted, IdTypeOfContract, IdJob, IdClient '
                      . 'FROM Offer '
                      . 'WHERE Identifier = :Identifier';
         
@@ -116,7 +135,7 @@ class OfferManager {
 
     public function GetAll()
     {
-        $queryString = 'SELECT Identifier, Title, Reference, DateStartPublication, PublicationDuration, JobQuantity, Latitude, Longitude, JobDescription, ProfileDescription, Address, City, ZipCode, IdTypeOfContract, IdJob, IdClient '
+        $queryString = 'SELECT Identifier, Title, Reference, DateStartPublication, PublicationDuration, JobQuantity, Latitude, Longitude, JobDescription, ProfileDescription, Address, City, ZipCode, NumberViews, IsDeleted, IdTypeOfContract, IdJob, IdClient '
                      . 'FROM Offer';
         
         $query = $this->_db->query($queryString);
@@ -133,7 +152,7 @@ class OfferManager {
 
     public function GetAllFromPublication()
     {
-        $queryString = 'SELECT Identifier, Title, Reference, DateStartPublication, PublicationDuration, JobQuantity, Latitude, Longitude, JobDescription, ProfileDescription, Address, City, ZipCode, IdTypeOfContract, IdJob, IdClient '
+        $queryString = 'SELECT Identifier, Title, Reference, DateStartPublication, PublicationDuration, JobQuantity, Latitude, Longitude, JobDescription, ProfileDescription, Address, City, ZipCode, NumberViews, IsDeleted, IdTypeOfContract, IdJob, IdClient '
                      . 'FROM Offer '
                      . 'WHERE DATEDIFF(DAY, DateStartPublication, GETDATE()) <= PublicationDuration';
         
@@ -151,7 +170,7 @@ class OfferManager {
 
     public function GetAllByClient($idClient)
     {
-        $queryString = 'SELECT Identifier, Title, Reference, DateStartPublication, PublicationDuration, JobQuantity, Latitude, Longitude, JobDescription, ProfileDescription, Address, City, ZipCode, IdTypeOfContract, IdJob, IdClient '
+        $queryString = 'SELECT Identifier, Title, Reference, DateStartPublication, PublicationDuration, JobQuantity, Latitude, Longitude, JobDescription, ProfileDescription, Address, City, ZipCode, NumberViews, IsDeleted, IdTypeOfContract, IdJob, IdClient '
                      . 'FROM Offer '
                      . 'WHERE IdClient = :IdClient';
         

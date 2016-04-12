@@ -11,6 +11,5 @@ if (isset($_POST))
     $client = $clientManager->Get($offer->IdClient());
     $typeOfContract = $typeOfContractManager->Get($offer->IdTypeOfContract());
     
-    
     echo '{"Offer":', $offer->ToJson(), ', "Client":', $client->ToJson(), ', "TypeOfContract":', $typeOfContract->ToJson(), '}';
 }

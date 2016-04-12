@@ -3,26 +3,29 @@ require 'ClassesLoader.php';
 
 if (isset($_POST))
 {
-	$postManager = new PostManager($db);
-	$postList = $postManager->GetAllByOffer($_POST['idOffer']);
+    $postManager = new PostManager($db);
+    $webUserManager = new WebUserManager($db);
+    $postList = $postManager->GetAllByOffer($_POST['idOffer']);
 	
     $count = count($postList);
     
     if ($count > 0)
     {
-		echo '[';
+        echo '[';
         foreach ($postList as $key => $post)
         {
-            echo $post->ToJson();
+            $webUser = $webUserManager->Get($post->IdWebUser());
+            
+            echo '{"Post": ', $post->ToJson(), ', "WebUser": ', $webUser->ToJson(), '}';
             
             if ($key < $count -1) {
                 echo ',';
             }
         }
-		echo ']';
+        echo ']';
     }
-	else
-	{
-		echo '{}';
-	}
+    else
+    {
+        echo '{}';
+    }
 }
