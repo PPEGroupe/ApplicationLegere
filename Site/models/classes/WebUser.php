@@ -81,6 +81,8 @@ class WebUser {
         return $this->_IdAccount;
     }
     
+    function IdAccount() {
+        return $this->_IdAccount;
     function setIdentifier($Identifier) {
         $this->_Identifier = $Identifier;
     }

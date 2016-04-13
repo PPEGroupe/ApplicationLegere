@@ -7,18 +7,19 @@ $regexEmail    = '#^[\w.-]+@[\w.-]+\.[a-z]{2,6}$#i';
 //----------------------------------- Tests Inscription -----------------------------------
 if (!empty($_POST)) 
 {
-    if (empty($_POST['emailPartner']) || empty($_POST['passwordPartner']) || empty($_POST['passwordConfirmationPartner']) || empty($_POST['urlPartner']))
+    if (empty($_POST['email']) || empty($_POST['password']) || empty($_POST['passwordConfirmation']) || empty($_POST['url']))
     {
         $error[] = 'Veuillez remplir tous les champs';
     }
     else
     {
         $partnerManager       = new PartnerManager($db);
+        $accountManager       = new AccountManager($db);
         
-        $email                = trim($_POST['emailPartner']);
-        $url                  = trim($_POST['urlPartner']);
-        $password             = trim($_POST['passwordPartner']);
-        $passwordConfirmation = trim($_POST['passwordConfirmationPartner']);
+        $email                = trim($_POST['email']);
+        $url                  = trim($_POST['url']);
+        $password             = md5(trim($_POST['password']));
+        $passwordConfirmation = md5(trim($_POST['passwordConfirmation']));
         
         if (strlen($email) < 3 || preg_match($regexEmail, $email) == 0) 
         {
@@ -37,17 +38,46 @@ if (!empty($_POST))
         {
             $error[] = 'Les mots de passe ne correspondent pas!';
         }
-//        else if ($partnerManager->Exist($email))
-//        {
-//             $error[] = 'Cet identifiant existe déjà!';
-//        }
+        else if ($accountManager->EmailExists($email))
+        {
+            if (isset($_SESSION['account']) && $_SESSION['account']->Email() == $email)
+            {
+                if ($_SESSION['account']->Password() == $password) 
+                {
+                    $partnerManager->Add($_SESSION['account']);
+                }
+                else
+                {
+                    $error[] = 'Mot de passe éronné pour cet identifiant!';
+                }
+            }
+            else 
+            {
+                $error[] = 'Cet identifiant existe déjà!';
+            }
+        }
         else
         {
-            $partner = new Partner(); 
-            $partner->setEmail($email);
-            $partner->setPassword(md5($password));
+            $account = new Account();
+            $partner = new Partner();
+            
+            $account->setEmail($email);
+            $account->setPassword($password);
+            $accountManager->Add($account);
 
-            $partnerManager->Add($partner);
+            $account = $accountManager->GetAccount($email, $password);
+            
+            $partner->setIdAccount($account->Identifier());
+            $partner->setURL($url);
+            
+            if ($account != null && $partner != null)
+            {
+                $partnerManager->Add($partner);  
+            } 
+            else 
+            {
+                $error[] = 'L\'ajout n\'a pas fonctionné, merci de contacter le support!';
+            }
         }
     }
     

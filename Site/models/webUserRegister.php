@@ -17,8 +17,8 @@ if (!empty($_POST))
         $webUserManager       = new WebUserManager($db);
         
         $email                = trim($_POST['email']);
-        $password             = trim($_POST['password']);
-        $passwordConfirmation = trim($_POST['passwordConfirmation']);
+        $password             = md5(trim($_POST['password']));
+        $passwordConfirmation = md5(trim($_POST['passwordConfirmation']));
         
         if (strlen($email) < 3 || preg_match($regexEmail, $email) == 0) 
         {
@@ -44,16 +44,21 @@ if (!empty($_POST))
         else
         {
             $account = new Account();
-            $webUser = new WebUser();
             
             $account->setEmail($email);
-            $account->setPassword(md5($password));
+            $account->setPassword($password);
             $accountManager->Add($account);
             
-            $account = $accountManager->GetAccountId($email, $password);
-            $webUser->setIdAccount($account->Identifier());
-            $webUserManager->Add($webUser);
-             
+            $account = $accountManager->GetAccount($email, $password);
+            
+            if ($account != null)
+            {
+                $webUserManager->Add($account->Identifier());  
+            } 
+            else 
+            {
+                $error[] = 'L\'ajout n\'a pas fonctionné, merci de contacter le support!';
+            }
         }
     }
     

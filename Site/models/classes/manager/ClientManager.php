@@ -18,19 +18,12 @@ class ClientManager {
     // Méthodes	
     public function Add(Client $client)
     {
-        $queryString = 'INSERT INTO Client (URL, PhoneNumber, Fax, Address, City ,ZipCode, Company, DateRegister, IsValid, IdAccount) VALUES '
-                     . '(:URL, :PhoneNumber, :Fax, :Address, :City, :ZipCode, :Company, :DateRegister, :IsValid, :IdAccount)';
+        $queryString = 'INSERT INTO Client (Company, IdAccount) VALUES '
+                     . '(:Company, :IdAccount)';
         
         $query = $this->_db->prepare($queryString);
-        $query->bindValue(':URL',           $client->URL());
-        $query->bindValue(':PhoneNumber',   $client->PhoneNumber());
-        $query->bindValue(':Fax',           $client->Fax());
-        $query->bindValue(':Address',       $client->Address());
-        $query->bindValue(':City',          $client->City());
-        $query->bindValue(':ZipCode',       $client->ZipCode());
+        
         $query->bindValue(':Company',       $client->Company());
-        $query->bindValue(':DateRegister',  $client->DateRegister());
-        $query->bindValue(':IsValid',       $client->IsValid());
         $query->bindValue(':IdAccount',     $client->IdAccount());
 
         $query->execute();

@@ -18,14 +18,12 @@ class PartnerManager {
     // Méthodes	
     public function Add(Partner $partner)
     {
-        $queryString = 'INSERT INTO Partner (URL, DateRegister, IsValid, IdAccount) VALUES '
-                     . '(:URL, :DateRegister, :IsValid, :IdAccount)';
+        $queryString = 'INSERT INTO Partner (URL, IdAccount) VALUES '
+                     . '(:URL,:IdAccount)';
         
         $query = $this->_db->prepare($queryString);
         $query->bindValue(':URL',          $partner->URL());
-        $query->bindValue(':DateRegister', $partner->DateRegister());
         $query->bindValue(':IdAccount',    $partner->IdAccount());
-        $query->bindValue(':IsValid',      $partner->IsValid());
 
         $query->execute();
     }

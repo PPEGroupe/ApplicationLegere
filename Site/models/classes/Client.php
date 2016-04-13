@@ -122,8 +122,12 @@ class Client {
     function setIsValid($IsValid) {
         $this->_IsValid = $IsValid;
     }
+    
+    function setDateRegister($_DateRegister) {
+        $this->_DateRegister = $_DateRegister;
+    }
 
-    function setIdAccount($IdAccount) {
-        $this->_IdAccount = $IdAccount;
+    function setIdAccount($_IdAccount) {
+        $this->_IdAccount = $_IdAccount;
     }
 }

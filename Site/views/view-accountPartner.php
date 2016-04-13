@@ -22,7 +22,7 @@
                     <p id="urlValue" class="col-sm-3 col-sm-offset-4" ><?php echo $_SESSION['partner']->Url(); ?></p>
                 </div>
                 <div class="form-group col-sm-12">
-                    <p id="dateRegister"><?php echo 'Inscrit depuis le ', date('d/m/Y', strtotime($_SESSION['partner']->DateRegister())); ?></p>
+                    <p id="dateRegister"><?php echo 'Inscrit depuis le ', date('d/m/Y', strtotime($parnter->DateRegister())); ?></p>
                 </div>
                 <div class="form-group col-sm-12 center">
                     <button class="btn btn-warning" id="btn-modifierInfo" data-toggle="modal" data-target="#informationModal">Modifier</button>
