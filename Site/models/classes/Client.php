@@ -115,9 +115,9 @@ class Client {
         $this->_Company = $_Company;
     }
 
-    function setDateRegister($DateRegister) {
-        $this->_DateRegister = $DateRegister;
-    }
+    //function setDateRegister($DateRegister) {
+    //    $this->_DateRegister = $DateRegister;
+    //}
 
     function setIsValid($IsValid) {
         $this->_IsValid = $IsValid;
