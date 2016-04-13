@@ -40,6 +40,7 @@ class Partner {
     function URL() {
         return $this->_URL;
     }
+	
     function DateRegister() {
         return $this->_DateRegister;
     }

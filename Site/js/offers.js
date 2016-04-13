@@ -8,7 +8,7 @@ $(function(){
         
         var html;
         html  = '<tr id="displayPosts" class="toSelect">';
-        html +=     '<td colspan="5">';
+        html +=     '<td colspan="6">';
         html +=         '<div class="btn-group" role="group">';
         html +=             '<button class="btn btn-warning btn-lg" id="moreDetails">Plus de détails</button>';
         html +=             '<button class="btn btn-warning btn-lg" id="openPosts">';
@@ -74,7 +74,7 @@ function InitializeDisplayPosts() {
                     html +=     '<td>' + EmptyIfUndefined(webUser['Address']) + '</td>';
                     html +=     '<td>' + EmptyIfUndefined(webUser['City']) + '</td>';
                     html +=     '<td>' + EmptyIfUndefined(webUser['PhoneNumber']) + '</td>';
-                    html +=     '<td>' + EmptyIfUndefined(post['DatePost']) + '</td>';
+                    html +=     '<td>' + DateFormat(EmptyIfUndefined(post['DatePost'])) + '</td>';
                     html += '</tr>';
 
                     $('#posts tbody').append(html);
@@ -103,36 +103,35 @@ function InitializeDisplayPostDetails() {
 			},
 			function (data) {
 				var html;
-                var datePost =  data['DatePost'].split('-');
-                var year  = datePost[0];
-                var month = datePost[1];
-                var day   = datePost[2];
+				var post = data['Post'];
+				var webUser = data['WebUser'];
                 
 				var link = {Letter:'#', CV:'#'};
 				var disabled = {Letter:' disabled', CV:' disabled'};
 				
-				if (data['Letter'] != '') {
-					link['Letter'] = '/documents/' + data['Letter'];
+				if (post['Letter'] != '') {
+					link['Letter'] = 'documents/' + post['Letter'];
 					disabled['Letter'] = '';
 				}
-				if (data['CV'] != '') {
-					link['CV'] = '/documents/' + data['CV'];
+				if (post['CV'] != '') {
+					link['CV'] = 'documents/' + post['CV'];
 					disabled['CV'] = '';
 				}
 				
-				html  = '<h4>' + data['Firstname'] + ' ' + data['Lastname'] + '</h4>';
+				html  = '<h4>' + webUser['Firstname'] + ' ' + webUser['Lastname'] + '</h4>';
 				html +=	'<p>';
-				html +=		'<b>Email :</b>' 		+ data['Email'] 	+ '<br />';
-				html +=		'<b>Adresse :</b>' 		+ data['Address'] 	+ '<br />';
-				html +=		'<b>Ville :</b>' 		+ data['City'] 		+ '<br />';
-				html +=		'<b>Code postal :</b>' 	+ data['ZipCode']
+				html +=		'<b>N° Téléphone :</b>' + webUser['PhoneNumber'] 	+ '<br />';
+				html +=		'<b>Adresse :</b>' 		+ webUser['Address'] 	+ '<br />';
+				html +=		'<b>Ville :</b>' 		+ webUser['City'] 		+ '<br />';
+				html +=		'<b>Code postal :</b>' 	+ webUser['ZipCode']
 				html +=	'</p>';
 				html +=	'<div class="btn-group btn-group-justified" role="group">';
 				html +=		'<a href="' + link['Letter'] + '" target="_blank" id="openLetter" class="btn btn-default' + disabled['Letter']  + '" role="button">Lettre de motivation</a>';
 				html +=		'<a href="' + link['CV'] 	 + '" target="_blank" id="openCV" 	  class="btn btn-default' + disabled['CV'] 		+ '" role="button">CV</a>';
 				html +=	'</div>';
+				html +=	'<br />';
 				
-				$('#postDetailsModal .modal-title').html('Candidature du ' + day + '/' + month + '/' +  year);
+				$('#postDetailsModal .modal-title').html('Candidature du ' + DateFormat(post['DatePost']));
 				$('#postDetailsModal .modal-body').html(html);
 				
 				$('#postsModal').modal('hide');
@@ -161,7 +160,7 @@ function InitializeMoreDetails() {
                 $('#detailsModal #address').html(offer['Address']);
                 $('#detailsModal #city').html(offer['City']);
                 $('#detailsModal #zipCode').html(offer['ZipCode']);
-                $('#detailsModal #dateStartContract').html(offer['DateStartContract']);
+                $('#detailsModal #dateStartContract').html(DateFormat(offer['DateStartContract']));
                 $('#detailsModal #jobQuantity').html(offer['JobQuantity']);
                 $('#detailsModal #jobDescription').html(offer['JobDescription']);
                 $('#detailsModal #profileDescription').html(offer['ProfileDescription']);

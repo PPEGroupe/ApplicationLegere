@@ -18,11 +18,12 @@
                             <th>Ville</th>
                             <th>Contrat</th>
                             <th>Nb. places</th>
+                            <th>Jours restant</th>
                         </tr>
                     </thead>
 
                     <tbody>
-<?php               if(isset($offerList))
+<?php               	if(isset($offerList))
                         {
                             foreach($offerList as $key => $offer)
                             { ?>
@@ -32,6 +33,7 @@
                                     <td><?php echo $offer->City(); ?></td>
                                     <td><?php echo $offer->TypeOfContract($db)->Label(); ?></td>
                                     <td><?php echo $offer->JobQuantity(); ?></td>
+                                    <td><?php echo DateInterval($offer->DateStartPublication()); ?></td>
                                     <td class="hidden"><?php echo $postManager->CountByOffer($offer->Identifier()); ?></td>
                                 </tr>
 <?php                       }
@@ -83,7 +85,7 @@
                     <div class="modal-body">
 					</div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
+                        <button type="button" class="btn btn-warning closeButton" data-dismiss="modal">Fermer</button>
                     </div>
                 </div>
             </div>
@@ -160,10 +162,10 @@
             </div>
         </div>
         
-        <script src="/js/jquery.js"></script>
-        <script src="/js/notify.js"></script>
-        <script src="/js/bootstrap.js"></script>
-        <script src="/js/main.js"></script>
-        <script src="/js/offers.js"></script>
+        <script src="js/jquery.js"></script>
+        <script src="js/notify.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/offers.js"></script>
     </body>
 </html>

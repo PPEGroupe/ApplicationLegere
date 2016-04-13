@@ -9,6 +9,8 @@ class Client {
     private $_City;
     private $_ZipCode;
     private $_Company;
+    private $_DateRegister;
+    private $_IsValid;
     private $_IdAccount;
     
     // Méthodes
@@ -27,7 +29,7 @@ class Client {
     
     public function ToJson()
     {
-        return '{"Identifier":'. $this->Identifier(). ', "URL":"'. $this->URL(). '", "PhoneNumber":"'. $this->PhoneNumber(). '", "Fax":"'. $this->Fax(). '", "Address":"'. $this->Address(). '", "City":"'. $this->City(). '", "ZipCode":"'. $this->ZipCode(). '", "Company":"'. $this->Company(). '", "IdAccount":'. $this->IdAccount(). '}';
+        return '{"Identifier":'. $this->Identifier(). ', "URL":"'. $this->URL(). '", "PhoneNumber":"'. $this->PhoneNumber(). '", "Fax":"'. $this->Fax(). '", "Address":"'. $this->Address(). '", "City":"'. $this->City(). '", "ZipCode":"'. $this->ZipCode(). '", "Company":"'. $this->Company(). '", "DateRegister":"'. $this->DateRegister(). '", "IsValid":'. $this->IsValid(). ', "IdAccount":'. $this->IdAccount(). '}';
     }
 
     function Account($db) {
@@ -68,6 +70,14 @@ class Client {
     function Company() {
         return $this->_Company;
     }
+	
+    function DateRegister() {
+        return $this->_DateRegister;
+    }
+
+    function IsValid() {
+        return $this->_IsValid;
+    }
 
     function IdAccount() {
         return $this->_IdAccount;
@@ -103,6 +113,14 @@ class Client {
 
     function setCompany($_Company) {
         $this->_Company = $_Company;
+    }
+
+    function setDateRegister($DateRegister) {
+        $this->_DateRegister = $DateRegister;
+    }
+
+    function setIsValid($IsValid) {
+        $this->_IsValid = $IsValid;
     }
 
     function setIdAccount($IdAccount) {

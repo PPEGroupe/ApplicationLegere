@@ -1,6 +1,7 @@
 <?php 
 require '/models/ClassesLoader.php';
 require '/models/page.php';
+require '/models/dateInterval.php';
 
 if (isset($_SESSION['connected']) && $_SESSION['connected'] == 'client')
 {

@@ -28,10 +28,6 @@
                     <label class="col-sm-4" for="faxValue">N° de Fax</label>
                     <p     class="col-sm-5 col-sm-offset-1"  id="faxValue"><?php echo $client->Fax(); ?></p>
                 </div>
-                 <div class="form-group col-sm-12">
-                    <label class="col-sm-4" for="urlValue">Site web</label>
-                    <p     class="col-sm-5 col-sm-offset-1" id="urlValue" ><?php echo $client->Url(); ?></p>
-                </div>
                 <div class="form-group col-sm-12">
                     <label class="col-sm-4" for="addressValue">Adresse</label>
                     <p     class="col-sm-5 col-sm-offset-1" id="addressValue" ><?php echo $client->Address(); ?></p>
@@ -178,10 +174,10 @@
             </div>
         </div> 
     
-        <script src="/js/jquery.js"></script>
-        <script src="/js/notify.js"></script>
-        <script src="/js/bootstrap.js"></script>
-        <script src="/js/accountClient.js"></script>
-        <script src="/js/main.js"></script>
+        <script src="js/jquery.js"></script>
+        <script src="js/notify.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/accountClient.js"></script>
+        <script src="js/main.js"></script>
     </body>
 </html>

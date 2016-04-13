@@ -111,7 +111,7 @@ class OfferManager {
 
     public function Get($id)
     {
-        $queryString = 'SELECT Identifier, Title, Reference, DateStartPublication, PublicationDuration, JobQuantity, Latitude, Longitude, JobDescription, ProfileDescription, Address, City, ZipCode, NumberViews, IsDeleted, IdTypeOfContract, IdJob, IdClient '
+        $queryString = 'SELECT Identifier, Title, Reference, DateStartPublication, PublicationDuration, DateStartContract, JobQuantity, Latitude, Longitude, JobDescription, ProfileDescription, Address, City, ZipCode, NumberViews, IsDeleted, IdTypeOfContract, IdJob, IdClient '
                      . 'FROM Offer '
                      . 'WHERE Identifier = :Identifier';
         
@@ -135,7 +135,7 @@ class OfferManager {
 
     public function GetAll()
     {
-        $queryString = 'SELECT Identifier, Title, Reference, DateStartPublication, PublicationDuration, JobQuantity, Latitude, Longitude, JobDescription, ProfileDescription, Address, City, ZipCode, NumberViews, IsDeleted, IdTypeOfContract, IdJob, IdClient '
+        $queryString = 'SELECT Identifier, Title, Reference, DateStartPublication, PublicationDuration, DateStartContract, JobQuantity, Latitude, Longitude, JobDescription, ProfileDescription, Address, City, ZipCode, NumberViews, IsDeleted, IdTypeOfContract, IdJob, IdClient '
                      . 'FROM Offer';
         
         $query = $this->_db->query($queryString);
@@ -152,7 +152,7 @@ class OfferManager {
 
     public function GetAllFromPublication()
     {
-        $queryString = 'SELECT Identifier, Title, Reference, DateStartPublication, PublicationDuration, JobQuantity, Latitude, Longitude, JobDescription, ProfileDescription, Address, City, ZipCode, NumberViews, IsDeleted, IdTypeOfContract, IdJob, IdClient '
+        $queryString = 'SELECT Identifier, Title, Reference, DateStartPublication, PublicationDuration, DateStartContract, JobQuantity, Latitude, Longitude, JobDescription, ProfileDescription, Address, City, ZipCode, NumberViews, IsDeleted, IdTypeOfContract, IdJob, IdClient '
                      . 'FROM Offer '
                      . 'WHERE DATEDIFF(DAY, DateStartPublication, GETDATE()) <= PublicationDuration';
         
@@ -170,7 +170,7 @@ class OfferManager {
 
     public function GetAllByClient($idClient)
     {
-        $queryString = 'SELECT Identifier, Title, Reference, DateStartPublication, PublicationDuration, JobQuantity, Latitude, Longitude, JobDescription, ProfileDescription, Address, City, ZipCode, NumberViews, IsDeleted, IdTypeOfContract, IdJob, IdClient '
+        $queryString = 'SELECT Identifier, Title, Reference, DateStartPublication, PublicationDuration, DateStartContract, JobQuantity, Latitude, Longitude, JobDescription, ProfileDescription, Address, City, ZipCode, NumberViews, IsDeleted, IdTypeOfContract, IdJob, IdClient '
                      . 'FROM Offer '
                      . 'WHERE IdClient = :IdClient';
         
@@ -209,7 +209,7 @@ class OfferManager {
     public function SearchOffer($keyword)
     { 
         
-        $queryString = 'SELECT Offer.Identifier, Offer.Title, Offer.Reference, Offer.DateStartPublication, Offer.PublicationDuration, Offer.JobQuantity, Offer.Latitude, Offer.Longitude, Offer.JobDescription, Offer.ProfileDescription, Offer.Address, Offer.City, Offer.ZipCode, Offer.IdTypeOfContract, Offer.IdJob, Offer.IdClient '
+        $queryString = 'SELECT Offer.Identifier, Offer.Title, Offer.Reference, Offer.PublicationDuration, Offer.DateStartContract, Offer.PublicationDuration, Offer.JobQuantity, Offer.Latitude, Offer.Longitude, Offer.JobDescription, Offer.ProfileDescription, Offer.Address, Offer.City, Offer.ZipCode, Offer.IdTypeOfContract, Offer.IdJob, Offer.IdClient '
                      . 'FROM Offer '
                      . 'INNER JOIN Job ON Job.Identifier = Offer.IdJob '
                      . 'INNER JOIN JobDomain ON JobDomain.Identifier = Job.idJobDomain '
