@@ -142,60 +142,60 @@ class Offer {
         return $this->_IdClient;
     }
     
-    function setIdentifier($_Identifier) {
-        $this->_Identifier = (int)$_Identifier;
+    function setIdentifier($Identifier) {
+        $this->_Identifier = (int)$Identifier;
     }
 
-    function setTitle($_Title) {
-        $this->_Title = $_Title;
+    function setTitle($Title) {
+        $this->_Title = $Title;
     }
 
-    function setReference($_Reference) {
-        $this->_Reference = $_Reference;
+    function setReference($Reference) {
+        $this->_Reference = $Reference;
     }
 
-    function setDateStartPublication($_DateStartPublication) {
-        $this->_DateStartPublication = $_DateStartPublication;
+    function setDateStartPublication($DateStartPublication) {
+        $this->_DateStartPublication = $DateStartPublication;
     }
 
-    function setPublicationDuration($_PublicationDuration) {
-        $this->_PublicationDuration = $_PublicationDuration;
+    function setPublicationDuration($PublicationDuration) {
+        $this->_PublicationDuration = $PublicationDuration;
     }
 
-    function setDateStartContract($_DateStartContract) {
-        $this->_DateStartContract = $_DateStartContract;
+    function setDateStartContract($DateStartContract) {
+        $this->_DateStartContract = $DateStartContract;
     }
 
-    function setJobQuantity($_JobQuantity) {
-        $this->_JobQuantity = (int)$_JobQuantity;
+    function setJobQuantity($JobQuantity) {
+        $this->_JobQuantity = (int)$JobQuantity;
     }
 
-    function setLatitude($_Latitude) {
-        $this->_Latitude = $_Latitude;
+    function setLatitude($Latitude) {
+        $this->_Latitude = $Latitude;
     }
 
-    function setLongitude($_Longitude) {
-        $this->_Longitude = $_Longitude;
+    function setLongitude($Longitude) {
+        $this->_Longitude = $Longitude;
     }
 
-    function setJobDescription($_JobDescription) {
-        $this->_JobDescription = $_JobDescription;
+    function setJobDescription($JobDescription) {
+        $this->_JobDescription = $JobDescription;
     }
 
-    function setProfileDescription($_ProfileDescription) {
-        $this->_ProfileDescription = $_ProfileDescription;
+    function setProfileDescription($ProfileDescription) {
+        $this->_ProfileDescription = $ProfileDescription;
     }
 
-    function setAddress($_Address) {
-        $this->_Address = $_Address;
+    function setAddress($Address) {
+        $this->_Address = $Address;
     }
 
-    function setCity($_City) {
-        $this->_City = $_City;
+    function setCity($City) {
+        $this->_City = $City;
     }
 
-    function setZipCode($_ZipCode) {
-        $this->_ZipCode = $_ZipCode;
+    function setZipCode($ZipCode) {
+        $this->_ZipCode = $ZipCode;
     }
 
     function setNumberViews($NumberViews) {
@@ -206,15 +206,15 @@ class Offer {
         $this->_IsDeleted = $IsDeleted;
     }
 
-    function setIdTypeOfContract($_IdTypeOfContract) {
-        $this->_IdTypeOfContract = (int)$_IdTypeOfContract;
+    function setIdTypeOfContract($IdTypeOfContract) {
+        $this->_IdTypeOfContract = (int)$IdTypeOfContract;
     }
 
-    function setIdJob($_IdJob) {
-        $this->_IdJob = (int)$_IdJob;
+    function setIdJob($IdJob) {
+        $this->_IdJob = (int)$IdJob;
     }
 
-    function setIdClient($_IdClient) {
-        $this->_IdClient = (int)$_IdClient;
+    function setIdClient($IdClient) {
+        $this->_IdClient = (int)$IdClient;
     }
 }

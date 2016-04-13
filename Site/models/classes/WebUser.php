@@ -81,10 +81,8 @@ class WebUser {
         return $this->_IdAccount;
     }
     
-    function IdOffer() {
-        return $this->_IdOffer;
-    }
-    
+    function IdAccount() {
+        return $this->_IdAccount;
     function setIdentifier($Identifier) {
         $this->_Identifier = $Identifier;
     }

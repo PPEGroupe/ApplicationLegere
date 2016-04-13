@@ -66,7 +66,7 @@
                             <div class="modal-footer">
                                 <div class="form-group">
                                     <div class="col-sm-6">
-					<p class="require">* Champ obligatoire</p>
+									<p class="require">* Champ obligatoire</p>
                                     </div>
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
                                     <input type="submit" class="btn btn-warning" id="sendWebUser" value="S'inscrire" />
@@ -156,10 +156,10 @@
             </div>
         </div>
            
-        <script src="/js/jquery.js"></script>
-        <script src="/js/notify.js"></script>
-        <script src="/js/bootstrap.js"></script>
-        <script src="/js/main.js"></script>
-        <script src="/js/login.js"></script>
+        <script src="js/jquery.js"></script>
+        <script src="js/notify.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/login.js"></script>
     </body>
 </html>

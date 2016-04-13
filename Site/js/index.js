@@ -79,6 +79,7 @@ function InitializeMoreDetails() {
                 idOffer : KeepNumber($('.offer.active').attr('id'))
             },
             function (data) {
+				console.info(data);
                 var offer = data['Offer'];
                 var client = data['Client'];
                 var typeOfContract = data['TypeOfContract'];
@@ -89,7 +90,7 @@ function InitializeMoreDetails() {
                 $('#detailsModal #address').html(offer['Address']);
                 $('#detailsModal #city').html(offer['City']);
                 $('#detailsModal #zipCode').html(offer['ZipCode']);
-                $('#detailsModal #dateStartContract').html(offer['DateStartContract']);
+                $('#detailsModal #dateStartContract').html(DateFormat(offer['DateStartContract']));
                 $('#detailsModal #jobQuantity').html(offer['JobQuantity']);
                 $('#detailsModal #jobDescription').html(offer['JobDescription']);
                 $('#detailsModal #profileDescription').html(offer['ProfileDescription']);

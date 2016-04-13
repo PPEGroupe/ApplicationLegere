@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
     <head>
         <?php require '/views/view-head.php'; ?>
     </head>
@@ -21,13 +20,29 @@
                     </tr>
                 </thead>
 
-                <tbody></tbody>
+                <tbody>
+<?php				if (!empty($postList))
+					{
+						foreach($postList as $post)
+						{ ?>
+							<tr>
+								<td><?php echo $post->WebUser($db)->Firstname(); ?></td>
+								<td><?php echo $post->WebUser($db)->Lastname(); ?></td>
+								<td><?php echo $post->WebUser($db)->Address(); ?></td>
+								<td><?php echo $post->WebUser($db)->City(); ?></td>
+								<td><?php echo $post->WebUser($db)->PhoneNumber(); ?></td>
+								<td><?php echo $post->WebUser($db)->Account($db)->Email(); ?></td>
+								<td><?php echo $post->DatePost(); ?></td>
+							</tr>
+<?php					}
+					} ?>
+				</tbody>
             </table>
         </section>
     
-        <script src="/js/jquery.js"></script>
-        <script src="/js/notify.js"></script>
-        <script src="/js/bootstrap.js"></script>
-        <script src="/js/main.js"></script>
+        <script src="js/jquery.js"></script>
+        <script src="js/notify.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/main.js"></script>
     </body>
 </html>

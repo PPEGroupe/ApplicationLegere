@@ -3,7 +3,7 @@
         <div class="navbar-header">
             <h1><a href="/">MegaCasting</a></h1>
             <div id="icon">
-                <a href="/"><img src="/pictures/icon.png" class="img-responsive" alt="MegaCasting"/></a>
+                <a href="/"><img src="pictures/icon.png" class="img-responsive" alt="MegaCasting"/></a>
             </div>
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#responsiveMenu" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>

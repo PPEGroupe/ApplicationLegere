@@ -53,3 +53,17 @@ function EmptyIfUndefined(str) {
     }
     return str;
 }
+
+// Fonction renvoyant une date au format jj/mm/aaaa
+function DateFormat(date) {
+	var datePost =  date.split('-');
+    
+	if (datePost != '') {
+		var year  = datePost[0];
+		var month = datePost[1];
+		var day   = datePost[2];
+	
+		return day + '/' + month + '/' + year;
+	}
+	return '';
+}
