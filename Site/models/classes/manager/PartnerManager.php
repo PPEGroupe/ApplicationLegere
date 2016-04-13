@@ -48,7 +48,7 @@ class PartnerManager {
         $query = $this->_db->prepare($queryString);
         $query->bindValue(':URL',          $partner->URL());
         $query->bindValue(':DateRegister', $partner->DateRegister());
-        $query->bindValue(':IsValid',      $partner->IsValid());
+        $query->bindValue(':IsValid', $partner->IsValid());
         $query->bindValue(':IdAccount',    $partner->IdAccount());
         $query->bindValue(':Identifier',   $partner->Identifier());
 

@@ -11,17 +11,18 @@ if (!empty($_POST))
     if (isset($_SESSION['account']) && isset($_SESSION['partner']) && isset($_SESSION['connected']) && $_SESSION['connected'] == 'partner')
     {
         // Instancie les managers
-        $partnerManager  = new ClientManager($db);
+        $partnerManager  = new PartnerManager($db);
         $accountManager = new AccountManager($db);
         
         //Récupère en session
         $account = $_SESSION['account'];
-        $partner = $_SESSION['webUser'];
+        $partner = $_SESSION['partner'];
         
+        var_dump($partner);
         //Récupère de la vue
         $email = trim($_POST['email']);
-        $url   = trim($_SESSION['url']);
-        
+        $url   = trim($_POST['url']);
+        var_dump($url);
         
         // Fait les test sur l'email
         if (empty($email))
@@ -43,7 +44,7 @@ if (!empty($_POST))
         {
             // Modifie les champs
             $account->setEmail($email);
-            $partner->setUrl($url);
+            $partner->setURL($url);
             
             // Met à jour la BDD par clientManager
             $partnerManager->Update($partner);

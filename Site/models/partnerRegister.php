@@ -72,7 +72,7 @@ if (!empty($_POST))
             
             if ($account != null && $partner != null)
             {
-                $partnerManager->Add($partner);  
+                $partnerManager->Add($partner);
             } 
             else 
             {

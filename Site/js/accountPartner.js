@@ -8,9 +8,6 @@ $(function(){
                 url:           $('#url').val()
             },
             function(data){
-                
-                console.log(data);
-                
                 if(data == 'success'){
                     $.notify('Votre compte a été mis à jour.', {globalPosition: 'bottom right',  className: 'success'});
                     $('#informationModal').modal('hide');
@@ -46,7 +43,6 @@ $(function(){
             },
             function(data){
                 if(data == 'success'){
-                    console.log(data);
                     $.notify('Votre mot de passe a été mis à jour.', {globalPosition: 'bottom right',  className: 'success'});
                     $('#passwordModal').modal('hide');
                     $('#passwordModal form')[0].reset();

@@ -15,8 +15,9 @@ if (isset($_SESSION['connected']))
     }
     else if ($_SESSION['connected'] == 'partner')
     {
-        $parnter = $_SESSION['partner'];
+        $partner = $_SESSION['partner'];
         require '/views/view-accountPartner.php';
+        
     }
     else if ($_SESSION['connected'] == 'webUser')
     {

@@ -22,7 +22,8 @@
                     <p id="urlValue" class="col-sm-3 col-sm-offset-4" ><?php echo $_SESSION['partner']->Url(); ?></p>
                 </div>
                 <div class="form-group col-sm-12">
-                    <p id="dateRegister"><?php echo 'Inscrit depuis le ', date('d/m/Y', strtotime($parnter->DateRegister())); ?></p>
+                    <label class="col-sm-4 " for="urlRegister">Inscrit depuis le </label>
+                    <p id="dateRegister" class="col-sm-3 col-sm-offset-4"><?php echo $_SESSION['partner']->DateRegister(); ?></p>
                 </div>
                 <div class="form-group col-sm-12 center">
                     <button class="btn btn-warning" id="btn-modifierInfo" data-toggle="modal" data-target="#informationModal">Modifier</button>
@@ -33,7 +34,7 @@
                 </div>
             </div>
         </section>
-        
+    
         <div class="modal fade" id="informationModal" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -45,13 +46,13 @@
                             <div class="form-group">
                                 <label for="email" class="col-sm-3 control-label">Email : <span class="require">*</span></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="email" value="<?php echo $_SESSION['account']->Email(); ?>" placeholder="Email" />
+                                    <input type="text" class="form-control" id="email" value="<?php //echo $_SESSION['partner']->Email(); ?>" placeholder="Email" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="url" class="col-sm-3 control-label">Site web : </label>
                                 <div class="col-sm-9">
-                                    <input type="tel" class="form-control" id="url" value="<?php echo $_SESSION['account']->Url(); ?>" placeholder="Site web"/>
+                                    <input type="tel" class="form-control" id="url" value="<?php //echo $_SESSION['partner']->Url(); ?>" placeholder="Site web"/>
                                 </div>
                             </div>
                             
