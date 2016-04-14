@@ -15,6 +15,7 @@ $(function(){
             },
             function(data){
                 if(data == 'success'){
+                    console.log(data);
                     $.notify('Votre compte a été mis à jour.', {globalPosition: 'bottom right',  className: 'success'});
                     $('#informationModal').modal('hide');
                     $('#companyValue').html($('#company').val());
@@ -34,7 +35,8 @@ $(function(){
             'json'  
         )
         .fail(function(data) {
-            console.error(data['responseText']);
+             $('#error').remove();
+            $('body').append('<div id="error">' + data['responseText'] + '</div>');
         }); 
         return false;
     });
@@ -51,7 +53,6 @@ $(function(){
             function(data){
                 
                 if(data == 'success'){
-                    console.log(data);
                     $.notify('Votre mot de passe a été mis à jour.', {globalPosition: 'bottom right',  className: 'success'});
                     $('#passwordModal').modal('hide');
                     $('#passwordModal form')[0].reset();
@@ -65,7 +66,8 @@ $(function(){
             'json'
        )
         .fail(function(data) {
-            console.error(data['responseText']);
+            $('#error').remove();
+            $('body').append('<div id="error">' + data['responseText'] + '</div>');
         }); 
         return false;
     });
