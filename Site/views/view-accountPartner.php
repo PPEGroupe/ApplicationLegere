@@ -15,23 +15,29 @@
                 </div>  
                 <div class="form-group col-sm-12">
                     <label class="col-sm-4 " for="emailRegister">Identifiant : </label>
-                    <p id="emailValue" class="col-sm-3 col-sm-offset-4" ><?php echo $_SESSION['account']->Email(); ?></p>
+                    <p id="emailValue" class="col-sm-3 col-sm-offset-4" ><?php echo $account->Email(); ?></p>
                 </div>
                  <div class="form-group col-sm-12">
                     <label class="col-sm-4 " for="urlRegister">Site web : </label>
-                    <p id="urlValue" class="col-sm-3 col-sm-offset-4" ><?php echo $_SESSION['partner']->Url(); ?></p>
+                    <p id="urlValue" class="col-sm-3 col-sm-offset-4" ><?php echo $partner->Url(); ?></p>
                 </div>
                 <div class="form-group col-sm-12">
                     <label class="col-sm-4 " for="urlRegister">Inscrit depuis le </label>
-                    <p id="dateRegister" class="col-sm-3 col-sm-offset-4"><?php echo $_SESSION['partner']->DateRegister(); ?></p>
+                    <p id="dateRegister" class="col-sm-3 col-sm-offset-4"><?php echo $partner->DateRegister(); ?></p>
                 </div>
                 <div class="form-group col-sm-12 center">
                     <button class="btn btn-warning" id="btn-modifierInfo" data-toggle="modal" data-target="#informationModal">Modifier</button>
                     <button class="btn btn-warning" id="btn-modifierPassword" data-toggle="modal" data-target="#passwordModal">Modifier le mot de passe</button>
                 </div>
+                <?php if ($partner->IsValid()) { ?>
                 <div class="form-group col-sm-12 rss">
                     <pre><b>Flux RSS :</b>  <span id="rss">http://megacasting.local/rss.php</span>  <button class="btn btn-default" id="copy" data-clipboard-target="#rss">Copier</button></pre>
-                </div>
+                </div>    
+                <?php } else {  ?>
+                <div class="alert alert-warning" role="alert">Votre compte n'as pas encore été validé, vous avez donc pas accès au flux rss.</div>
+                <?php } ?>
+                
+                
             </div>
         </section>
     
@@ -46,13 +52,13 @@
                             <div class="form-group">
                                 <label for="email" class="col-sm-3 control-label">Email : <span class="require">*</span></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="email" value="<?php //echo $_SESSION['partner']->Email(); ?>" placeholder="Email" />
+                                    <input type="text" class="form-control" id="email" value="<?php //echo $partner->Email(); ?>" placeholder="Email" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="url" class="col-sm-3 control-label">Site web : </label>
                                 <div class="col-sm-9">
-                                    <input type="tel" class="form-control" id="url" value="<?php //echo $_SESSION['partner']->Url(); ?>" placeholder="Site web"/>
+                                    <input type="tel" class="form-control" id="url" value="<?php //echo $partner->Url(); ?>" placeholder="Site web"/>
                                 </div>
                             </div>
                             

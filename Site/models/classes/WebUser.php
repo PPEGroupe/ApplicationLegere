@@ -68,21 +68,11 @@ class WebUser {
     function DateRegister() {
         return $this->_DateRegister;
     }
-
-    function Letter() {
-        return $this->_Letter;
-    }
-
-    function CV() {
-        return $this->_CV;
-    }
     
     function IdAccount() {
         return $this->_IdAccount;
     }
     
-    function IdAccount() {
-        return $this->_IdAccount;
     function setIdentifier($Identifier) {
         $this->_Identifier = $Identifier;
     }
@@ -109,22 +99,6 @@ class WebUser {
 
     function setZipCode($ZipCode) {
         $this->_ZipCode = $ZipCode;
-    }
-
-    function setDatePost($DatePost) {
-        $this->_DatePost = $DatePost;
-    }
-
-    function setLetter($Letter) {
-        $this->_Letter = $Letter;
-    }
-
-    function setCV($CV) {
-        $this->_CV = $CV;
-    }
-
-    function setIdOffer($IdOffer) {
-        $this->_IdOffer = $IdOffer;
     }
     
     function setDateRegister($DateRegister) {

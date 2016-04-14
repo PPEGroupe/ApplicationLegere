@@ -22,7 +22,6 @@ if (!empty($_POST))
         //Récupère de la vue
         $email = trim($_POST['email']);
         $url   = trim($_POST['url']);
-        var_dump($url);
         
         // Fait les test sur l'email
         if (empty($email))
