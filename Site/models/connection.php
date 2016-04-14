@@ -41,7 +41,7 @@ if (!empty($_POST))
             // Met à jour la session
             $_SESSION['account'] = $account;
             
-            // Récupère de la BDD par comptes grace aux Identifiants
+            // Récupère de la BDD par comptes grace aux Identifiants et met à jour les sessions
             $_SESSION['client']  = $clientManager->GetByAccount($account->Identifier());
             $_SESSION['partner'] = $partnerManager->GetByAccount($account->Identifier());
             $_SESSION['webUser'] = $webUserManager->GetByAccount($account->Identifier());

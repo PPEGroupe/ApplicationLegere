@@ -39,7 +39,21 @@ if (!empty($_POST))
         }
         else if ($accountManager->EmailExists($email))
         {
-             $error[] = 'Cet identifiant existe déjà!';
+            if (isset($_SESSION['account']) && $_SESSION['account']->Email() == $email)
+            {
+                if ($_SESSION['account']->Password() == $password) 
+                {
+                    $webUserManager->Add($_SESSION['account']);
+                }
+                else
+                {
+                    $error[] = 'Mot de passe éronné pour cet identifiant!';
+                }
+            }
+            else 
+            {
+                $error[] = 'Cet identifiant existe déjà!';
+            }
         }
         else
         {

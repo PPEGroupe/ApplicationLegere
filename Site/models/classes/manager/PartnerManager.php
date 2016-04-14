@@ -39,23 +39,17 @@ class PartnerManager {
     public function Update(Partner $partner)
     {
         $queryString = 'UPDATE Partner SET '
-                     . 'URL = :URL, '
-                     . 'DateRegister = :DateRegister, '
-                     . 'IsValid = :IsValid, '
-                     . 'IdAccount = :IdAccount '
+                     . 'URL = :URL '
                      . 'WHERE Identifier = :Identifier';
         
         $query = $this->_db->prepare($queryString);
         $query->bindValue(':URL',          $partner->URL());
-        $query->bindValue(':DateRegister', $partner->DateRegister());
-        $query->bindValue(':IsValid', $partner->IsValid());
-        $query->bindValue(':IdAccount',    $partner->IdAccount());
         $query->bindValue(':Identifier',   $partner->Identifier());
 
         $query->execute();
     }
 
-    public function Get($id)
+    public function Get($identifier)
     {
         $queryString = 'SELECT Identifier, URL, DateRegister, IsValid, IdAccount '
                      . 'FROM Partner '

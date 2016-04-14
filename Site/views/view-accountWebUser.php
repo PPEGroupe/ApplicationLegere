@@ -15,34 +15,34 @@
                 </div>  
                 <div class="form-group col-sm-12">
                     <label class="col-sm-4 " for="emailValue">Identifiant</label>
-                    <p id="emailValue" class="col-sm-3 col-sm-offset-4" ><?php echo $_SESSION['account']->Email(); ?></p>
+                    <p id="emailValue" class="col-sm-3 col-sm-offset-4" ><?php echo $account->Email(); ?></p>
                 </div>
                  <div class="form-group col-sm-12">
                     <label class="col-sm-4 " for="firstnameValue">Prénom</label>
-                    <p id="firstnameValue" class="col-sm-3 col-sm-offset-4" ><?php echo $_SESSION['webUser']->Firstname(); ?></p>
+                    <p id="firstnameValue" class="col-sm-3 col-sm-offset-4" ><?php echo $webUser->Firstname(); ?></p>
                 </div>
                  <div class="form-group col-sm-12">
                     <label class="col-sm-4 " for="lastnameValue">Nom</label>
-                    <p id="lastnameValue" class="col-sm-3 col-sm-offset-4" ><?php echo $_SESSION['webUser']->Lastname(); ?></p>
+                    <p id="lastnameValue" class="col-sm-3 col-sm-offset-4" ><?php echo $webUser->Lastname(); ?></p>
                 </div>
                  <div class="form-group col-sm-12">
                     <label class="col-sm-4 " for="phoneNumberValue">N° de téléphone</label>
-                    <p id="phoneNumberValue" class="col-sm-3 col-sm-offset-4" ><?php echo $_SESSION['webUser']->PhoneNumber(); ?></p>
+                    <p id="phoneNumberValue" class="col-sm-3 col-sm-offset-4" ><?php echo $webUser->PhoneNumber(); ?></p>
                 </div>
                  <div class="form-group col-sm-12">
                     <label class="col-sm-4 " for="addressValue">Adresse</label>
-                    <p id="addressValue" class="col-sm-3 col-sm-offset-4" ><?php echo $_SESSION['webUser']->Address(); ?></p>
+                    <p id="addressValue" class="col-sm-3 col-sm-offset-4" ><?php echo $webUser->Address(); ?></p>
                 </div>
                  <div class="form-group col-sm-12">
                     <label class="col-sm-4 " for="cityValue">Ville</label>
-                    <p id="cityValue" class="col-sm-3 col-sm-offset-4" ><?php echo $_SESSION['webUser']->City(); ?></p>
+                    <p id="cityValue" class="col-sm-3 col-sm-offset-4" ><?php echo $webUser->City(); ?></p>
                 </div>
                  <div class="form-group col-sm-12">
                     <label class="col-sm-4 " for="zipCodeValue">Code postal</label>
-                    <p id="zipCodeValue" class="col-sm-3 col-sm-offset-4" ><?php echo $_SESSION['webUser']->ZipCode(); ?></p>
+                    <p id="zipCodeValue" class="col-sm-3 col-sm-offset-4" ><?php echo $webUser->ZipCode(); ?></p>
                 </div>
                  <div class="form-group col-sm-12">
-                    <p id="dateRegister"><?php echo 'Inscrit depuis le ', date('d/m/Y', strtotime($_SESSION['webUser']->DateRegister())); ?></p>
+                    <p id="dateRegister"><?php echo 'Inscrit depuis le ', date('d/m/Y', strtotime($webUser->DateRegister())); ?></p>
                 </div>
                 <div class="form-group col-sm-12 center">
                     <button class="btn btn-warning" id="btn-modifierInfo" data-toggle="modal" data-target="#informationModal">Modifier</button>
@@ -62,43 +62,43 @@
                             <div class="form-group">
                                 <label for="email" class="col-sm-3 control-label">Email<span class="require">*</span></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="email" value="<?php echo $_SESSION['account']->Email(); ?>" placeholder="Email" />
+                                    <input type="text" class="form-control" id="email" value="<?php echo $account->Email(); ?>" placeholder="Email" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="firstname" class="col-sm-3 control-label">Prénom</label>
                                 <div class="col-sm-9">
-                                    <input type="tel" class="form-control" id="firstname" value="<?php echo $_SESSION['webUser']->Firstname(); ?>" placeholder="Prénom"/>
+                                    <input type="tel" class="form-control" id="firstname" value="<?php echo $webUser->Firstname(); ?>" placeholder="Prénom"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="lastname" class="col-sm-3 control-label">Nom</label>
                                 <div class="col-sm-9">
-                                    <input type="tel" class="form-control" id="lastname" value="<?php echo $_SESSION['webUser']->Lastname(); ?>" placeholder="Nom"/>
+                                    <input type="tel" class="form-control" id="lastname" value="<?php echo $webUser->Lastname(); ?>" placeholder="Nom"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="phoneNumber" class="col-sm-3 control-label">N° Téléphone</label>
                                 <div class="col-sm-9">
-                                    <input type="tel" class="form-control" id="phoneNumber" value="<?php echo $_SESSION['webUser']->PhoneNumber(); ?>" placeholder="N° Téléphone"/>
+                                    <input type="tel" class="form-control" id="phoneNumber" value="<?php echo $webUser->PhoneNumber(); ?>" placeholder="N° Téléphone"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="address" class="col-sm-3 control-label">Adresse</label>
                                 <div class="col-sm-9">
-                                    <input type="tel" class="form-control" id="address" value="<?php echo $_SESSION['webUser']->Address(); ?>" placeholder="Adresse"/>
+                                    <input type="tel" class="form-control" id="address" value="<?php echo $webUser->Address(); ?>" placeholder="Adresse"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="city" class="col-sm-3 control-label">Ville</label>
                                 <div class="col-sm-9">
-                                    <input type="tel" class="form-control" id="city" value="<?php echo $_SESSION['webUser']->City(); ?>" placeholder="Ville"/>
+                                    <input type="tel" class="form-control" id="city" value="<?php echo $webUser->City(); ?>" placeholder="Ville"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="zipCode" class="col-sm-3 control-label">Code postal</label>
                                 <div class="col-sm-9">
-                                    <input type="tel" class="form-control" id="zipCode" value="<?php echo $_SESSION['webUser']->ZipCode(); ?>" placeholder="Code postal"/>
+                                    <input type="tel" class="form-control" id="zipCode" value="<?php echo $webUser->ZipCode(); ?>" placeholder="Code postal"/>
                                 </div>
                             </div>
                             

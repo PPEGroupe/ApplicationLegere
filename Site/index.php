@@ -24,7 +24,7 @@ $address     = '';
 $city        = '';
 $zipCode     = '';
 
-if (isset($_SESSION['client']))
+if (isset($_SESSION['account']))
 {
     $account = $_SESSION['account'];
     
