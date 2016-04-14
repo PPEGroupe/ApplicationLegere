@@ -79,7 +79,6 @@ function InitializeMoreDetails() {
                 idOffer : KeepNumber($('.offer.active').attr('id'))
             },
             function (data) {
-				console.info(data);
                 var offer = data['Offer'];
                 var client = data['Client'];
                 var typeOfContract = data['TypeOfContract'];
