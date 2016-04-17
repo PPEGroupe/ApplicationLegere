@@ -16,13 +16,13 @@ class WebUserManager {
     }
 
     // Méthodes	
-    public function Add($idAccount)
+    public function Add(WebUser $webUser)
     {
         $queryString = 'INSERT INTO WebUser (IdAccount) VALUES '
                      . '(:IdAccount)';
         
         $query = $this->_db->prepare($queryString);
-        $query->bindValue(':IdAccount', $idAccount);
+        $query->bindValue(':IdAccount', $webUser->IdAccount());
 
         $query->execute();
     }

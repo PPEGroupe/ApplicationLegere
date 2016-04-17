@@ -40,6 +40,7 @@ if (!empty($_POST))
         }
         else if ($accountManager->EmailExists($email))
         {
+                        var_dump($_SESSION['account']);
             if (isset($_SESSION['account']) && $_SESSION['account']->Email() == $email)
             {
                 if ($_SESSION['account']->Password() == $password) 
@@ -53,7 +54,7 @@ if (!empty($_POST))
             }
             else 
             {
-                $error[] = 'Cet identifiant existe déjà!';
+                $error[] = 'Ce compte client existe déjà!';
             }
         }
         else

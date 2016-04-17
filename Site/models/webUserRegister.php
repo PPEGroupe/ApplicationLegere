@@ -39,6 +39,7 @@ if (!empty($_POST))
         }
         else if ($accountManager->EmailExists($email))
         {
+            print_r($_SESSION);
             if (isset($_SESSION['account']) && $_SESSION['account']->Email() == $email)
             {
                 if ($_SESSION['account']->Password() == $password) 
@@ -52,12 +53,13 @@ if (!empty($_POST))
             }
             else 
             {
-                $error[] = 'Cet identifiant existe déjà!';
+                $error[] = 'Ce compte utilisateur existe déjà!';
             }
         }
         else
         {
             $account = new Account();
+            $webUser = new WebUser();
             
             $account->setEmail($email);
             $account->setPassword($password);
@@ -65,9 +67,11 @@ if (!empty($_POST))
             
             $account = $accountManager->GetAccount($email, $password);
             
+            $webUser->setIdAccount($account->Identifier());
+            
             if ($account != null)
             {
-                $webUserManager->Add($account->Identifier());  
+                $webUserManager->Add($webUser);
             } 
             else 
             {
