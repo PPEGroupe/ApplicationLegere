@@ -18,10 +18,11 @@ if (!empty($_POST))
         $account = $_SESSION['account'];
         $partner = $_SESSION['partner'];
         
-        var_dump($partner);
+        
         //Récupère de la vue
         $email = trim($_POST['email']);
         $url   = trim($_POST['url']);
+        
         
         // Fait les test sur l'email
         if (empty($email))
@@ -44,7 +45,7 @@ if (!empty($_POST))
             // Modifie les champs
             $account->setEmail($email);
             $partner->setURL($url);
-            
+            $partner->SetIsValid($isValid);
             // Met à jour la BDD par clientManager
             $partnerManager->Update($partner);
             $accountManager->Update($account);

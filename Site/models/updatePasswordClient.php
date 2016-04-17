@@ -14,15 +14,18 @@ if (!empty($_POST))
         $accountManager  = new AccountManager($db);
         
         //Récupère en session
-        $password = $accountManager->Get($_SESSION['account']->Password());
-        $password->Initialize($_POST);
+        $account = $_SESSION['account'];
+        
         
         //Récupère de la vue
-        $oldPassword           = trim($_POST['oldPassword']);
-        $newPassword           = trim($_POST['newPassword']);
-        $confirmationPassword  = trim($_POST['passwordConfirmation']);
-    
-        //Fait les test sur l'email
+        $oldPassword           = md5(trim($_POST['oldPassword']));
+        $newPassword           = md5(trim($_POST['newPassword']));
+        $confirmationPassword  = md5(trim($_POST['passwordConfirmation']));
+        $password              = $account->Password();
+        
+        //var_dump($password);
+        //var_dump($oldPassword);
+        //Fait les tests sur le mot de passe.
         if( empty($oldPassword) || empty($newPassword)  || empty($confirmationPassword) )
         {
              $error[] = 'Veuillez remplir tous les champs.'; 
@@ -46,13 +49,13 @@ if (!empty($_POST))
         if(!isset($error))
         {
             //Modifie les champs
-            $password->setPassword($newPassword);
+            $account->setPassword($newPassword);
             
             //Met à jour la BDD par le Manager
-            $accountManager->UpdatePassword($password);
+            $accountManager->UpdatePassword($account);
             
             //Met à jour la session
-            $_SESSION['account'] = $password;
+            $_SESSION['account'] = $account;
             
             echo json_encode('success');
         }else

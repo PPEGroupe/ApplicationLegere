@@ -44,7 +44,6 @@ class AccountManager {
         
         $query = $this->_db->prepare($queryString);
         $query->bindValue(':Email',      $account->Email());
-        $query->bindValue(':Password',   $account->Password());
         $query->bindValue(':Identifier', $account->Identifier());
 
         $query->execute();

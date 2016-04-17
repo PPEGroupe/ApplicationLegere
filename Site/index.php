@@ -10,10 +10,12 @@ if (isset($_POST['search']) && !empty($_POST['searchText']))
 {
     $keyword = $_POST['searchText'];
     $offerList = $offerManager->SearchOffer($keyword);
+    
 }
 else
 {
-    $offerList = $offerManager->GetAllFromPublication();    
+    $offerList = $offerManager->GetAllFromPublication(); 
+
 }
 
 $firstname   = '';
