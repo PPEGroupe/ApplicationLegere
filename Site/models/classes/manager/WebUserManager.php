@@ -16,11 +16,7 @@ class WebUserManager {
     }
 
     // Méthodes	
-<<<<<<< HEAD
-    public function Add($webUser)
-=======
     public function Add(WebUser $webUser)
->>>>>>> b319f1bfd1da6e67c83c2f9829b3a377a1a00b99
     {
         $queryString = 'INSERT INTO WebUser (IdAccount) VALUES '
                      . '(:IdAccount)';
