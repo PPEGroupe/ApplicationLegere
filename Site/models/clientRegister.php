@@ -9,51 +9,75 @@ if (!empty($_POST))
 {
     if (empty($_POST['email']) || empty($_POST['password']) || empty($_POST['passwordConfirmation']) || empty($_POST['company']))
     {
-        $error[] = 'Veuillez remplir tous les champs';
+        $error[] = 'L\'email n\est pas valide.';
     }
     else
     {
-        $accountManager       = new AccountManager($db);
-        $clientManager        = new ClientManager($db);
+        $accountManager = new AccountManager($db);
+        $clientManager  = new ClientManager($db);
         
         $company              = trim($_POST['company']);
         $email                = trim($_POST['email']);
-        $password             = md5(trim($_POST['password']));
-        $passwordConfirmation = md5(trim($_POST['passwordConfirmation']));
+        $password             = trim($_POST['password']);
+        $passwordConfirmation = trim($_POST['passwordConfirmation']);
+        $encryptedPassword    = md5($password);
         
         if (strlen($email) < 3 || preg_match($regexEmail, $email) == 0) 
         {
-            $error[] = 'L\'email est composé de plus de 3 caractères!';
+            $error[] = 'L\'email est composé de plus de 3 caractères.';
         }
         else if (strlen($password) < 6)
         {
-            $error[] = 'Veuillez renseigner un mot de passe de plus de 6 caractères!';
+            $error[] = 'Veuillez renseigner un mot de passe de plus de 6 caractères.';
         }
         else if (preg_match($regexPassword, $password) == 0)
         {
             $error[] = 'Veuillez renseigner un mot de passe valide!
-                        Il doit contenir au moins 6 caractères dont une lettre et un chiffre';
+                        Il doit contenir au moins 6 caractères dont une lettre et un chiffre.';
         }
         else if ($password != $passwordConfirmation)
         {
-            $error[] = 'Les mots de passe ne correspondent pas!';
+            $error[] = 'Les mots de passe ne correspondent pas.';
         }
         else if ($accountManager->EmailExists($email))
         {
+            // Si l'email existe déjà, on vérifie si l'utilisateur est déjà connecté, dans ce cas, on vérifie si l'email renseigné est celui du compte connecté.
             if (isset($_SESSION['account']) && $_SESSION['account']->Email() == $email)
             {
-                if ($_SESSION['account']->Password() == $password) 
+                // L'utilisateur est connecté et l'email renseigné est celui du compte connecté.
+                // Vérifie si la société n'a pas déjà été enregistrée
+                if (!$clientManager->CompanyExists($company))
                 {
-                    $partnerManager->Add($_SESSION['account']);
+                    // Vérifie si un client est déjà lié au compte connecté
+                    if (!$clientManager->AccountLinked($_SESSION['account']->Identifier()))
+                    {
+                        // Vérifie que le mot de passe renseigné correspond avec celui du compte connecté.
+                        if ($_SESSION['account']->Password() == $encryptedPassword) 
+                        {
+                            $client = new Client();
+                            $client->SetCompany($company);
+                            $client->SetIdAccount($_SESSION['account']->Identifier());
+                            $clientManager->Add($client);
+                        }
+                        else
+                        {
+                            $error[] = 'Pour utiliser votre compte en tant qu\'internaute,
+                                        veuillez indiquer le mot de passe correspondant.';
+                        }
+                    }
+                    else
+                    {
+                        $error[] = 'Un compte d\'entreprise est déjà lié à ce compte.';
+                    }
                 }
                 else
                 {
-                    $error[] = 'Mot de passe éronné pour cet identifiant!';
+                    $error[] = 'Cette société est déjà renseignée.';
                 }
             }
             else 
             {
-                $error[] = 'Cet identifiant existe déjà!';
+                $error[] = 'Cet identifiant existe déjà.';
             }
         }
         else
@@ -62,10 +86,10 @@ if (!empty($_POST))
             $client = new Client();
             
             $account->setEmail($email);
-            $account->setPassword($password);
+            $account->setPassword($encryptedPassword);
             $accountManager->Add($account);
 
-            $account = $accountManager->GetAccount($email, $password);
+            $account = $accountManager->GetAccount($email, $encryptedPassword);
             
             $client->setIdAccount($account->Identifier());
             $client->setCompany($company);
@@ -76,7 +100,7 @@ if (!empty($_POST))
             } 
             else 
             {
-                $error[] = 'L\'ajout n\'a pas fonctionné, merci de contacter le support!';
+                $error[] = 'L\'ajout n\'a pas fonctionné, merci de contacter le support.';
             }
         }
     }

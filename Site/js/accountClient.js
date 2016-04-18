@@ -28,14 +28,14 @@ $(function(){
                     $('#zipCodeValue').html($('#zipCode').val());
                 } else {
                     $.each(data.reverse(), function(key, value) {
-			$.notify(value, {globalPosition: 'bottom right',  className: 'error'});
+                        $.notify(value, {globalPosition: 'bottom right',  className: 'error'});
                     });
                 }
             },
             'json'  
         )
         .fail(function(data) {
-             $('#error').remove();
+            $('#error').remove();
             $('body').append('<div id="error">' + data['responseText'] + '</div>');
         }); 
         return false;
@@ -59,7 +59,7 @@ $(function(){
                 } else {
                     console.log('else');
                     $.each(data.reverse(), function(key, value) {
-			$.notify(value, {globalPosition: 'bottom right',  className: 'error'});
+                        $.notify(value, {globalPosition: 'bottom right',  className: 'error'});
                     });
                 }
             },

@@ -16,13 +16,13 @@ class WebUserManager {
     }
 
     // Méthodes	
-    public function Add($idAccount)
+    public function Add($webUser)
     {
         $queryString = 'INSERT INTO WebUser (IdAccount) VALUES '
                      . '(:IdAccount)';
         
         $query = $this->_db->prepare($queryString);
-        $query->bindValue(':IdAccount', $idAccount);
+        $query->bindValue(':IdAccount', $webUser->IdAccount());
 
         $query->execute();
     }
@@ -128,5 +128,25 @@ class WebUserManager {
         {
             return null;
         }
+    }
+    
+    public function AccountLinked($idAccount)
+    {
+        $queryString = 'SELECT WebUser.Identifier '
+                     . 'FROM WebUser '
+                     . 'INNER JOIN Account ON Account.Identifier = WebUser.IdAccount '
+                     . 'WHERE Account.Identifier = :IdAccount';
+        
+        $query = $this->_db->prepare($queryString);
+        $query->bindValue(':IdAccount', $idAccount);
+        
+        $query->execute();
+        $data = $query->fetch(PDO::FETCH_ASSOC);
+        
+        if ($data != null) 
+        {
+            return true;
+        }
+        return false;
     }
 }

@@ -114,4 +114,43 @@ class PartnerManager {
             return null;
         }
     }
+    
+    public function UrlExists($url)
+    {
+        $queryString = 'SELECT Identifier '
+                     . 'FROM Partner '
+                     . 'WHERE URL = :Url';
+        
+        $query = $this->_db->prepare($queryString);
+        $query->bindValue(':Url', $url);
+        
+        $query->execute();
+        $data = $query->fetch(PDO::FETCH_ASSOC);
+        
+        if ($data != null) 
+        {
+            return true;
+        }
+        return false;
+    }
+    
+    public function AccountLinked($idAccount)
+    {
+        $queryString = 'SELECT Partner.Identifier '
+                     . 'FROM Partner '
+                     . 'INNER JOIN Account ON Account.Identifier = Partner.IdAccount '
+                     . 'WHERE Account.Identifier = :IdAccount';
+        
+        $query = $this->_db->prepare($queryString);
+        $query->bindValue(':IdAccount', $idAccount);
+        
+        $query->execute();
+        $data = $query->fetch(PDO::FETCH_ASSOC);
+        
+        if ($data != null) 
+        {
+            return true;
+        }
+        return false;
+    }
 }

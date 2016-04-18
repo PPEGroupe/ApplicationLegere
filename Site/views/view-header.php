@@ -25,7 +25,7 @@
                         <a href="#" class="<?php SelectedWithoutClass('account'); ?>dropdown-toggle" data-toggle="dropdown">Mon compte <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="account.php" tabindex="-1" class="optionMenu">Mon compte</a></li>
-                            
+                            <li role="separator" class="divider"></li>
 <?php		                if (isset($_SESSION['partner']) && $_SESSION['partner'] != null) 
                             { ?>
                                 <li id="changeToPartner" class="action optionMenu">Se connecter en tant que partenaire</li>
@@ -33,6 +33,11 @@
                             if (isset($_SESSION['webUser']) && $_SESSION['webUser'] != null) 
                             { ?>
                                 <li id="changeToWebUser" class="action optionMenu">Se connecter en tant qu'utilisateur</li>
+<?php		                }
+                            if ($_SESSION['client'] == null || $_SESSION['partner'] == null || $_SESSION['webUser'] == null) 
+                            { ?>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="login.php" class="optionMenu">Page d'inscription</a></li>
 <?php		                } ?>
                         </ul>
                     </li>
@@ -56,6 +61,11 @@
                             if (isset($_SESSION['webUser']) && $_SESSION['webUser'] != null) 
                             { ?>
                                 <li id="changeToWebUser" class="action optionMenu">Se connecter en tant qu'utilisateur</li>
+<?php		                }
+                            if ($_SESSION['client'] ==  null || $_SESSION['partner'] == null || $_SESSION['webUser'] == null) 
+                            { ?>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="login.php" class="optionMenu">Page d'inscription</a></li>
 <?php		                } ?>
                         </ul>
                     </li>
@@ -79,6 +89,11 @@
                             if (isset($_SESSION['partner']) && $_SESSION['partner'] != null) 
                             { ?>
                                 <li id="changeToParter" class="action optionMenu">Se connecter en tant que partenaire</li>
+<?php		                }
+                            if ($_SESSION['client'] == null || $_SESSION['partner'] == null || $_SESSION['webUser'] == null) 
+                            { ?>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="login.php" class="optionMenu">Page d'inscription</a></li>
 <?php		                } ?>
                         </ul>
                     </li>

@@ -95,8 +95,6 @@ class ClientManager {
 
     public function GetAll()
     {
-        // lazy loading / lazy load
-        // injection de dépendance // container 
         $queryString = 'SELECT Identifier, URL, PhoneNumber, Fax, Address, City ,ZipCode, Company, DateRegister, IsValid, IdAccount '
                      . 'FROM Client';
         
@@ -120,7 +118,6 @@ class ClientManager {
                      . 'WHERE IdAccount = :IdAccount';
         
         $query = $this->_db->prepare($queryString);
-        
         $query->bindValue(':IdAccount', $idAccount);
         
         $query->execute();
@@ -145,11 +142,29 @@ class ClientManager {
                      . 'WHERE Company = :Company';
         
         $query = $this->_db->prepare($queryString);
-        
         $query->bindValue(':Company', $company);
         
         $query->execute();
+        $data = $query->fetch(PDO::FETCH_ASSOC);
         
+        if ($data != null) 
+        {
+            return true;
+        }
+        return false;
+    }
+    
+    public function AccountLinked($idAccount)
+    {
+        $queryString = 'SELECT Client.Identifier '
+                     . 'FROM Client '
+                     . 'INNER JOIN Account ON Account.Identifier = Client.IdAccount '
+                     . 'WHERE Account.Identifier = :IdAccount';
+        
+        $query = $this->_db->prepare($queryString);
+        $query->bindValue(':IdAccount', $idAccount);
+        
+        $query->execute();
         $data = $query->fetch(PDO::FETCH_ASSOC);
         
         if ($data != null) 

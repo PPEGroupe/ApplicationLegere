@@ -54,12 +54,13 @@ $(function() {
     
     
 // --------------------------- Insctriptions --------------------------
-// 
-// *************************** Web User ***************************
+
+// *************************** Internaute ***************************
     $('#webUserRegister').on('submit', function (e) {
         // On empêche le navigateur de soumettre le formulaire
         e.preventDefault();
         // On retire les erreurs qui seraient restées
+        
         $('#errorRegister').remove();
         $('#successRegister').remove();
         $.post(
@@ -90,7 +91,8 @@ $(function() {
             'json'
         )
         .fail(function(data) {
-            console.error(data['responseText']);
+            $('#error').remove();
+            $('body').append('<div id="error">' + data['responseText'] + '</div>');
         });
     });
     
@@ -130,15 +132,17 @@ $(function() {
             'json'
         )
         .fail(function(data) {
-            console.error(data['responseText']);                                                                                                                                                                                                                                                                                     
+            $('#error').remove();
+            $('body').append('<div id="error">' + data['responseText'] + '</div>');                                                                                                                                                                                                                                                                                  
         });
     });
     
-// *************************** Partner ***************************
+// *************************** Partenaire ***************************
     $('#partnerRegister').on('submit', function (e) {
         // On empêche le navigateur de soumettre le formulaire
         e.preventDefault();
-//        // On retire les erreurs qui seraient restées
+        
+        // On retire les erreurs qui seraient restées
         $('#errorRegister').remove();
         $('#successRegister').remove();
         $.post(
@@ -170,7 +174,8 @@ $(function() {
             'json'
         )
         .fail(function(data) {
-            console.error(data['responseText']);
+            $('#error').remove();
+            $('body').append('<div id="error">' + data['responseText'] + '</div>');
         });
     });
 });
