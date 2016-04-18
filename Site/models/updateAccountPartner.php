@@ -7,37 +7,27 @@ $regexEmail    = '#^[\w.-]+@[\w.-]+\.[a-z]{2,6}$#i';
 
 if (!empty($_POST)) 
 {
-    // Vérifie l'existance des sessions / et la connexion des users
+    // Vérifie l'existance des sessions 'account', 'partner' et 'connected' et vérifie que le compte sélectionné est 'partner'.
     if (isset($_SESSION['account']) && isset($_SESSION['partner']) && isset($_SESSION['connected']) && $_SESSION['connected'] == 'partner')
     {
-        // Instancie les managers
-        $partnerManager  = new PartnerManager($db);
+        $partnerManager = new PartnerManager($db);
         $accountManager = new AccountManager($db);
         
-        //Récupère en session
         $account = $_SESSION['account'];
         $partner = $_SESSION['partner'];
         
-        
-        //Récupère de la vue
         $email = trim($_POST['email']);
         $url   = trim($_POST['url']);
         
-        
-        // Fait les test sur l'email
         if (empty($email))
         {
             $error[] = 'Veuillez remplir les champs obligatoires.';
         }   
         else 
         {    
-            if (strlen($email) < 3 ) 
+            if (strlen($email) < 3 || preg_match($regexEmail, $email) == 0) 
             {
-                $error[] = 'L\'email est composé de plus de 3 caractères!';
-            }
-            else if (preg_match($regexEmail, $email) == 0)
-            {
-                $error[] =  'Veuillez remplir un e-mail valide.';
+                $error[] =  'Veuillez remplir un email valide.';
             }
         }
         if (!isset($error))
@@ -45,8 +35,8 @@ if (!empty($_POST))
             // Modifie les champs
             $account->setEmail($email);
             $partner->setURL($url);
-            $partner->SetIsValid($isValid);
-            // Met à jour la BDD par clientManager
+            
+            // Met à jour la BDD
             $partnerManager->Update($partner);
             $accountManager->Update($account);
             

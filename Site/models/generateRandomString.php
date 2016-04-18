@@ -1,5 +1,5 @@
 <?php
-
+// Renvoie une chaine de caractères aléatoire.
 function GetString($length = 50)
 {
     $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';

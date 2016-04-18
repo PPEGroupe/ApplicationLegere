@@ -7,32 +7,25 @@ $regexPassword = '#^(?=.*[a-z])(?=.*[0-9]).{6,}$#';
 
 if (!empty($_POST)) 
 {
-// Vérifie l'existance des sessions / et la connexion des utilisateurs
+    // Vérifie l'existance des sessions 'account' et 'connected' et vérifie que le compte sélectionné est 'client'.
     if (isset($_SESSION['account']) && isset($_SESSION['connected']) && $_SESSION['connected'] == 'client')
     {
-        // Instancie le manager
         $accountManager  = new AccountManager($db);
         
-        //Récupère en session
         $account = $_SESSION['account'];
         
-        
-        //Récupère de la vue
         $oldPassword           = md5(trim($_POST['oldPassword']));
-        $newPassword           = md5(trim($_POST['newPassword']));
-        $confirmationPassword  = md5(trim($_POST['passwordConfirmation']));
-        $password              = $account->Password();
+        $newPassword           = trim($_POST['newPassword']);
+        $confirmationPassword  = trim($_POST['passwordConfirmation']);
+        $encryptedPassword     = md5($newPassword);
         
-        //var_dump($password);
-        //var_dump($oldPassword);
-        //Fait les tests sur le mot de passe.
-        if( empty($oldPassword) || empty($newPassword)  || empty($confirmationPassword) )
+        if (empty($oldPassword) || empty($newPassword)  || empty($confirmationPassword))
         {
              $error[] = 'Veuillez remplir tous les champs.'; 
         }
         else 
         {
-            if ($oldPassword != $password)
+            if ($oldPassword != $account->Password())
             {
                 $error[] = 'L\'ancien mot de passe est incorrect.';
             }
@@ -46,19 +39,21 @@ if (!empty($_POST))
                 $error[] = 'Les deux nouveaux mots de passe ne correcpondent pas!';
             }
         }
+        
         if(!isset($error))
         {
-            //Modifie les champs
-            $account->setPassword($newPassword);
+            // Modifie le mot de passe
+            $account->setPassword($encryptedPassword);
             
-            //Met à jour la BDD par le Manager
+            // Met à jour la BDD
             $accountManager->UpdatePassword($account);
             
-            //Met à jour la session
+            // Met à jour la session
             $_SESSION['account'] = $account;
             
             echo json_encode('success');
-        }else
+        }
+        else
         {
             echo json_encode($error);
         }

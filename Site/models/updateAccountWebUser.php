@@ -7,18 +7,15 @@ $regexEmail    = '#^[\w.-]+@[\w.-]+\.[a-z]{2,6}$#i';
 
 if (!empty($_POST)) 
 {
-    // Vérifie l'existance des sessions / et la connexion des users
+    // Vérifie l'existance des sessions 'account', 'webUser' et 'connected' et vérifie que le compte sélectionné est 'webUser'.
     if (isset($_SESSION['account']) && isset($_SESSION['webUser']) && isset($_SESSION['connected']) && $_SESSION['connected'] == 'webUser')
     {
-        // Instancie les managers
         $webUserManager  = new ClientManager($db);
         $accountManager = new AccountManager($db);
         
-        //Récupère en session
         $account = $_SESSION['account'];
         $webUser = $_SESSION['webUser'];
         
-        //Récupère de la vue
         $email        = trim($_POST['email']);
         $firstname    = trim($_POST['firstname']);
         $lastname     = trim($_POST['lastname']);
@@ -27,8 +24,6 @@ if (!empty($_POST))
         $city         = trim($_POST['city']);
         $zipCode      = trim($_POST['zipCode']);
         
-        
-        // Fait les test sur l'email
         if (empty($email))
         {
             $error[] = 'Veuillez remplir les champs obligatoires.';
@@ -55,7 +50,7 @@ if (!empty($_POST))
             $webUser->setCity($city);
             $webUser->setZipCode($zipCode);
             
-            // Met à jour la BDD par clientManager
+            // Met à jour la BDD
             $webUserManager->Update($webUser);
             $accountManager->Update($account);
             

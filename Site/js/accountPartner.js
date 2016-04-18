@@ -1,4 +1,5 @@
 // Vérifie et enregistre les changements du compte partner
+$(function() {
 $(function(){
 	$('#informationModal form').on('submit', function (e) {
         $.post(
