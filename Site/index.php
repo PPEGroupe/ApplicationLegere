@@ -10,12 +10,11 @@ if (isset($_POST['search']) && !empty($_POST['searchText']))
 {
     $keyword = $_POST['searchText'];
     $offerList = $offerManager->SearchOffer($keyword);
-    
 }
+// Si pas de recherche, affiche toutes les offres
 else
 {
     $offerList = $offerManager->GetAllFromPublication(); 
-
 }
 
 $firstname   = '';
@@ -42,6 +41,7 @@ if (isset($_SESSION['account']))
         $webUser = $_SESSION['webUser'];
         $numberPostWebUser = $postManager->CountByWebUser($webUser->Identifier());
 
+        // Affiche les données dans la vue sans vérifier l'exiqtance de 'webUser'
         $firstname   = $webUser->Firstname();
         $lastname    = $webUser->Lastname();
         $email       = $account->Email();

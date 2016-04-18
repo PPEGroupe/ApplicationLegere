@@ -59,10 +59,11 @@ $(function() {
     $('#webUserRegister').on('submit', function (e) {
         // On empêche le navigateur de soumettre le formulaire
         e.preventDefault();
-        // On retire les erreurs qui seraient restées
         
+        // On retire les erreurs qui seraient restées
         $('#errorRegister').remove();
         $('#successRegister').remove();
+        
         $.post(
             'models/webUserRegister.php',
             {
@@ -101,9 +102,11 @@ $(function() {
     $('#clientRegister').on('submit', function (e) {
         // On empêche le navigateur de soumettre le formulaire
         e.preventDefault();
+        
         // On retire les erreurs qui seraient restées
         $('#errorRegister').remove();
         $('#successRegister').remove();
+        
         $.post(
             'models/clientRegister.php',
             {
@@ -147,6 +150,7 @@ $(function() {
         // On retire les erreurs qui seraient restées
         $('#errorRegister').remove();
         $('#successRegister').remove();
+        
         $.post(
             'models/partnerRegister.php',
             {

@@ -6,8 +6,9 @@ $(function() {
         $('.offer.active').removeClass('active'); // Désélectionne l'ancienne ligne
         $(this).addClass('active'); // Sélectionne la ligne
         
-        $('#offers #optionButtons').remove();
+        $('#offers #optionButtons').remove(); // Supprime la ligne avec boutton "plus de détail" et "postuler"
         
+        // Ajoute la ligne avec boutton "plus de détail" et "postuler"
         var html;
         html  = '<tr id="optionButtons" class="toSelect">';
         html +=     '<td colspan="8">';
@@ -22,6 +23,7 @@ $(function() {
         InitializeMoreDetails();
     });
     
+    // Pour l'erreur de carte
     $('#detailsModal').on('shown.bs.modal', function () {
         $('#displayMap').hide();
         
@@ -31,7 +33,9 @@ $(function() {
         InitializeMap();
     });
     
+    
     $('#postulateModal').on('shown.bs.modal', function () {
+        // Récupère l'id de l'offre
         var idOffer = KeepNumber($('.offer.active').attr('id'));
         $('#idOffer').val(idOffer);
     });
@@ -39,10 +43,10 @@ $(function() {
     $('#postulateModal form').on('submit', function (e) {
         // On empêche le navigateur de soumettre le formulaire
         e.preventDefault();
- 
-        var $form = $(this);
-        var formdata = (window.FormData) ? new FormData($form[0]) : null;
-        var data = (formdata !== null) ? formdata : $form.serialize();
+        // dollar ici
+        var form = $(this);
+        var formdata = (window.FormData) ? new FormData(form[0]) : null;
+        var data = (formdata !== null) ? formdata : form.serialize();
  
         $.ajax({
             url: 'models/addPost.php',
@@ -64,6 +68,7 @@ $(function() {
                 }
             }
         })
+        // Gestion des erreurs
 	.fail(function (response) {
             $('#error').remove();
             $('body').append('<div id="error">' + response['responseText'] + '</div>');
@@ -71,7 +76,9 @@ $(function() {
     }); 
 });
 
+
 function InitializeMoreDetails() {
+    // Affiche la liste d'offre dans un tableau dans l'html
     $('#moreDetails').click(function () {
         $.post(
             'models/getOfferDetails.php',

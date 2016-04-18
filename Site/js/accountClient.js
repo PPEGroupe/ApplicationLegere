@@ -1,4 +1,4 @@
-// Vérifie et enregistre les changements
+// Vérifie et enregistre les changements du compte client
 $(function(){
 	$('#informationModal form').on('submit', function (e) {
         $.post(

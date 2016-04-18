@@ -1,4 +1,5 @@
 $(function () {
+    // Fonction qui switch du compte connecté vers client
     $('#changeToClient').click(function () {
         $.post(
             'models/changeAccount.php',
@@ -11,6 +12,7 @@ $(function () {
         )
     });
     
+    // Fonction qui switch du compte connecté vers partenaire
     $('#changeToPartner').click(function () {
         $.post(
             'models/changeAccount.php',
@@ -23,6 +25,7 @@ $(function () {
         )
     });
     
+    // Fonction qui switch du compte connecté vers l'intenaute
     $('#changeToWebUser').click(function () {
         $.post(
             'models/changeAccount.php',
