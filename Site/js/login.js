@@ -86,6 +86,7 @@ $(function() {
                     });
                     html += '</div>';
                     $('#register h2').after(html);
+                    $('#webUserRegisterModal').modal('hide');
                 }
             }, 
             'json'
@@ -127,6 +128,7 @@ $(function() {
                     });
                     html += '</div>';
                     $('#register h2').after(html);
+                    $('#clientRegisterModal').modal('hide');
                 }
             }, 
             'json'
@@ -169,6 +171,7 @@ $(function() {
                     });
                     html += '</div>';
                     $('#register h2').after(html);
+                    $('#partnerRegisterModal').modal('hide');
                 }
             }, 
             'json'

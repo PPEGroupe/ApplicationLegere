@@ -38,7 +38,11 @@ if (!empty($_POST))
         }
         else if ($accountManager->EmailExists($email))
         {
+<<<<<<< HEAD
             // Si l'email existe déjà, on vérifie si l'utilisateur est déjà connecté, dans ce cas, on vérifie si l'email renseigné est celui du compte connecté.
+=======
+            print_r($_SESSION);
+>>>>>>> b319f1bfd1da6e67c83c2f9829b3a377a1a00b99
             if (isset($_SESSION['account']) && $_SESSION['account']->Email() == $email)
             {
                 // L'utilisateur est connecté et l'email renseigné est celui du compte connecté.
@@ -65,12 +69,17 @@ if (!empty($_POST))
             }
             else 
             {
+<<<<<<< HEAD
                 $error[] = 'Cet identifiant existe déjà.';
+=======
+                $error[] = 'Ce compte utilisateur existe déjà!';
+>>>>>>> b319f1bfd1da6e67c83c2f9829b3a377a1a00b99
             }
         }
         else
         {
             $account = new Account();
+            $webUser = new WebUser();
             
             $account->setEmail($email);
             $account->setPassword($encryptedPassword);
@@ -78,9 +87,11 @@ if (!empty($_POST))
             
             $account = $accountManager->GetAccount($email, $encryptedPassword);
             
+            $webUser->setIdAccount($account->Identifier());
+            
             if ($account != null)
             {
-                $webUserManager->Add($account->Identifier());  
+                $webUserManager->Add($webUser);
             } 
             else 
             {

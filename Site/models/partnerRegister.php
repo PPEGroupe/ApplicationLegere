@@ -75,7 +75,7 @@ if (!empty($_POST))
             }
             else 
             {
-                $error[] = 'Cet identifiant existe déjà!';
+                $error[] = 'Ce compte partenaire existe déjà!';
             }
         }
         else
