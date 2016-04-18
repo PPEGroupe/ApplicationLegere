@@ -7,18 +7,15 @@ $regexEmail    = '#^[\w.-]+@[\w.-]+\.[a-z]{2,6}$#i';
 
 if (!empty($_POST)) 
 {
-// Vérifie l'existance des sessions / et la connexion des users
+    // Vérifie l'existance des sessions 'account', 'client' et 'connected' et vérifie que le compte sélectionné est 'client'.
     if (isset($_SESSION['account']) && isset($_SESSION['client']) && isset($_SESSION['connected']) && $_SESSION['connected'] == 'client')
     {
-        // Instancie les managers
         $clientManager  = new ClientManager($db);
         $accountManager = new AccountManager($db);
         
-        // Récupère en session
         $account = $_SESSION['account'];
         $client  = $_SESSION['client'];
         
-        // Récupère de la vue
         $company      = trim($_POST['company']);
         $email        = trim($_POST['email']);
         $phoneNumber  = trim($_POST['phoneNumber']);
@@ -28,28 +25,23 @@ if (!empty($_POST))
         $city         = trim($_POST['city']);
         $zipCode      = trim($_POST['zipCode']);
         
-        
-        // Fait les test sur l'email
         if (empty($email) || empty($company))
         {
             $error[] = 'Veuillez remplir les champs obligatoires.';
-        }   
+        }
         else 
         {    
-            if (strlen($email) < 3 ) 
+            if (strlen($email) < 3 || preg_match($regexEmail, $email) == 0) 
             {
-                $error[] = 'L\'email est composé de plus de 3 caractères!';
-            }
-            else if (preg_match($regexEmail, $email) == 0)
-            {
-                $error[] =  'Veuillez remplir un e-mail valide.';
+                $error[] =  'Veuillez remplir un email valide.';
             }
         }
+        
         if (!isset($error))
         {
             // Modifie les champs
-            $client->setCompany($company);
             $account->setEmail($email);
+            $client->setCompany($company);
             $client->setPhoneNumber($phoneNumber);
             $client->setFax($fax);
             $client->setUrl($url);
@@ -57,7 +49,7 @@ if (!empty($_POST))
             $client->setCity($city);
             $client->setZipCode($zipCode);
             
-            // Met à jour la BDD par le Manager
+            // Met à jour la BDD
             $clientManager->Update($client);
             $accountManager->Update($account);
             

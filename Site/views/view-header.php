@@ -34,10 +34,10 @@
                             { ?>
                                 <li id="changeToWebUser" class="action optionMenu">Se connecter en tant qu'utilisateur</li>
 <?php		                }
-                            if ($_SESSION['client'] == null || $_SESSION['partner'] == null || $_SESSION['webUser'] == null) 
+                            if (!isset($_SESSION['partner']) || !isset($_SESSION['client']) || !isset($_SESSION['webUser']) || $_SESSION['partner'] != null || $_SESSION['client'] != null || $_SESSION['webUser'] != null) 
                             { ?>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="login.php" class="optionMenu">Page d'inscription</a></li>
+                                <li><a href="login.php" class="optionMenu">Accèder à la page d'inscription</a></li>
 <?php		                } ?>
                         </ul>
                     </li>
@@ -62,10 +62,10 @@
                             { ?>
                                 <li id="changeToWebUser" class="action optionMenu">Se connecter en tant qu'utilisateur</li>
 <?php		                }
-                            if ($_SESSION['client'] ==  null || $_SESSION['partner'] == null || $_SESSION['webUser'] == null) 
+                            if (!isset($_SESSION['partner']) || !isset($_SESSION['client']) || !isset($_SESSION['webUser']) || $_SESSION['partner'] != null || $_SESSION['client'] != null || $_SESSION['webUser'] != null) 
                             { ?>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="login.php" class="optionMenu">Page d'inscription</a></li>
+                                <li><a href="login.php" class="optionMenu">Accèder à la page d'inscription</a></li>
 <?php		                } ?>
                         </ul>
                     </li>
@@ -90,10 +90,10 @@
                             { ?>
                                 <li id="changeToParter" class="action optionMenu">Se connecter en tant que partenaire</li>
 <?php		                }
-                            if ($_SESSION['client'] == null || $_SESSION['partner'] == null || $_SESSION['webUser'] == null) 
+                            if (!isset($_SESSION['partner']) || !isset($_SESSION['client']) || !isset($_SESSION['webUser']) || $_SESSION['partner'] != null || $_SESSION['client'] != null || $_SESSION['webUser'] != null) 
                             { ?>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="login.php" class="optionMenu">Page d'inscription</a></li>
+                                <li><a href="login.php" class="optionMenu">Accèder à la page d'inscription</a></li>
 <?php		                } ?>
                         </ul>
                     </li>

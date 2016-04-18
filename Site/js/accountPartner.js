@@ -1,5 +1,4 @@
-// Vérifie et enregistre les changements
-$(function(){
+$(function() {
 	$('#informationModal form').on('submit', function (e) {
         $.post(
             'models/updateAccountPartner.php',
@@ -29,13 +28,10 @@ $(function(){
         return false;
     });
     
-    //Vérifie le changement de mot de passe 
     $('#passwordModal form').on('submit', function (e) {
-        
         $.post(
             'models/updatePassword.php',
             {
-                
                 oldPassword:            $('#oldPassword').val(),
                 newPassword:            $('#newPassword').val(),
                 passwordConfirmation:   $('#passwordConfirmation').val()
@@ -53,11 +49,12 @@ $(function(){
                 }
             },
             'json'
-       )
+        )
         .fail(function(data) {
             $('#error').remove();
             $('body').append('<div id="error">' + data['responseText'] + '</div>');
         }); 
+        
         return false;
     });
 });

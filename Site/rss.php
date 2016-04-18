@@ -12,10 +12,12 @@ if (isset($_SESSION['account']))
     $client = $_SESSION['account'];
     $numberOfferClient = $offerManager->CountByClient($client->Identifier());
 	
+    // Génération du fichier XML
 	$xml  = '<?xml version="1.0" encoding="iso-8859-1"?>'.PHP_EOL;
 	$xml .= '<rss version="2.0">'.PHP_EOL;
 	$xml .= '<channel>'.PHP_EOL; 
 	
+    // Parcours la liste d'offres, $key étant l'indice
 	foreach ($offerList as $key => $offer)
 	{
 		$title = $offer->Title();
