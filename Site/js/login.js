@@ -16,7 +16,7 @@ $(function() {
             }, 
             function(data) {
                 if (data == 'success') {
-                    window.location.href = '/';
+                    window.location.href = './';
                 } else {
                     var html;
                     html  = '<div class="alert alert-warning" role="alert" id="errorConnection">';
