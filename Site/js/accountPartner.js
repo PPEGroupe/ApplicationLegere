@@ -1,6 +1,5 @@
 // Vérifie et enregistre les changements du compte partner
 $(function() {
-$(function(){
 	$('#informationModal form').on('submit', function (e) {
         $.post(
             'models/updateAccountPartner.php',
@@ -36,11 +35,9 @@ $(function(){
         $.post(
             'models/updatePassword.php',
             {
-                
                 oldPassword:            $('#oldPassword').val(),
                 newPassword:            $('#newPassword').val(),
                 passwordConfirmation:   $('#passwordConfirmation').val()
-                
             },
             function(data){
                 if(data == 'success'){
@@ -49,7 +46,7 @@ $(function(){
                     $('#passwordModal form')[0].reset();
                 } else {
                     $.each(data.reverse(), function(key, value) {
-			$.notify(value, {globalPosition: 'bottom right',  className: 'error'});
+                        $.notify(value, {globalPosition: 'bottom right',  className: 'error'});
                     });
                 }
             },
@@ -60,5 +57,9 @@ $(function(){
             $('body').append('<div id="error">' + data['responseText'] + '</div>');
         }); 
         return false;
+    });
+    
+    $('#copy').click(function () {
+        $(this).notify('Copié !', {position: 'top',  className: 'alert'});
     });
 });

@@ -1,21 +1,5 @@
-$(function() {
-//----------------------------- Inscription ----------------------------- 
-    $('#openWebUserRegister').click(function () {
-        
-        $('#webUserRegisterModal').modal('show');
-    });
-    
-    $('#openClientRegister').click(function () {
-        
-        $('#clientRegisterModal').modal('show');
-    });
-    
-    $('#openPartnerRegister').click(function () {
-        
-        $('#partnerRegisterModal').modal('show');
-    });
-    
-//----------------------------- Connexion -----------------------------
+$(function() {    
+// ----------------------------- Connexion -----------------------------
     $('#connection').on('submit', function (e) {
         // On empêche le navigateur de soumettre le formulaire
         e.preventDefault();
@@ -53,7 +37,20 @@ $(function() {
     });
     
     
-// --------------------------- Insctriptions --------------------------
+// --------------------------- Inscriptions --------------------------
+    
+    // Ouvre les modals d'inscription
+    $('#openWebUserRegister').click(function () {
+        $('#webUserRegisterModal').modal('show');
+    });
+    
+    $('#openClientRegister').click(function () {
+        $('#clientRegisterModal').modal('show');
+    });
+    
+    $('#openPartnerRegister').click(function () {
+        $('#partnerRegisterModal').modal('show');
+    });
 
 // *************************** Internaute ***************************
     $('#webUserRegister').on('submit', function (e) {
@@ -87,7 +84,6 @@ $(function() {
                     });
                     html += '</div>';
                     $('#register h2').after(html);
-                    $('#webUserRegisterModal').modal('hide');
                 }
             }, 
             'json'
@@ -131,7 +127,6 @@ $(function() {
                     });
                     html += '</div>';
                     $('#register h2').after(html);
-                    $('#clientRegisterModal').modal('hide');
                 }
             }, 
             'json'
@@ -175,7 +170,6 @@ $(function() {
                     });
                     html += '</div>';
                     $('#register h2').after(html);
-                    $('#partnerRegisterModal').modal('hide');
                 }
             }, 
             'json'

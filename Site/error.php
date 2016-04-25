@@ -1,6 +1,6 @@
 <?php 
-require '/models/ClassesLoader.php';
-require '/models/page.php';
+require 'models/ClassesLoader.php';
+require 'models/page.php';
 
 if (isset($_SESSION['account']))
 {
@@ -63,4 +63,4 @@ else
 	$errorDescription = 'Une erreur s\'est produite.';
 }
 
-require '/views/view-error.php';
+require 'views/view-error.php';

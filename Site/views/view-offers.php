@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <?php require '/views/view-head.php'; ?>
+        <?php require 'views/view-head.php'; ?>
         
     </head>
     
     <body>
-        <?php require '/views/view-header.php'; ?>
+        <?php require 'views/view-header.php'; ?>
         
         <section class="container">
             <div class="scrollable">
@@ -40,7 +40,7 @@
                         }
                         else
                         { ?>
-                            <tr class="warning"><td colspan="5">Aucune offre n'a été trouvée</td></tr>
+                            <tr class="warning"><td colspan="6">Aucune offre n'a été trouvée</td></tr>
 <?php                   }?>
                     </tbody>
                 </table>

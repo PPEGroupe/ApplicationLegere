@@ -1,7 +1,7 @@
 <?php 
 
-require '/models/ClassesLoader.php';
-require '/models/page.php';
+require 'models/ClassesLoader.php';
+require 'models/page.php';
 
 if (isset($_SESSION['connected']))
 {
@@ -21,5 +21,5 @@ if (isset($_SESSION['connected']))
     }
 }
 
-require '/views/view-login.php';
+require 'views/view-login.php';
 

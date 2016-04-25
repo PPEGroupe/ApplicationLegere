@@ -2,11 +2,11 @@
 <html>
 
     <head>
-        <?php require '/views/view-head.php'; ?>
+        <?php require 'views/view-head.php'; ?>
     </head>
 
     <body>
-        <?php require '/views/view-header.php'; ?>
+        <?php require 'views/view-header.php'; ?>
         <section class="container">
             <div class="col-sm-8 col-sm-offset-2">
                 <div class="form-group col-sm-12">
@@ -14,42 +14,41 @@
                 </div>    
                 <div class="form-group col-sm-12">
                     <label class="col-sm-4" for="companyValue">Société</label>
-                    <p     class="col-sm-5 col-sm-offset-1" id="companyValue"><?php echo $client->Company(); ?></p>
+                    <p     class="col-sm-3 col-sm-offset-4" id="companyValue"><?php echo $client->Company(); ?></p>
                 </div>
                 <div class="form-group col-sm-12">
                     <label class="col-sm-4" for="emailValue">Identifiant</label>
-                    <p     class="col-sm-5 col-sm-offset-1" id="emailValue" ><?php echo $account->Email(); ?></p>
+                    <p     class="col-sm-3 col-sm-offset-4" id="emailValue" ><?php echo $account->Email(); ?></p>
                 </div>
                 <div class="form-group col-sm-12">
                     <label class="col-sm-4" for="phoneNumberValue">N° de téléphone</label>
-                    <p     class="col-sm-5 col-sm-offset-1" id="phoneNumberValue"><?php echo $client->PhoneNumber(); ?></p>
+                    <p     class="col-sm-3 col-sm-offset-4" id="phoneNumberValue"><?php echo $client->PhoneNumber(); ?></p>
                 </div>
                 <div class="form-group col-sm-12">
                     <label class="col-sm-4" for="faxValue">N° de Fax</label>
-                    <p     class="col-sm-5 col-sm-offset-1"  id="faxValue"><?php echo $client->Fax(); ?></p>
+                    <p     class="col-sm-3 col-sm-offset-4"  id="faxValue"><?php echo $client->Fax(); ?></p>
                 </div>
                 <div class="form-group col-sm-12">
                     <label class="col-sm-4" for="addressValue">Adresse</label>
-                    <p     class="col-sm-5 col-sm-offset-1" id="addressValue" ><?php echo $client->Address(); ?></p>
+                    <p     class="col-sm-3 col-sm-offset-4" id="addressValue" ><?php echo $client->Address(); ?></p>
                 </div>
                 <div class="form-group col-sm-12">
                     <label class="col-sm-4" for="cityValue">Ville</label>
-                    <p     class="col-sm-5 col-sm-offset-1" id="cityValue"><?php echo $client->City(); ?></p>
+                    <p     class="col-sm-3 col-sm-offset-4" id="cityValue"><?php echo $client->City(); ?></p>
                 </div>
                 <div class="form-group col-sm-12">
                     <label class="col-sm-4" for="zipCodeValue">Code postal</label>
-                    <p     class="col-sm-5 col-sm-offset-1" id="zipCodeValue"><?php echo $client->ZipCode(); ?></p>
+                    <p     class="col-sm-3 col-sm-offset-4" id="zipCodeValue"><?php echo $client->ZipCode(); ?></p>
                 </div>
-                 <div class="form-group col-sm-12">
-                     <p id="dateRegister"><?php echo 'Inscrit depuis le ', date('d/m/Y', strtotime($client->DateRegister())); ?></p>
+                <div class="form-group col-sm-12">
+                    <p id="dateRegister"><?php echo 'Inscrit depuis le ', date('d/m/Y', strtotime($client->DateRegister())); ?></p>
                 </div>
 
-               <div class="btn-group col-sm-12" role="group">
-                   <div class="form-group center">
+                <div class="btn-group col-sm-12" role="group">
+                    <div class="form-group center">
                        <button class="btn btn-warning" data-toggle="modal" data-target="#informationModal">Modifier</button>
-
                        <button class="btn btn-warning" data-toggle="modal" data-target="#passwordModal">Modifier le mot de passe</button>
-                   </div>
+                    </div>
                 </div>
             </div>
         </section>

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <?php require '/views/view-head.php'; ?>
+        <?php require 'views/view-head.php'; ?>
     </head>
     
     <body>
-        <?php require '/views/view-header.php'; ?>
+        <?php require 'views/view-header.php'; ?>
         
         <section class="container">
 			<div class="jumbotron">

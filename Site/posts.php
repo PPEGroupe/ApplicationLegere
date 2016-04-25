@@ -1,6 +1,6 @@
 <?php 
-require '/models/ClassesLoader.php';
-require '/models/page.php';
+require 'models/ClassesLoader.php';
+require 'models/page.php';
 
 if (isset($_SESSION['connected']) && $_SESSION['connected'] == 'webUser')
 {
@@ -10,9 +10,9 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] == 'webUser')
     $postList = $postManager->GetAllByWebUser($webUser->Identifier());
     $numberPostWebUser = $postManager->CountByWebUser($webUser->Identifier());
 	
-    require '/views/view-posts.php';
+    require 'views/view-posts.php';
 }
 else
 {
-    require '/views/view-denied.php';
+    require 'views/view-denied.php';
 }

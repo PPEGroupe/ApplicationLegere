@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <?php require '/views/view-head.php'; ?>
+        <?php require 'views/view-head.php'; ?>
     </head>
 
     <body>
-        <?php require '/views/view-header.php'; ?>
+        <?php require 'views/view-header.php'; ?>
         <section class="container">
             <table class="table" id="posts">
                 <thead>
@@ -35,7 +35,11 @@
 								<td><?php echo $post->DatePost(); ?></td>
 							</tr>
 <?php					}
-					} ?>
+					}
+                    else
+                    { ?>
+                        <tr class="warning"><td colspan="7">Aucune candidature n'a été trouvée</td></tr>
+<?php				} ?>
 				</tbody>
             </table>
         </section>

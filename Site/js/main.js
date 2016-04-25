@@ -7,7 +7,7 @@ $(function () {
                 target : 'client'
             },
             function () {
-                location.reload();
+                location.href = '/';
             }
         )
     });
@@ -20,7 +20,7 @@ $(function () {
                 target : 'partner'
             },
             function () {
-                location.reload();
+                location.href = '/';
             }
         )
     });
@@ -33,7 +33,7 @@ $(function () {
                 target : 'webUser'
             },
             function () {
-                location.reload();
+                location.href = '/';
             }
         )
     });

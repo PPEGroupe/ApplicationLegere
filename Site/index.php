@@ -1,6 +1,6 @@
 <?php 
-require '/models/ClassesLoader.php';
-require '/models/page.php';
+require 'models/ClassesLoader.php';
+require 'models/page.php';
 
 $offerManager = new OfferManager($db);
 
@@ -52,4 +52,4 @@ if (isset($_SESSION['account']))
     }
 }
 
-require '/views/view-index.php';
+require 'views/view-index.php';

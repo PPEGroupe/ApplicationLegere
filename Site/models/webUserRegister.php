@@ -7,7 +7,7 @@ if (!empty($_POST))
 {
     if (empty($_POST['email']) || empty($_POST['password']) || empty($_POST['passwordConfirmation']))
     {
-        $error[] = 'Veuillez remplir tous les champs';
+        $error[] = 'Veuillez remplir tous les champs.';
     }
     else
     {
@@ -51,6 +51,9 @@ if (!empty($_POST))
                         $webUser = new WebUser();
                         $webUser->SetIdAccount($_SESSION['account']->Identifier());
                         $webUserManager->Add($webUser);
+                        
+                        // Ajoute le compte internaute dans la session.
+                        $_SESSION['webUser'] = $webUserManager->GetByAccount($_SESSION['account']->Identifier());
                     }
                     else
                     {

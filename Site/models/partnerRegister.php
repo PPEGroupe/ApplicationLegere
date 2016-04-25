@@ -7,7 +7,7 @@ if (!empty($_POST))
 {
     if (empty($_POST['email']) || empty($_POST['password']) || empty($_POST['passwordConfirmation']) || empty($_POST['url']))
     {
-        $error[] = 'Veuillez remplir tous les champs';
+        $error[] = 'Veuillez remplir tous les champs.';
     }
     else
     {
@@ -56,6 +56,9 @@ if (!empty($_POST))
                             $partner->SetIdAccount($_SESSION['account']->Identifier());
                             $partner->SetUrl($url);
                             $partnerManager->Add($partner);
+                        
+                            // Ajoute le compte partenaire dans la session.
+                            $_SESSION['partner'] = $partnerManager->GetByAccount($_SESSION['account']->Identifier());
                         }
                         else
                         {

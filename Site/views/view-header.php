@@ -52,9 +52,9 @@
                     <li class="dropdown">
                         <a href="#" class="<?php SelectedWithoutClass('account'); ?>dropdown-toggle" data-toggle="dropdown">Mon compte <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a tabindex="-1">Mon compte</a></li>
+                            <li><a href="account.php" tabindex="-1" class="optionMenu">Mon compte</a></li>
                             <li role="separator" class="divider"></li>
-<?php		                if (isset($_SESSION['partner']) && $_SESSION['client'] != null) 
+<?php		                if (isset($_SESSION['client']) && $_SESSION['client'] != null) 
                             { ?>
                                 <li id="changeToClient" class="action optionMenu">Se connecter en tant qu'entreprise</li>
 <?php		                }

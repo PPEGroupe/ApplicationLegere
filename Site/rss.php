@@ -1,6 +1,6 @@
 <?php
-require '/models/ClassesLoader.php';
-require '/models/page.php';
+require 'models/ClassesLoader.php';
+require 'models/page.php';
 
 header('Content-Type: application/xml; charset=utf8');
 

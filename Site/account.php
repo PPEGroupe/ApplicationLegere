@@ -1,6 +1,6 @@
 <?php 
-require '/models/ClassesLoader.php';
-require '/models/page.php';
+require 'models/ClassesLoader.php';
+require 'models/page.php';
 
 if (isset($_SESSION['connected']))
 {
@@ -13,13 +13,13 @@ if (isset($_SESSION['connected']))
         $offerManager = new OfferManager($db);
         $client = $_SESSION['client'];
         $numberOfferClient = $offerManager->CountByClient($client->Identifier());
-        require '/views/view-accountClient.php';
+        require 'views/view-accountClient.php';
     }
     // Si connecté en tant que partenaire
     else if ($_SESSION['connected'] == 'partner')
     {
         $partner = $_SESSION['partner'];
-        require '/views/view-accountPartner.php';
+        require 'views/view-accountPartner.php';
         
     }
     // Si connecté en tant que internaute
@@ -28,12 +28,12 @@ if (isset($_SESSION['connected']))
         $postManager = new PostManager($db);
         $webUser = $_SESSION['webUser'];
         $numberPostWebUser = $postManager->CountByWebUser($webUser->Identifier());
-        require '/views/view-accountWebUser.php';
+        require 'views/view-accountWebUser.php';
     }
 }
 else
 {
-    require '/views/view-denied.php';
+    require 'views/view-denied.php';
 }
 ?>
 

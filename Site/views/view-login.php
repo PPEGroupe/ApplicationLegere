@@ -2,11 +2,11 @@
 <html>
 
 <head>
-    <?php require '/views/view-head.php'; ?>
+    <?php require 'views/view-head.php'; ?>
 </head>
 
 <body>
-    <?php require '/views/view-header.php'; ?>
+    <?php require 'views/view-header.php'; ?>
     <?php //-------------------------------------------------------------- ### Connexion ### ---------------------------------------------------------- ?>
         <section class="container">
             <div class="row">

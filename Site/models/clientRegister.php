@@ -7,7 +7,7 @@ if (!empty($_POST))
 {
     if (empty($_POST['email']) || empty($_POST['password']) || empty($_POST['passwordConfirmation']) || empty($_POST['company']))
     {
-        $error[] = 'L\'email n\est pas valide.';
+        $error[] = 'Veuillez remplir tous les champs.';
     }
     else
     {
@@ -56,6 +56,9 @@ if (!empty($_POST))
                             $client->SetCompany($company);
                             $client->SetIdAccount($_SESSION['account']->Identifier());
                             $clientManager->Add($client);
+                        
+                            // Ajoute le compte client dans la session.
+                            $_SESSION['client'] = $clientManager->GetByAccount($_SESSION['account']->Identifier());
                         }
                         else
                         {

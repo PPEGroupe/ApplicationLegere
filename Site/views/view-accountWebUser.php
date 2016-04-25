@@ -2,12 +2,12 @@
 <html>
 
     <head>
-        <?php require '/views/view-head.php'; ?>
+        <?php require 'views/view-head.php'; ?>
         <script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.4.0/clipboard.min.js"></script>
     </head>
 
 <body>
-    <?php require '/views/view-header.php'; ?>
+    <?php require 'views/view-header.php'; ?>
         <section class="container">
             <div class="col-sm-8 col-sm-offset-2">
                 <div class="form-group col-sm-12">

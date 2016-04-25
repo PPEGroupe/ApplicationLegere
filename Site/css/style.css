@@ -1,4 +1,6 @@
-body { padding-top: 170px; }
+body {
+    padding-top: 170px; 
+}
 
 body * {
     font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
@@ -132,7 +134,8 @@ table th {
     white-space: nowrap;
 }
 
-#offers .warning {
+#offers .warning,
+#posts .warning {
     text-align: center;
 }
 
@@ -149,11 +152,6 @@ table th {
 	padding: 7px 20px;
 	font-size: 15px;
 }
-
-/*
-.modal-body {
-    overflow-x: auto;
-}*/
 
 .modal-body,
 .modal-footer {
@@ -289,4 +287,15 @@ form .modal-footer .form-group {
 #dadeRegister {
     text-align: center;
     font-style: italic;
+}
+
+#rss::selection {
+    background: none;
+    color: #222;
+}
+
+
+.notifyjs-bootstrap-alert {
+    padding: 0 20px !important;
+    color: #d58512;
 }

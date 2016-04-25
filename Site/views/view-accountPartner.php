@@ -2,12 +2,12 @@
 <html>
 
     <head>
-        <?php require '/views/view-head.php'; ?>
+        <?php require 'views/view-head.php'; ?>
         <script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.4.0/clipboard.min.js"></script>
     </head>
 
 <body>
-    <?php require '/views/view-header.php'; ?>
+    <?php require 'views/view-header.php'; ?>
         <section class="container">
             <div class="col-sm-8 col-sm-offset-2">
                 <div class="form-group col-sm-12">
@@ -22,22 +22,23 @@
                     <p id="urlValue" class="col-sm-3 col-sm-offset-4" ><?php echo $partner->Url(); ?></p>
                 </div>
                 <div class="form-group col-sm-12">
-                    <label class="col-sm-4 " for="urlRegister">Inscrit depuis le </label>
-                    <p id="dateRegister" class="col-sm-3 col-sm-offset-4"><?php echo $partner->DateRegister(); ?></p>
+                    <p id="dateRegister"><?php echo 'Inscrit depuis le ', date('d/m/Y', strtotime($partner->DateRegister())); ?></p>
                 </div>
                 <div class="form-group col-sm-12 center">
                     <button class="btn btn-warning" id="btn-modifierInfo" data-toggle="modal" data-target="#informationModal">Modifier</button>
                     <button class="btn btn-warning" id="btn-modifierPassword" data-toggle="modal" data-target="#passwordModal">Modifier le mot de passe</button>
                 </div>
-                <?php if ($partner->IsValid()) { ?>
+                
                 <div class="form-group col-sm-12 rss">
-                    <pre><b>Flux RSS :</b>  <span id="rss">http://megacasting.local/rss.php</span>  <button class="btn btn-default" id="copy" data-clipboard-target="#rss">Copier</button></pre>
-                </div>    
-                <?php } else {  ?>
-                <div class="alert alert-warning" role="alert">Votre compte n'as pas encore été validé, vous avez donc pas accès au flux rss.</div>
-                <?php } ?>
-                
-                
+<?php               if ($partner->IsValid()) 
+                    { ?>
+                        <pre><b>Flux RSS :</b>  <span id="rss">http://megacasting.local/rss.php</span>  <button class="btn btn-default" id="copy" data-clipboard-target="#rss">Copier</button></pre>   
+<?php               }
+                    else
+                    {  ?>
+                        <div class="alert alert-warning" role="alert">Votre compte n'as pas encore été validé</div>
+<?php               } ?>
+               </div> 
             </div>
         </section>
     
@@ -56,7 +57,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="url" class="col-sm-3 control-label">Site web : </label>
+                                <label for="url" class="col-sm-3 control-label">Site web : <span class="require">*</span></label>
                                 <div class="col-sm-9">
                                     <input type="tel" class="form-control" id="url" value="<?php //echo $partner->Url(); ?>" placeholder="Site web"/>
                                 </div>

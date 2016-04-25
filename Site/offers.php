@@ -1,7 +1,7 @@
 <?php 
-require '/models/ClassesLoader.php';
-require '/models/page.php';
-require '/models/dateInterval.php';
+require 'models/ClassesLoader.php';
+require 'models/page.php';
+require 'models/dateInterval.php';
 
 if (isset($_SESSION['connected']) && $_SESSION['connected'] == 'client')
 {
@@ -12,9 +12,9 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] == 'client')
     $offerList = $offerManager->GetAllByClient($client->Identifier());
 	$numberOfferClient = $offerManager->CountByClient($client->Identifier());
 	
-    require '/views/view-offers.php';
+    require 'views/view-offers.php';
 }
 else
 {
-    require '/views/view-denied.php';
+    require 'views/view-denied.php';
 }

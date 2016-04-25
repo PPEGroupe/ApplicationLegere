@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <?php require '/views/view-head.php'; ?>
+        <?php require 'views/view-head.php'; ?>
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
         <script type="text/javascript">
             function initialiser() {
@@ -20,7 +20,7 @@
     </head>
     
     <body onload="initialiser()">
-        <?php require '/views/view-header.php'; ?>
+        <?php require 'views/view-header.php'; ?>
         
         <section class="container">
            <form id="searchInput" action="" method="post">
