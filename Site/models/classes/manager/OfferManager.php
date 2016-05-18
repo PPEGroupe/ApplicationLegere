@@ -156,7 +156,7 @@ class OfferManager {
     {
         $queryString = 'SELECT Identifier, Title, Reference, DateStartPublication, PublicationDuration, DateStartContract, JobQuantity, Latitude, Longitude, JobDescription, ProfileDescription, Address, City, ZipCode, NumberViews, IsDeleted, IdTypeOfContract, IdJob, IdClient '
                      . 'FROM Offer '
-					 . 'WHERE IsDeleted = 0 ';
+					 . 'WHERE IsDeleted = 0 '
                      . 'AND DATEDIFF(DAY, DateStartPublication, GETDATE()) <= PublicationDuration';
         
         $query = $this->_db->query($queryString);
