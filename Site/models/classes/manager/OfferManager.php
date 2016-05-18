@@ -113,7 +113,8 @@ class OfferManager {
     {
         $queryString = 'SELECT Identifier, Title, Reference, DateStartPublication, PublicationDuration, DateStartContract, JobQuantity, Latitude, Longitude, JobDescription, ProfileDescription, Address, City, ZipCode, NumberViews, IsDeleted, IdTypeOfContract, IdJob, IdClient '
                      . 'FROM Offer '
-                     . 'WHERE Identifier = :Identifier';
+					 . 'WHERE IsDeleted = 0 '
+                     . 'AND Identifier = :Identifier';
         
         $query = $this->_db->prepare($queryString);
         $query->bindValue(':Identifier', $id);
@@ -136,7 +137,8 @@ class OfferManager {
     public function GetAll()
     {
         $queryString = 'SELECT Identifier, Title, Reference, DateStartPublication, PublicationDuration, DateStartContract, JobQuantity, Latitude, Longitude, JobDescription, ProfileDescription, Address, City, ZipCode, NumberViews, IsDeleted, IdTypeOfContract, IdJob, IdClient '
-                     . 'FROM Offer';
+                     . 'FROM Offer'
+					 . 'WHERE IsDeleted = 0';
         
         $query = $this->_db->query($queryString);
 
@@ -154,7 +156,8 @@ class OfferManager {
     {
         $queryString = 'SELECT Identifier, Title, Reference, DateStartPublication, PublicationDuration, DateStartContract, JobQuantity, Latitude, Longitude, JobDescription, ProfileDescription, Address, City, ZipCode, NumberViews, IsDeleted, IdTypeOfContract, IdJob, IdClient '
                      . 'FROM Offer '
-                     . 'WHERE DATEDIFF(DAY, DateStartPublication, GETDATE()) <= PublicationDuration';
+					 . 'WHERE IsDeleted = 0 ';
+                     . 'AND DATEDIFF(DAY, DateStartPublication, GETDATE()) <= PublicationDuration';
         
         $query = $this->_db->query($queryString);
 
@@ -172,7 +175,8 @@ class OfferManager {
     {
         $queryString = 'SELECT Identifier, Title, Reference, DateStartPublication, PublicationDuration, DateStartContract, JobQuantity, Latitude, Longitude, JobDescription, ProfileDescription, Address, City, ZipCode, NumberViews, IsDeleted, IdTypeOfContract, IdJob, IdClient '
                      . 'FROM Offer '
-                     . 'WHERE IdClient = :IdClient';
+					 . 'WHERE IsDeleted = 0 '
+                     . 'AND IdClient = :IdClient';
         
         $query = $this->_db->prepare($queryString);
         $query->bindValue(':IdClient', $idClient);
@@ -192,7 +196,8 @@ class OfferManager {
     {
         $queryString = 'SELECT COUNT(Identifier) AS Number '
                      . 'FROM Offer '
-                     . 'WHERE IdClient = :IdClient';
+					 . 'WHERE IsDeleted = 0 '
+                     . 'AND IdClient = :IdClient';
         
         $query = $this->_db->prepare($queryString);
         $query->bindValue(':IdClient', $idClient);
@@ -215,7 +220,8 @@ class OfferManager {
                      . 'INNER JOIN JobDomain ON JobDomain.Identifier = Job.idJobDomain '
                      . 'INNER JOIN Client ON Client.Identifier = Offer.IdClient '
                      . 'INNER JOIN TypeOfContract ON TypeOfContract.Identifier = Offer.IdTypeOfContract '
-                     . 'WHERE DATEDIFF(DAY, DateStartPublication, GETDATE()) <= PublicationDuration '
+					 . 'WHERE IsDeleted = 0 '
+                     . 'AND DATEDIFF(DAY, DateStartPublication, GETDATE()) <= PublicationDuration '
                      . 'AND ( Offer.Title LIKE \'%'. $keyword .'%\' '
                      . 'OR Offer.JobDescription LIKE \'%'. $keyword .'%\' '
                      . 'OR Offer.City LIKE \'%'. $keyword .'%\' '

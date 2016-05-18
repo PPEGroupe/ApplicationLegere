@@ -61,3 +61,44 @@
         color: #777;
     }
 }
+
+@media (max-width: 550px) {
+	#registerOption {
+		display: block;
+		margin: 10px auto;
+		float: none;
+	}
+	
+	#registerOption button {
+		margin: auto;
+		float: none;
+	}
+	
+	#registerOption ul {
+		left: calc(50% - 128px);
+	}
+}
+
+@media (max-width: 500px) {
+	h1 a {
+		font-size: 35px;
+	}
+	
+	#icon {
+		top: 0 !important;
+		width: 80px;
+		height: 80px;
+	}
+}
+
+@media (max-width: 370px) {
+	h1 a {
+		font-size: 28px;
+	}
+}
+
+@media (max-width: 330px) {
+	h1 a {
+		font-size: 22px;
+	}
+}

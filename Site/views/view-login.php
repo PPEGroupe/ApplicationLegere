@@ -23,7 +23,7 @@
                         </div>
                         <div class="form-group center">
                             <input type="submit" class="btn btn-warning" id="sendConnection" value="Se connecter" />
-                            <div class="btn-group">
+                            <div class="btn-group" id="registerOption" >
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     ou s'inscrire <span class="caret"></span>
                                 </button>
